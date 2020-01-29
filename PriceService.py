@@ -15,12 +15,13 @@ from tools.Logger import *
 
 class PriceService (object):
 	
-	logger=Logger("data/log.txt","PriceService.py",True)
-
-	mPriceController = None
-	
-	def __init__(self):
-		self.mPriceController=PriceController("data/database.db")
+	def __init__(self,rootpath="data/"):
+		self.rootpath=rootpath
+		
+		dbpath=self.rootpath+"database.db"
+		self.mPriceController=PriceController(dbpath)
+		
+		self.logger=Logger(self.rootpath+"log.txt","PriceService.py",True)
 		
 	def __del__(self):
 		pass

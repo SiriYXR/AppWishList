@@ -4,8 +4,8 @@
 @file: AppController.py
 @time: 2019.12.24 23:01
 """
-
 from AppModel import App
+
 from tools.sql.SQLConnector import SQLConnector
 
 class AppController (object):
@@ -68,6 +68,19 @@ class AppController (object):
 		
 		return res
 		
+	def selectAppsByCategory(self,category):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT * FROM apps WHERE applicationCategory="{category}"'''.format(category=category)
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchall()
+		
+		self.mSQLConn.close()
+		
+		return res
+		
 		
 	def selectAppById(self,id):
 		self.mSQLConn.connect()
@@ -108,8 +121,19 @@ class AppController (object):
 		self.mSQLConn.close()
 		
 		return res
-		
 	
+	def selectCategories(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT applicationCategory FROM apps'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchall()
+
+		self.mSQLConn.close()
+		
+		return res
 		
 if __name__ == "__main__":
 	cont=AppController("data/database.db")

@@ -20,7 +20,7 @@ def main():
 		logger.error("网络连接超时！\n")
 		return
 	
-	serv=AppService()
+	serv=AppService("data/database.db")
 			
 	res=serv.updateAllApps()
 	

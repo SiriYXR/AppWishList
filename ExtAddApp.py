@@ -6,11 +6,14 @@
 """
 
 import appex
+import console
+
 from AppService import AppService
 from AppModel import App
+
 from tools.Result import *
 from tools.Logger import *
-import console
+
 
 def main():
 	logger=Logger("data/log.txt","ExtAddApp.py",True)
@@ -25,7 +28,7 @@ def main():
 		logger.error("No input URL found.")
 		return
 		
-	serv=AppService()
+	serv=AppService("data/database.db")
 	res=serv.addApp(url)
 	if(res.equal(ResultEnum.SUCCESS)):
 		console.alert("Success","应用添加成功!",'OK', hide_cancel_button=True)

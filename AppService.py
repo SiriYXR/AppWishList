@@ -20,14 +20,14 @@ from tools.Logger import *
 
 class AppService (object):
 	
-	logger=Logger("data/log.txt","AppService.py",True)
-	
-	mAppController = None
-	mPriceService = None
-	
-	def __init__(self):
-		self.mAppController=AppController("data/database.db")
-		self.mPriceService=PriceService()
+	def __init__(self,rootpath="data/"):
+		self.rootpath=rootpath
+		
+		dbpath=self.rootpath+"database.db"
+		self.mAppController=AppController(dbpath)
+		self.mPriceService=PriceService(rootpath)
+		
+		self.logger=Logger(self.rootpath+"log.txt","AppService.py",True)
 		
 	def __del__(self):
 		pass
@@ -87,7 +87,22 @@ class AppService (object):
 			a.initByTuple(i)
 			apps.append(a)
 		
-		return Result(ResultEnum.SUCCESS,apps)		
+		return Result(ResultEnum.SUCCESS,apps)
+		
+	def getAppsByCategory(self,category):
+		res=self.mAppController.selectAppsByCategory(category)
+		
+		if(res==None):
+			return Result(ResultEnum.SELECT_ERROR)
+			
+		apps=[]
+		
+		for i in res:
+			a=App()
+			a.initByTuple(i)
+			apps.append(a)
+		
+		return Result(ResultEnum.SUCCESS,apps)
 		
 	def updateApp(self,app):		
 		jsontxt=GetJson(app.getURL())
@@ -107,9 +122,9 @@ class AppService (object):
 		self.mAppController.updateApp(app)
 		price=self.mPriceService.addPrice(app,jsondic).getData()
 		
-		if(not os.path.exists("data/img/"+app.getAppId()+".png")):
-			downLoadImage(app.getImgURL(),"data/img/"+app.getAppId()+".png")
-			cutImage("data/img/"+app.getAppId()+".png",(387,102,813,527))
+		if(not os.path.exists(self.rootpath+"img/"+app.getAppId()+".png")):
+			downLoadImage(app.getImgURL(),self.rootpath+"img/"+app.getAppId()+".png")
+			cutImage(self.rootpath+"img/"+app.getAppId()+".png",(387,102,813,527))
 		
 		self.logger.info("更新app："+app.getAppId())
 		return Result(ResultEnum.SUCCESS,app)
@@ -159,6 +174,22 @@ class AppService (object):
 		
 		return Result(ResultEnum.SUCCESS)
 		
+	def getCategories(self):
+		res=self.mAppController.selectCategories()
+
+		if(res==None):
+			return Result(ResultEnum.SELECT_ERROR)
+	
+		catdic={}
+		
+		for i in res:
+			if i[0] in catdic:
+				catdic[i[0]]+=1
+			else:
+				catdic[i[0]]=1
+				
+		return Result(ResultEnum.SUCCESS,catdic)
+		
 	def isExist(self,app):
 		if(self.mAppController.selectAppByAppId(app.getAppId()) != None):
 			return True
@@ -174,10 +205,18 @@ if __name__ == "__main__":
 		for i in res.getData():
 			print(i.toString()+"\n")
 			
-	res=serv.updateAllApps()
+	# res=serv.updateAllApps()
 	
 	if(not res.equal(ResultEnum.SUCCESS)):
 		print(res.toString())
 	else:
 		print("更新完成。")
 			
+	res=serv.getCategories()
+	
+	if(not res.equal(ResultEnum.SUCCESS)):
+		print(res.toString())
+	else:
+		for i in list(res.getData().keys()):
+			print(i,res.getData()[i])
+	
