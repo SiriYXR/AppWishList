@@ -29,7 +29,7 @@ if __name__ == "__main__":
 	for i in res:
 		print(i)
 	
-	c.execute('''insert into price (appid,price) values("123",1)''')
+	c.execute('''insert into price (appid,price,noticed) values("123",1)''')
 	
 	
 	res=c.execute('''SELECT * FROM price''').fetchall()

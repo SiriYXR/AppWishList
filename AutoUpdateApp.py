@@ -11,8 +11,8 @@ from tools.Result import *
 from tools.Logger import *
 from tools.CheckInternet import *
 
-def main():
-	logger=Logger("data/log.txt","AutoUpdateApp.py.py",True)
+def main(path):
+	logger=Logger(path+"log.txt","AutoUpdateApp.py.py",True)
 	
 	logger.info("开始自动更新:")
 	
@@ -20,7 +20,7 @@ def main():
 		logger.error("网络连接超时！\n")
 		return
 	
-	serv=AppService("data/database.db")
+	serv=AppService(path)
 			
 	res=serv.updateAllApps()
 	
@@ -30,4 +30,4 @@ def main():
 		logger.info("自动更新完成。\n")
 	
 if __name__ == "__main__":
-	main()
+	main("data/")

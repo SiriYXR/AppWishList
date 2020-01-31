@@ -28,7 +28,7 @@ def main():
 		logger.error("No input URL found.")
 		return
 		
-	serv=AppService("data/database.db")
+	serv=AppService("data/")
 	res=serv.addApp(url)
 	if(res.equal(ResultEnum.SUCCESS)):
 		console.alert("Success","应用添加成功!",'OK', hide_cancel_button=True)
