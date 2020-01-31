@@ -28,6 +28,9 @@ class App (object):
 	#应用作者
 	mAuthor=None
 	
+	#愿望单top
+	mStar=None
+	
 	#创建时间
 	mCreatTime=None
 	
@@ -48,6 +51,7 @@ class App (object):
 		self.mName=""
 		self.mApplicationCategory=""
 		self.mAuthor=""
+		self.mStar=0
 
 	def setId(self,id):
 		self.mId=id
@@ -114,11 +118,12 @@ class App (object):
 		self.mName=t[4]
 		self.mApplicationCategory=t[5]
 		self.mAuthor=t[6]
-		self.mCreatTime=t[7]
-		self.mUpdateTime=t[8]
+		self.mStar=t[7]
+		self.mCreatTime=t[8]
+		self.mUpdateTime=t[9]
 		
 	def toString(self):
-		return 'Id: '+str(self.mId)+'\nAppId: '+self.mAppId+'\nURL: '+self.mURL+'\nImgURL: '+self.mImgURL+'\nName: '+self.mName+'\nApplicationCategory: '+self.mApplicationCategory+'\nAuthor: '+self.mAuthor
+		return 'Id: '+str(self.mId)+'\nAppId: '+self.mAppId+'\nURL: '+self.mURL+'\nImgURL: '+self.mImgURL+'\nName: '+self.mName+'\nApplicationCategory: '+self.mApplicationCategory+'\nAuthor: '+self.mAuthor+'\nStar: '+str(self.mStar)
 		
 if __name__ == "__main__":
 	app=App("https://apps.apple.com/cn/app/playdeads-inside/id1201642309")

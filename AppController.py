@@ -66,7 +66,17 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 
+		
+		apps=[]	
+		
+		for i in res:
+			app=App()
+			app.initByTuple(i)
+			apps.append(app)
+			
+		return apps
 		
 	def selectAppsByCategory(self,category):
 		self.mSQLConn.connect()
@@ -79,7 +89,17 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 
+		
+		apps=[]	
+		
+		for i in res:
+			app=App()
+			app.initByTuple(i)
+			apps.append(app)
+			
+		return apps
 		
 		
 	def selectAppById(self,id):
@@ -93,7 +113,13 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 	
+		
+		app=App()
+		app.initByTuple(res)
+			
+		return app
 	
 	def selectAppByAppId(self,appid):
 		self.mSQLConn.connect()
@@ -106,7 +132,13 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 	
+		
+		app=App()
+		app.initByTuple(res)
+			
+		return app
 	
 				
 	def selectAppByName(self,name):
@@ -120,7 +152,13 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 	
+		
+		app=App()
+		app.initByTuple(res)
+			
+		return app
 	
 	def selectCategories(self):
 		self.mSQLConn.connect()
@@ -133,11 +171,22 @@ class AppController (object):
 
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 
+		
+		catdic={}
+		
+		for i in res:
+			if i[0] in catdic:
+				catdic[i[0]]+=1
+			else:
+				catdic[i[0]]=1
+		
+		return catdic
 		
 if __name__ == "__main__":
 	cont=AppController("data/database.db")
 	
 	data=cont.selectAllApps()
 	for i in data:
-		print(i)
+		print(i.toString())

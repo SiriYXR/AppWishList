@@ -11,6 +11,7 @@ from AppModel import App
 from PriceModel import Price
 from AppController import AppController
 from PriceService import PriceService
+from ConfigService import ConfigService
 
 from tools.GetJson import *
 from tools.DownLoadImage import *
@@ -26,6 +27,7 @@ class AppService (object):
 		dbpath=self.rootpath+"database.db"
 		self.mAppController=AppController(dbpath)
 		self.mPriceService=PriceService(rootpath)
+		self.mConfigService=ConfigService(rootpath)
 		
 		self.logger=Logger(self.rootpath+"log.txt","AppService.py",True)
 		
@@ -54,13 +56,13 @@ class AppService (object):
 			return Result(ResultEnum.APP_EXIST)
 		
 		self.mAppController.insertApp(app)
-		price=self.mPriceService.addPrice(app,jsondic).getData()
+		res=self.mPriceService.addPrice(app,jsondic)
 		
 		# 调用更新时再下载，加快应用添加速度，以免用户长时间等待
 		# downLoadImage(app.getImgURL(),"data/img/"+app.getAppId()+".png")
 		
 		self.logger.info("添加app：\n"+app.toString()+"\n")
-		return Result(ResultEnum.SUCCESS,(app,price))
+		return Result(ResultEnum.SUCCESS,app)
 	
 	def getAppByAppId(self,appid):
 		res=self.mAppController.selectAppByAppId(appid)
@@ -69,40 +71,25 @@ class AppService (object):
 			self.logger.error("通过appid查询失败："+appid)
 			return Result(ResultEnum.SELECT_ERROR)
 		
-		app=App()
-		app.initByTuple(res)
-		
-		return Result(ResultEnum.SUCCESS,app)
+		return Result(ResultEnum.SUCCESS,res)
 		
 	def getAllApps(self):
 		res=self.mAppController.selectAllApps()
 		
 		if(res==None):
+			self.logger.error("getAllApps()"+ResultEnum.SELECT_ERROR[1])
 			return Result(ResultEnum.SELECT_ERROR)
-			
-		apps=[]
 		
-		for i in res:
-			a=App()
-			a.initByTuple(i)
-			apps.append(a)
-		
-		return Result(ResultEnum.SUCCESS,apps)
+		return Result(ResultEnum.SUCCESS,res)
 		
 	def getAppsByCategory(self,category):
 		res=self.mAppController.selectAppsByCategory(category)
 		
 		if(res==None):
+			self.logger.error("getAppsByCategory()"+ResultEnum.SELECT_ERROR[1])			
 			return Result(ResultEnum.SELECT_ERROR)
-			
-		apps=[]
 		
-		for i in res:
-			a=App()
-			a.initByTuple(i)
-			apps.append(a)
-		
-		return Result(ResultEnum.SUCCESS,apps)
+		return Result(ResultEnum.SUCCESS,res)
 		
 	def updateApp(self,app):		
 		jsontxt=GetJson(app.getURL())
@@ -120,11 +107,19 @@ class AppService (object):
 		app.initByJson(jsondic)
 		
 		self.mAppController.updateApp(app)
-		price=self.mPriceService.addPrice(app,jsondic).getData()
+
+		res=self.mConfigService.getNotice()
+		if(res.isPositive() and res.getData()==1):
+			if(not os.path.exists(self.rootpath+"img/"+app.getAppId()+".png")):
+				downLoadImage(app.getImgURL(),self.rootpath+"img/"+app.getAppId()+".png")
+				cutImage(self.rootpath+"img/"+app.getAppId()+".png",(387,102,813,528))
 		
-		if(not os.path.exists(self.rootpath+"img/"+app.getAppId()+".png")):
-			downLoadImage(app.getImgURL(),self.rootpath+"img/"+app.getAppId()+".png")
-			cutImage(self.rootpath+"img/"+app.getAppId()+".png",(387,102,813,527))
+		res=self.mPriceService.addPrice(app,jsondic)
+		if(res.equal(ResultEnum.PRICE_NOTICE)):
+			notice=self.mConfigService.getNotice()
+			if(notice.isPositive() and notice.getData()==1):
+				print(res.getInfo())
+				self.logger.info(res.getInfo())
 		
 		self.logger.info("更新app："+app.getAppId())
 		return Result(ResultEnum.SUCCESS,app)
@@ -145,23 +140,26 @@ class AppService (object):
 		
 		apps=res.getData()
 		newapps=[]
+		fault=0
 		
 		for i in apps:
 			res=self.updateApp(i)
-			if(not res.equal(ResultEnum.SUCCESS)):
-				return res
-			newapps.append(res.getData())
-	
-		return Result(ResultEnum.SUCCESS,newapps)
+			if(res.isPositive()):
+				newapps.append(res.getData())
+			else:
+				fault+=1
+			
+		return Result(ResultEnum.SUCCESS,(newapps,fault))
 	
 	def deleteApp(self,app):
-		if(app.getId<0):
-			return Result(ResultEnum.INVALID_APP)
+		if(app.getId()<0):
+			self.logger.warning("deleteApp()"+ResultEnum.APP_INVALID[1])
+			return Result(ResultEnum.APP_INVALID)
 		
 		self.mAppController.deleteAppById(app.getId())
 		self.mPriceService.deletePriceByAppId(app.getAppId())
 		
-		self.logger.warning("删除app："+app.getAppId())
+		self.logger.warning("deleteApp()删除app："+app.getAppId())
 		
 		return Result(ResultEnum.SUCCESS)
 		
@@ -170,7 +168,7 @@ class AppService (object):
 		self.mAppController.deleteAppByAppId(appid)
 		self.mPriceService.deletePriceByAppId(appid)
 		
-		self.logger.warning("删除app："+appid)
+		self.logger.warning("deleteAppByAppId删除app："+appid)
 		
 		return Result(ResultEnum.SUCCESS)
 		
@@ -178,18 +176,15 @@ class AppService (object):
 		res=self.mAppController.selectCategories()
 
 		if(res==None):
+			self.logger.error("getCategories()"+ResultEnum.SELECT_ERROR[1])
 			return Result(ResultEnum.SELECT_ERROR)
-	
-		catdic={}
-		
-		for i in res:
-			if i[0] in catdic:
-				catdic[i[0]]+=1
-			else:
-				catdic[i[0]]=1
 				
-		return Result(ResultEnum.SUCCESS,catdic)
-		
+		return Result(ResultEnum.SUCCESS,res)
+	
+	def getPricesByApp(self,app):
+		return self.mPriceService.getPricesByAppId(app.getAppId())
+	
+	
 	def isExist(self,app):
 		if(self.mAppController.selectAppByAppId(app.getAppId()) != None):
 			return True
@@ -205,18 +200,19 @@ if __name__ == "__main__":
 		for i in res.getData():
 			print(i.toString()+"\n")
 			
-	# res=serv.updateAllApps()
+	res=serv.updateAllApps()
 	
 	if(not res.equal(ResultEnum.SUCCESS)):
 		print(res.toString())
 	else:
 		print("更新完成。")
 			
-	res=serv.getCategories()
-	
-	if(not res.equal(ResultEnum.SUCCESS)):
-		print(res.toString())
-	else:
-		for i in list(res.getData().keys()):
-			print(i,res.getData()[i])
+	if(len(res.getData()[0])>0):
+		res=serv.getPricesByApp(res.getData()[0])
+		
+		if(not res.equal(ResultEnum.SUCCESS)):
+			print(res.toString())
+		else:
+			for i in res.getData(): 
+				print(i.toString())
 	
