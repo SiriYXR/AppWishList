@@ -20,7 +20,7 @@ from AppService import AppService
 
 from tools.Result import *
 
-class MainTable(object):
+class MainTable(ui.View):
 	
 	MENU_WISHLIST="\t\t\t\t\t\t\t\t\t愿望单"
 	MENU_FAVORITE="\t\t\t\t\t\t\t\t\t收藏夹"
@@ -32,19 +32,20 @@ class MainTable(object):
 	def __init__(self, app):
 		self.app = app
 		
-		win_w,win_h=ui.get_window_size()
-		self.view = ui.View(frame=(0,0,win_w,win_h))
-		self.view.name = '首页'
-		self.view.background_color="white"
-		self.view.flex='LRTB'
+		self.name = '首页'
+		self.background_color="white"
+		self.flex='WHLRTB'
 		
-		self.tableView=ui.TableView(frame=(0, 0, self.view.width, self.view.height))
-		self.view.add_subview(self.tableView)
+		self.tableView=ui.TableView()
+		self.tableView.flex='WHLRTB'
 		
-		self.load()
+		self.add_subview(self.tableView)
+		
+		self.loadData()
+		self.loadUI()
 		
 	@ui.in_background
-	def load(self):
+	def loadData(self):
 		self.app.activity_indicator.start()
 		try:
 			menu_listdatasource = ui.ListDataSource(
@@ -76,7 +77,11 @@ class MainTable(object):
 			console.hud_alert('Failed to load menu', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
-		
+	
+	def loadUI(self):
+		self.frame=(0,0,self.app.width,self.app.height)
+		self.tableView.frame=self.frame
+	
 	def menu_item_tapped(self, sender):
 		opt_name = sender.items[sender.selected_row]['title']
 		if (opt_name==self.MENU_WISHLIST):
@@ -84,6 +89,12 @@ class MainTable(object):
 		elif (opt_name==self.MENU_FAVORITE):
 			self.Favorite_act()
 		elif (opt_name==self.MENU_UPDATE):
+			if(self.app.isUpdating):
+				console.hud_alert('数据更新中，请稍等！', 'error', 1.0)
+				return
+				
+			console.hud_alert('开始更新中，请稍等！', 'success', 1.0) 
+			self.app.isUpdating=True
 			self.Update_act()
 		elif (opt_name==self.MENU_SETTING):
 			self.Setting_act()
@@ -102,19 +113,18 @@ class MainTable(object):
 
 	@ui.in_background
 	def Update_act(self):
-		self.app.activity_indicator.start()
 		try:
 			res=self.app.appService.updateAllApps()
 			if(not res.equal(ResultEnum.SUCCESS)):
 				console.hud_alert('更新出错！', 'error', 1.0)
 			else:
-				console.hud_alert('更新成功'+str(len(res.getData()))+'个App。', 'error', 1.0)
+				console.hud_alert('更新成功'+str(len(res.getData()[0]))+'个App,失败'+str(res.getData()[1])+'个!', 'success', 2.0)
 				
 		except Exception as e:
 			console.hud_alert('Failed to update', 'error', 1.0)
 		finally:
-			self.app.activity_indicator.stop()
-	
+			self.app.isUpdating=False
+			
 	def Setting_act(self):
 		pass
 		
@@ -124,25 +134,48 @@ class MainTable(object):
 	def Blog_act(self):
 		webbrowser.open("safari-https://blog.siriyang.cn")
 
-class MainWindow(object):
+class MainWindow(ui.View):
 	
-	def __init__(self,dbpath):
+	LANDSCAPE=0
+	PORTRAIT=1
+	
+	def __init__(self,rootpath):
 		
-		self.appService=AppService(dbpath)
+		self.rootpath=rootpath
+		self.appService=AppService(rootpath)
 					
+		self.isUpdating=False
+		self.orientation = self.LANDSCAPE
+								
 		self.activity_indicator = ui.ActivityIndicator(flex='LTRB')
 		self.activity_indicator.style = 10
 		
-		mainTable=MainTable(self)
-		self.nav_view=ui.NavigationView(mainTable.view)
+		self.width,self.height=ui.get_window_size()
+		
+		self.mainTable=MainTable(self)
+		self.nav_view=ui.NavigationView(self.mainTable)
 		self.nav_view.name = 'AppWishList'
+		self.nav_view.flex="WHLRTB"
 		
 		self.nav_view.add_subview(self.activity_indicator)
-		self.activity_indicator.frame = (0, 0, self.nav_view.width, self.nav_view.height)
+		self.add_subview(self.nav_view)
+
+		self.loadUI()
+		
 		self.activity_indicator.bring_to_front()
 		
+	def loadUI(self):
+		self.nav_view.frame=(0,0,self.width,self.height)
+		self.activity_indicator.frame = (0, 0, self.nav_view.width, self.nav_view.height)
+		
+	def layout(self):
+		if self.width > self.height:
+			self.orientation=self.LANDSCAPE
+		else:
+			self.orientation=self.PORTRAIT
+	
 	def launch(self):
-		self.nav_view.present('fullscreen')
+		self.present(style='full_screen',)
 
 if __name__ == '__main__':
 	mainWindow = MainWindow("../data/")
