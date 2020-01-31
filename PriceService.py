@@ -34,24 +34,23 @@ class PriceService (object):
 		if(res==None):
 			self.mPriceController.insertPrice(price)
 			self.logger.info("添加price："+price.toString())
-		elif (res[2]>price.getPrice()):
-			price.setId(res[0])
+			return Result(ResultEnum.SUCCESS,price)
+		elif (res.getPrice()>price.getPrice()):
+			price.setId(res.getId())
 			self.mPriceController.updatePrice(price)
 			self.logger.info("更新price："+price.toString())
+			return Result(ResultEnum.PRICE_NOTICE,price)
 		
-		return Result(ResultEnum.SUCCESS,price)
+		return Result(ResultEnum.SUCCESS,res)
 		
-	def getPriceByAppId(self,appid):
-		res=self.mPriceController.selectPriceByAppId(appid)
+	def getPricesByAppId(self,appid):
+		res=self.mPriceController.selectPricesByAppId(appid)
 		
-		prices=[]
-		
-		for i in res:
-			t=Price()
-			t.initByTuple(i)
-			prices.append[t]
-		
-		return Result(ResultEnum.SUCCESS,prices)
+		if(res==None):
+			self.logger.error("getPricesByAppId()"+ResultEnum.SELECT_ERROR[1])
+			return Result(ResultEnum.SELECT_ERROR)
+						
+		return Result(ResultEnum.SUCCESS,res)
 		
 	def deletePriceById(self,id):
 		self.mPriceController.deletePriceById(id)
@@ -64,3 +63,6 @@ class PriceService (object):
 		
 		self.logger.warning("删除price: appid:"+appid)
 		return Result(ResultEnum.SUCCESS,appid)
+		
+if __name__ == "__main__":
+	pass

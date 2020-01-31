@@ -31,7 +31,7 @@ class PriceController (object):
 	def updatePrice(self,price):
 		self.mSQLConn.connect()
 		
-		sql='''UPDATE price SET appid="{appid}",price={price} WHERE id={id}'''.format(appid=price.getAppId(),price=price.getPrice(),id=price.getId())
+		sql='''UPDATE price SET appid="{appid}",price={price},noticed={noticed} WHERE id={id}'''.format(appid=price.getAppId(),price=price.getPrice(),noticed=price.getNoticed(),id=price.getId())
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -81,9 +81,15 @@ class PriceController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None or len(res)<1):
+			return 
+		
+		price=Price()
+		price.initByTuple(res)
+		
+		return price
 	
-	def selectAllPriceByAppId(self,appid):
+	def selectPricesByAppId(self,appid):
 		self.mSQLConn.connect()
 		
 		sql='''SELECT * FROM price WHERE appid="{appid}" ORDER BY creattime'''.format(appid=appid)
@@ -94,7 +100,17 @@ class PriceController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None):
+			return 
+		
+		prices=[]
+		
+		for i in res:
+			t=Price()
+			t.initByTuple(i)
+			prices.append(t)
+		
+		return prices
 		
 	def selectPriceByAppId_Day(self,appid,time):
 		self.mSQLConn.connect()
@@ -107,10 +123,15 @@ class PriceController (object):
 		
 		self.mSQLConn.close()
 		
-		return res
+		if(res==None or len(res)<1):
+			return 
+		
+		price=Price()
+		price.initByTuple(res)
+		
+		return price
 	
 if __name__ == "__main__":
 	cont=PriceController("data/database.db")
-	
 	
 	
