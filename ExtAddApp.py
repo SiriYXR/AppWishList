@@ -30,7 +30,10 @@ def main():
 		
 	serv=AppService("data/")
 	res=serv.addApp(url)
-	if(res.equal(ResultEnum.SUCCESS)):
+	
+	if(res.equal(ResultEnum.APP_UPDATE)):
+		console.alert("Success","应用更新成功!",'OK', hide_cancel_button=True)
+	elif(res.equal(ResultEnum.SUCCESS)):
 		console.alert("Success","应用添加成功!",'OK', hide_cancel_button=True)
 	else:
 		console.alert("Error",res.getInfo(),'OK', hide_cancel_button=True)

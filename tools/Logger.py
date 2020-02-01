@@ -20,7 +20,7 @@ class Logger (object):
 		self.mShowLocation=isshow
 		self.mIsRun=isrun
 		self.mIsDebug=isdebug
-		#self.mIsDebug=True
+		self.mIsDebug=True
 		
 	def getPath(self):
 		return self.mPath

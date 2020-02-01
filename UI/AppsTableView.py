@@ -21,6 +21,7 @@ from PriceModel import Price
 from PriceService import PriceService
 
 from tools.Result import *
+from tools.StringProcess import *
 
 class AppsTableView(ui.View):
 	def __init__(self,app,father,name):
@@ -61,8 +62,7 @@ class AppsTableView(ui.View):
 			pass
 	
 	def loadUI(self):
-		self.tableView.frame=self.frame
-			
+		pass		
 	
 	def layout(self):
 		self.tableView.reload()
@@ -77,8 +77,8 @@ class AppsTableView(ui.View):
 	def tableview_cell_for_row(self, tableview, section, row):
 		cell = ui.TableViewCell('subtitle')
 		app = self.apps[row]
-		cell.text_label.text = app.getName()
-		cell.detail_text_label.text = app.getAuthor()
+		cell.text_label.text = StringProcess(app.getName())
+		cell.detail_text_label.text = StringProcess(app.getAuthor())
 		cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		cell.accessory_type='disclosure_indicator'
 	
@@ -125,8 +125,8 @@ class AppsTableView(ui.View):
 			app = self.apps[row]
 			appDetailView = AppDetailView(self.app,self, app)
 			self.app.nav_view.push_view(appDetailView)
-		except Exception as e:
-			console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
+		#except Exception as e:
+			#console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 	
@@ -149,10 +149,9 @@ class AppsTableView(ui.View):
 				console.hud_alert(res.toString(), 'error', 1.0)
 				return
 				
-			self.loadData()
-			self.father.loadData()
+			self.updateData()
 		except Exception as e:
-			console.hud_alert('Failed to load Apps', 'error', 1.0)
+			console.hud_alert('Failed to delete Apps', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 	
@@ -165,10 +164,14 @@ class AppsTableView(ui.View):
 	def renovate(self):
 		self.app.activity_indicator.start()
 		try:
-			self.loadData()
+			self.updateData()
 			console.hud_alert('刷新成功!', 'success', 1.0)
 		except Exception as e:
 			console.hud_alert('Failed to load renovate', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 			
+	def updateData(self):
+		self.loadData()
+		self.father.updateData()
+		

@@ -29,8 +29,8 @@ class AppController (object):
 		
 	def updateApp(self,app):
 		self.mSQLConn.connect()
-		
-		sql='''UPDATE apps SET appid="{appid}",url="{url}",imgurl="{imgurl}",name="{name}",applicationCategory="{category}",author="{author}" WHERE id={id}'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor(),id=app.getId())
+
+		sql='''UPDATE apps SET appid="{appid}",url="{url}",imgurl="{imgurl}",name="{name}",applicationCategory="{category}",author="{author}",star={star} WHERE id={id}'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor(),star=app.getStar(),id=app.getId())
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -100,7 +100,29 @@ class AppController (object):
 			apps.append(app)
 			
 		return apps
+	
+	def selectAppsByStar(self):
+		self.mSQLConn.connect()
 		
+		sql='''SELECT * FROM apps WHERE star>0 ORDER BY star'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchall()
+		
+		self.mSQLConn.close()
+		
+		if(res==None):
+			return 	
+		
+		apps=[]	
+		
+		for i in res:
+			app=App()
+			app.initByTuple(i)
+			apps.append(app)
+			
+		return apps
 		
 	def selectAppById(self,id):
 		self.mSQLConn.connect()
@@ -184,9 +206,50 @@ class AppController (object):
 		
 		return catdic
 		
+	def countApp(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT COUNT(*) FROM apps '''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		return res[0]
+		
+	def countStar(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT COUNT(*) FROM apps WHERE star>0'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		return res[0]
+		
+	def countCategory(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT COUNT(distinct applicationCategory) FROM apps '''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		return res[0]
+		
 if __name__ == "__main__":
 	cont=AppController("data/database.db")
 	
 	data=cont.selectAllApps()
 	for i in data:
 		print(i.toString())
+		
+	print(cont.countCategory())

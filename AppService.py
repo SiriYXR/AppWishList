@@ -52,8 +52,10 @@ class AppService (object):
 		app.initByJson(jsondic)
 		
 		if(self.isExist(app)):
-			self.logger.error("app已经存在："+url)
-			return Result(ResultEnum.APP_EXIST)
+			res=self.updateApp(app)
+			if (res.equal(ResultEnum.SUCCESS)):
+				return Result(ResultEnum.APP_UPDATE)
+			return res 
 		
 		self.mAppController.insertApp(app)
 		res=self.mPriceService.addPrice(app,jsondic)
@@ -68,7 +70,7 @@ class AppService (object):
 		res=self.mAppController.selectAppByAppId(appid)
 		
 		if(res==None):
-			self.logger.error("通过appid查询失败："+appid)
+			self.logger.error("通过appid查询失败："+str(appid))
 			return Result(ResultEnum.SELECT_ERROR)
 		
 		return Result(ResultEnum.SUCCESS,res)
@@ -90,7 +92,17 @@ class AppService (object):
 			return Result(ResultEnum.SELECT_ERROR)
 		
 		return Result(ResultEnum.SUCCESS,res)
+	
+	def getAppsByStar(self):
+		res=self.mAppController.selectAppsByStar()
 		
+		if(res==None):
+			self.logger.error("getAppsByStar"+ResultEnum.SELECT_ERROR[1])			
+			return Result(ResultEnum.SELECT_ERROR)
+
+		return Result(ResultEnum.SUCCESS,res)
+
+	
 	def updateApp(self,app):		
 		jsontxt=GetJson(app.getURL())
 		
@@ -107,7 +119,8 @@ class AppService (object):
 		app.initByJson(jsondic)
 		
 		self.mAppController.updateApp(app)
-
+		self.logger.info("更新app："+app.getAppId())
+		
 		res=self.mConfigService.getNotice()
 		if(res.isPositive() and res.getData()==1):
 			if(not os.path.exists(self.rootpath+"img/"+app.getAppId()+".png")):
@@ -115,13 +128,14 @@ class AppService (object):
 				cutImage(self.rootpath+"img/"+app.getAppId()+".png",(387,102,813,528))
 		
 		res=self.mPriceService.addPrice(app,jsondic)
-		if(res.equal(ResultEnum.PRICE_NOTICE)):
-			notice=self.mConfigService.getNotice()
-			if(notice.isPositive() and notice.getData()==1):
-				print(res.getInfo())
-				self.logger.info(res.getInfo())
 		
-		self.logger.info("更新app："+app.getAppId())
+		if(res.isPositive()):
+			notice=self.mConfigService.getNotice()
+			if(notice.isPositive() and notice.getData()==1 and res.getData().getNoticed()==0):
+				#print(res.getInfo())
+				#self.logger.info(res.getInfo())
+				pass
+				
 		return Result(ResultEnum.SUCCESS,app)
 		
 	def updateAppByAppId(self,appid):
@@ -184,6 +198,56 @@ class AppService (object):
 	def getPricesByApp(self,app):
 		return self.mPriceService.getPricesByAppId(app.getAppId())
 	
+	def countApp(self):
+		res=self.mAppController.countApp()
+		
+		return Result(ResultEnum.SUCCESS,res)
+	
+	def countStar(self):
+		res=self.mAppController.countStar()
+		
+		return Result(ResultEnum.SUCCESS,res)
+	
+	def starApp(self,app):
+		cnt=self.sortAppStar().getData()
+		app.setStar(cnt+1)
+		self.mAppController.updateApp(app)
+		self.logger.info("收藏app："+app.getAppId())
+
+		return Result(ResultEnum.SUCCESS)
+	
+	def unstarApp(self,app):
+		app.setStar(0)
+		self.mAppController.updateApp(app)
+		self.logger.info("取消收藏app："+app.getAppId())
+		
+		self.sortAppStar()
+		
+		return Result(ResultEnum.SUCCESS)	
+	
+	def changeAppStar(self,app,star):
+		if(star<1):
+			return self.unstarApp()
+		
+		app.setStar(star)
+		self.mAppController.updateApp(app)
+		
+		self.logger.info("修改收藏app顺序："+app.getAppId()+" "+str(star))
+		return Result(ResultEnum.SUCCESS)
+		
+	def sortAppStar(self):
+		res=self.getAppsByStar()
+		if(not res.isPositive()):
+			return res
+
+		apps=res.getData()
+		cnt=len(apps)
+
+		for i in range(cnt):
+			self.changeAppStar(apps[i],i+1)
+		
+		self.logger.info("排序app收藏顺序。")
+		return Result(ResultEnum.SUCCESS,cnt)	
 	
 	def isExist(self,app):
 		if(self.mAppController.selectAppByAppId(app.getAppId()) != None):
@@ -193,26 +257,10 @@ class AppService (object):
 
 if __name__ == "__main__":
 	serv=AppService()
-	
-	res=serv.getAllApps()
-	
+
+	res=serv.getAppsByStar()
+
 	if(res.equal(ResultEnum.SUCCESS)):
 		for i in res.getData():
 			print(i.toString()+"\n")
-			
-	res=serv.updateAllApps()
-	
-	if(not res.equal(ResultEnum.SUCCESS)):
-		print(res.toString())
-	else:
-		print("更新完成。")
-			
-	if(len(res.getData()[0])>0):
-		res=serv.getPricesByApp(res.getData()[0])
-		
-		if(not res.equal(ResultEnum.SUCCESS)):
-			print(res.toString())
-		else:
-			for i in res.getData(): 
-				print(i.toString())
 	

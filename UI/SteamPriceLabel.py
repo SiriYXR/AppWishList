@@ -21,13 +21,14 @@ class SteamPriceLabel(ui.View):
 		self.newprice_label=ui.Label()
 		self.line=ui.Label()
 		
-		self.loadOff()
-		self.loadPrice()
-		
 		self.add_subview(self.off_label)
 		self.add_subview(self.oldprice_label)
 		self.add_subview(self.newprice_label)
 		self.add_subview(self.line)
+		
+	def layout(self):
+		self.loadOff()
+		self.loadPrice()
 		
 	def loadOff(self):
 		self.off_label.frame=(0,0,90,40)
@@ -80,6 +81,11 @@ class SteamPriceLabel(ui.View):
 			self.line.frame=(90,-1,60,25)
 			self.line.text="——"
 
+	def updateData(self,old,new):
+		self.old=old
+		self.new=new
+		
+		self.layout()
 			
 			
 if __name__ == "__main__":

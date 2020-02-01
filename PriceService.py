@@ -35,11 +35,11 @@ class PriceService (object):
 			self.mPriceController.insertPrice(price)
 			self.logger.info("添加price："+price.toString())
 			return Result(ResultEnum.SUCCESS,price)
-		elif (res.getPrice()>price.getPrice()):
-			price.setId(res.getId())
-			self.mPriceController.updatePrice(price)
-			self.logger.info("更新price："+price.toString())
-			return Result(ResultEnum.PRICE_NOTICE,price)
+		else:
+			res.setPrice(price.getPrice())
+			self.mPriceController.updatePrice(res)
+			self.logger.info("更新price："+res.toString())
+			return Result(ResultEnum.PRICE_UPDATE,res)
 		
 		return Result(ResultEnum.SUCCESS,res)
 		

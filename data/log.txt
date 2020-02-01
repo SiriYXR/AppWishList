@@ -1,0 +1,1354 @@
+2020-01-30 16:09:02 info (PriceService.py) : 添加price：Id: -1	AppId: id1208145167	Price: 0	Noticed: 0
+2020-01-30 16:09:02 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1208145167
+URL: https://apps.apple.com/cn/app/picsew-%E9%95%BF%E6%88%AA%E5%9B%BE%E5%92%8C%E9%95%BF%E5%9B%BE%E6%8B%BC%E6%8E%A5/id1208145167
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/4c/47/de/4c47de9b-a229-f7d3-60bd-1031329e84fa/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.jpeg/1200x630wa.png
+Name: Picsew - 长截图和长图拼接
+ApplicationCategory: 效率
+Author: Liming Mo
+Star: 0
+
+2020-01-30 16:16:04 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:18:15 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:26:25 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:27:16 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:28:25 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:28:56 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/picsew-%E9%95%BF%E6%88%AA%E5%9B%BE%E5%92%8C%E9%95%BF%E5%9B%BE%E6%8B%BC%E6%8E%A5/id1208145167
+2020-01-30 16:28:56 info (AutoUpdateApp.py.py) : 自动更新完成。
+
+2020-01-30 16:29:19 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-01-30 16:29:22 info (AppService.py) : 更新app：id1208145167
+2020-01-30 16:29:22 info (AutoUpdateApp.py.py) : 自动更新完成。
+
+2020-01-30 16:39:53 info (PriceService.py) : 添加price：Id: -1	AppId: id549039908	Price: 0	Noticed: 0
+2020-01-30 16:39:53 info (AppService.py) : 添加app：
+Id: -1
+AppId: id549039908
+URL: https://apps.apple.com/cn/app/termius-ssh-client/id549039908
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/64/28/91/64289183-f200-97bd-4baf-71df8692bc9c/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Termius - SSH client
+ApplicationCategory: 工具
+Author: Termius Corporation
+Star: 0
+
+2020-01-30 16:41:40 info (PriceService.py) : 添加price：Id: -1	AppId: id1444383602	Price: 50	Noticed: 0
+2020-01-30 16:41:40 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1444383602
+URL: https://apps.apple.com/cn/app/goodnotes-5/id1444383602
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/a8/a6/2a/a8a62a54-894d-997d-5d8e-132cecb96f48/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: GoodNotes 5
+ApplicationCategory: 效率
+Author: Time Base Technology Limited
+Star: 0
+
+2020-01-30 16:42:00 info (PriceService.py) : 添加price：Id: -1	AppId: id888483369	Price: 0	Noticed: 0
+2020-01-30 16:42:00 info (AppService.py) : 添加app：
+Id: -1
+AppId: id888483369
+URL: https://apps.apple.com/cn/app/%E5%A2%A8%E5%A2%A8%E8%83%8C%E5%8D%95%E8%AF%8D-%E5%9B%9B%E5%85%AD%E7%BA%A7%E8%80%83%E7%A0%94%E7%AD%89%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E8%AE%B0%E5%BF%86/id888483369
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/27/1f/a0/271fa0d3-905c-e002-6d4e-ce9303abdd31/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-85-220.png/1200x630wa.png
+Name: 墨墨背单词 | 四六级考研等英语词汇记忆
+ApplicationCategory: 教育
+Author: MaiMemo Inc.
+Star: 0
+
+2020-01-30 16:42:43 info (PriceService.py) : 添加price：Id: -1	AppId: id896694807	Price: 0	Noticed: 0
+2020-01-30 16:42:43 info (AppService.py) : 添加app：
+Id: -1
+AppId: id896694807
+URL: https://apps.apple.com/cn/app/working-copy-git-client/id896694807
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/b3/ee/db/b3eedbb6-d715-b7dc-24fe-15e8ac314c04/Regular-Icon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Working Copy - Git client
+ApplicationCategory: 效率
+Author: Anders Borum
+Star: 0
+
+2020-01-30 16:42:59 info (PriceService.py) : 添加price：Id: -1	AppId: id432079746	Price: 0	Noticed: 0
+2020-01-30 16:42:59 info (AppService.py) : 添加app：
+Id: -1
+AppId: id432079746
+URL: https://apps.apple.com/cn/app/hokusai-audio-editor/id432079746
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/65/89/7b/65897bd9-6d55-220f-7235-aff01235f014/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Hokusai Audio Editor
+ApplicationCategory: 音乐
+Author: Wooji Juice Ltd
+Star: 0
+
+2020-01-30 16:43:14 info (PriceService.py) : 添加price：Id: -1	AppId: id1441303445	Price: 6	Noticed: 0
+2020-01-30 16:43:14 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1441303445
+URL: https://apps.apple.com/cn/app/sqlite-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E8%BE%91%E5%99%A8-%E5%86%85%E5%AE%B9%E6%B5%8F%E8%A7%88%E5%99%A8/id1441303445
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/f4/7b/2c/f47b2c03-af16-769a-3e09-3b5fc40fa695/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: SQLite - 数据库编辑器&amp;内容浏览器
+ApplicationCategory: 工具
+Author: Junfeng Tong
+Star: 0
+
+2020-01-30 16:44:05 info (PriceService.py) : 添加price：Id: -1	AppId: id1406266008	Price: 0	Noticed: 0
+2020-01-30 16:44:05 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1406266008
+URL: https://apps.apple.com/cn/app/sqliteflow-sqlite%E7%BC%96%E8%BE%91%E5%99%A8/id1406266008
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/2c/67/f6/2c67f6b3-3768-be74-62eb-1a6888582e79/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: SQLiteFlow - SQLite编辑器
+ApplicationCategory: 效率
+Author: Chenliang Jia
+Star: 0
+
+2020-01-30 16:44:16 error (AppService.py) : app已经存在：https://apps.apple.com/cn/app/picsew-%E9%95%BF%E6%88%AA%E5%9B%BE%E5%92%8C%E9%95%BF%E5%9B%BE%E6%8B%BC%E6%8E%A5/id1208145167
+2020-01-30 16:44:31 info (PriceService.py) : 添加price：Id: -1	AppId: id948857526	Price: 30	Noticed: 0
+2020-01-30 16:44:31 info (AppService.py) : 添加app：
+Id: -1
+AppId: id948857526
+URL: https://apps.apple.com/cn/app/transistor/id948857526
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/28/35/d2/2835d23a-ca67-8c72-2e1b-a5069b8be8ef/AppIcon-1x_U007emarketing-85-220-5.png/1200x630wa.png
+Name: Transistor
+ApplicationCategory: 游戏
+Author: Supergiant Games, LLC
+Star: 0
+
+2020-01-30 16:44:42 info (PriceService.py) : 添加price：Id: -1	AppId: id837860959	Price: 25	Noticed: 0
+2020-01-30 16:44:42 info (AppService.py) : 添加app：
+Id: -1
+AppId: id837860959
+URL: https://apps.apple.com/cn/app/%E8%BF%B7%E4%BD%A0%E5%9C%B0%E9%93%81/id837860959
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/cb/67/7c/cb677c82-d048-ed44-a13a-a5fdb22f1b08/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-85-220.png/1200x630wa.png
+Name: 迷你地铁
+ApplicationCategory: 游戏
+Author: Dinosaur Polo Club
+Star: 0
+
+2020-01-30 16:44:58 info (PriceService.py) : 添加price：Id: -1	AppId: id489265199	Price: 0	Noticed: 0
+2020-01-30 16:44:58 info (AppService.py) : 添加app：
+Id: -1
+AppId: id489265199
+URL: https://apps.apple.com/cn/app/kingdom-rush-hd/id489265199
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/c5/2b/ed/c52bedff-090f-ae51-02fc-db39fada3d4f/AppIcon-0-0-1x_U007emarketing-0-0-4-0-85-220.png/1200x630wa.png
+Name: Kingdom Rush HD
+ApplicationCategory: 游戏
+Author: Ironhide S.A.
+Star: 0
+
+2020-01-30 16:45:23 info (PriceService.py) : 添加price：Id: -1	AppId: id1467063160	Price: 0	Noticed: 0
+2020-01-30 16:45:23 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1467063160
+URL: https://apps.apple.com/cn/app/bastion/id1467063160
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/5a/50/38/5a503818-dd8a-ed46-0f22-15ee6e9f5fa2/AppIcon-0-0-1x_U007emarketing-0-0-0-6-85-220.png/1200x630wa.png
+Name: Bastion
+ApplicationCategory: 游戏
+Author: Supergiant Games, LLC
+Star: 0
+
+2020-01-30 16:45:35 info (PriceService.py) : 添加price：Id: -1	AppId: id1085978097	Price: 68	Noticed: 0
+2020-01-30 16:45:35 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1085978097
+URL: https://apps.apple.com/cn/app/pythonista-3/id1085978097
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/06/40/84/06408413-3cf1-76c7-6ccd-31e3a9f77b9a/AppIcon-1x_U007emarketing-85-220-0-3.png/1200x630wa.png
+Name: Pythonista 3
+ApplicationCategory: 效率
+Author: omz:software
+Star: 0
+
+2020-01-30 16:45:49 info (PriceService.py) : 添加price：Id: -1	AppId: id1146717204	Price: 0	Noticed: 0
+2020-01-30 16:45:49 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1146717204
+URL: https://apps.apple.com/cn/app/geogebra-%E5%9B%BE%E5%BD%A2%E8%AE%A1%E7%AE%97%E5%99%A8/id1146717204
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/8b/57/73/8b5773ff-7e67-a75a-afb8-43f976158476/AppIcon-0-0-1x_U007emarketing-0-0-0-6-0-0-85-220.png/1200x630wa.png
+Name: GeoGebra 图形计算器
+ApplicationCategory: 教育
+Author: International GeoGebra Institute (IGI)
+Star: 0
+
+2020-01-30 16:46:03 info (PriceService.py) : 添加price：Id: -1	AppId: id1439723850	Price: 1	Noticed: 0
+2020-01-30 16:46:03 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1439723850
+URL: https://apps.apple.com/cn/app/%E6%97%B6%E9%97%B4%E8%A7%84%E5%88%92%E5%B1%80-%E5%80%92%E8%AE%A1%E6%97%B6%E4%B8%8E%E6%8F%90%E9%86%92%E4%BA%8B%E9%A1%B9/id1439723850
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/eb/de/8f/ebde8f42-0070-0c17-e628-27f24c3c5235/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-85-220.png/1200x630wa.png
+Name: 时间规划局 - 倒计时与提醒事项
+ApplicationCategory: 工具
+Author: Xia Wang
+Star: 0
+
+2020-01-30 16:46:18 info (PriceService.py) : 添加price：Id: -1	AppId: id1183407767	Price: 0	Noticed: 0
+2020-01-30 16:46:18 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1183407767
+URL: https://apps.apple.com/cn/app/mweb-%E5%BC%BA%E5%A4%A7%E7%9A%84-markdown-%E7%BC%96%E8%BE%91%E5%92%8C%E5%8F%91%E5%B8%83%E8%BD%AF%E4%BB%B6/id1183407767
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/b3/65/9d/b3659dd9-c883-dd68-e16b-92ca6c6012ce/AppIconV2-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: MWeb - 强大的 Markdown 编辑和发布软件
+ApplicationCategory: 效率
+Author: ou lvhai
+Star: 0
+
+2020-01-30 16:46:34 info (PriceService.py) : 添加price：Id: -1	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-30 16:46:34 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1016366447
+URL: https://apps.apple.com/cn/app/%E7%86%8A%E6%8E%8C%E8%AE%B0-%E5%AE%89%E5%85%A8%E7%A7%81%E5%AF%86%E7%9A%84%E4%BC%98%E9%9B%85%E7%AC%94%E8%AE%B0/id1016366447
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/64/aa/d1/64aad111-b98a-79bc-1889-89ce21e7aad0/AppIcon-0-0-1x_U007emarketing-0-0-0-8-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: 熊掌记 - 安全私密的优雅笔记
+ApplicationCategory: 效率
+Author: Shiny Frog Ltd.
+Star: 0
+
+2020-01-30 16:46:52 info (PriceService.py) : 添加price：Id: -1	AppId: id1316883372	Price: 0	Noticed: 0
+2020-01-30 16:46:52 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1316883372
+URL: https://apps.apple.com/cn/app/%E9%9F%B3%E4%B9%90%E4%B8%96%E7%95%8Ccytus-ii/id1316883372
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/3b/1a/3e/3b1a3eb2-586e-431e-4d2c-1f55bc523b07/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/1200x630wa.png
+Name: 音乐世界Cytus II
+ApplicationCategory: 游戏
+Author: chengdu longyuan Network Technology Co. Ltd.
+Star: 0
+
+2020-01-30 16:47:13 info (PriceService.py) : 添加price：Id: -1	AppId: id1370289240	Price: 0	Noticed: 0
+2020-01-30 16:47:13 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1370289240
+URL: https://apps.apple.com/cn/app/agenda/id1370289240
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/b9/38/7a/b9387adc-731e-1250-0830-c0e3ce8c09c2/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Agenda.
+ApplicationCategory: 效率
+Author: Momenta B.V.
+Star: 0
+
+2020-01-30 16:47:26 info (PriceService.py) : 添加price：Id: -1	AppId: id1219074514	Price: 0	Noticed: 0
+2020-01-30 16:47:26 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1219074514
+URL: https://apps.apple.com/cn/app/vectornator-x/id1219074514
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/3c/99/44/3c9944cb-05e9-8bba-1bc5-6af5566f36c2/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Vectornator X
+ApplicationCategory: 效率
+Author: Linearity GmbH
+Star: 0
+
+2020-01-30 16:47:53 info (PriceService.py) : 添加price：Id: -1	AppId: id883738213	Price: 0	Noticed: 0
+2020-01-30 16:47:53 info (AppService.py) : 添加app：
+Id: -1
+AppId: id883738213
+URL: https://apps.apple.com/cn/app/autodesk-sketchbook/id883738213
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/e4/19/79/e41979d4-876e-3b9b-a194-c4a047e4a34b/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/1200x630wa.png
+Name: Autodesk SketchBook
+ApplicationCategory: 娱乐
+Author: Autodesk Inc.
+Star: 0
+
+2020-01-30 16:48:05 error (AppService.py) : app已经存在：https://apps.apple.com/cn/app/termius-ssh-client/id549039908
+2020-01-30 16:48:20 error (AppService.py) : app已经存在：https://apps.apple.com/cn/app/goodnotes-5/id1444383602
+2020-01-30 16:48:39 info (PriceService.py) : 添加price：Id: -1	AppId: id458535809	Price: 18	Noticed: 0
+2020-01-30 16:48:39 info (AppService.py) : 添加app：
+Id: -1
+AppId: id458535809
+URL: https://apps.apple.com/cn/app/calculator-%E7%A7%91%E5%AD%A6%E8%AE%A1%E7%AE%97%E5%99%A8/id458535809
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/42/79/2b/42792bc9-3fca-803a-c5b2-27199762b4c6/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-7.png/1200x630wa.png
+Name: Calculator ∞ - 科学计算器
+ApplicationCategory: 教育
+Author: Incpt.Mobis
+Star: 0
+
+2020-01-30 16:48:54 info (PriceService.py) : 添加price：Id: -1	AppId: id1357539654	Price: 0	Noticed: 0
+2020-01-30 16:48:54 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1357539654
+URL: https://apps.apple.com/cn/app/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8Bhd/id1357539654
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/ee/0c/e3/ee0ce306-135c-27e0-5f9e-a4e1673672b3/AppIcon-2-1x_U007emarketing-0-85-220-0-5.png/1200x630wa.png
+Name: 扫描全能王HD
+ApplicationCategory: 效率
+Author: Linguan Data
+Star: 0
+
+2020-01-30 16:49:07 info (PriceService.py) : 添加price：Id: -1	AppId: id1077776989	Price: 0	Noticed: 0
+2020-01-30 16:49:07 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1077776989
+URL: https://apps.apple.com/cn/app/%E6%BD%AE%E6%B1%90-%E7%9D%A1%E7%9C%A0-%E4%B8%93%E6%B3%A8%E4%B8%8E%E5%86%A5%E6%83%B3%E7%9A%84%E7%99%BD%E5%99%AA%E9%9F%B3%E7%95%AA%E8%8C%84%E9%92%9F/id1077776989
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/5b/ca/ef/5bcaefd7-cf18-8a2a-a655-5cedafd87ac9/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/1200x630wa.png
+Name: 潮汐 - 睡眠、专注与冥想的白噪音番茄钟
+ApplicationCategory: 健康健美
+Author: Moreless, Inc.
+Star: 0
+
+2020-01-30 16:49:27 info (PriceService.py) : 添加price：Id: -1	AppId: id1116905928	Price: 30	Noticed: 0
+2020-01-30 16:49:27 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1116905928
+URL: https://apps.apple.com/cn/app/nplayer/id1116905928
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/32/e5/95/32e595a9-f4f2-2efc-f0c7-b3760fe7d67b/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: nPlayer
+ApplicationCategory: 娱乐
+Author: Newin Inc.
+Star: 0
+
+2020-01-30 16:49:59 info (PriceService.py) : 添加price：Id: -1	AppId: id410395246	Price: 0	Noticed: 0
+2020-01-30 16:49:59 info (AppService.py) : 添加app：
+Id: -1
+AppId: id410395246
+URL: https://apps.apple.com/cn/app/microsoft-onenote/id410395246
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/f9/87/f4/f987f499-ae8d-78d7-0ec6-bf0e2bf4ab22/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Microsoft OneNote
+ApplicationCategory: 效率
+Author: Microsoft Corporation
+Star: 0
+
+2020-01-30 16:50:20 info (PriceService.py) : 添加price：Id: -1	AppId: id586449534	Price: 0	Noticed: 0
+2020-01-30 16:50:20 info (AppService.py) : 添加app：
+Id: -1
+AppId: id586449534
+URL: https://apps.apple.com/cn/app/microsoft-powerpoint/id586449534
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/e9/ca/f8/e9caf8f0-811d-02f3-ee76-38361a3fe2f8/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Microsoft PowerPoint
+ApplicationCategory: 效率
+Author: Microsoft Corporation
+Star: 0
+
+2020-01-30 16:50:45 info (PriceService.py) : 添加price：Id: -1	AppId: id586683407	Price: 0	Noticed: 0
+2020-01-30 16:50:45 info (AppService.py) : 添加app：
+Id: -1
+AppId: id586683407
+URL: https://apps.apple.com/cn/app/microsoft-excel/id586683407
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/e0/cb/9e/e0cb9ebd-da8b-c408-fccd-ce4b40fe484b/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Microsoft Excel
+ApplicationCategory: 效率
+Author: Microsoft Corporation
+Star: 0
+
+2020-01-30 16:51:03 info (PriceService.py) : 添加price：Id: -1	AppId: id586447913	Price: 0	Noticed: 0
+2020-01-30 16:51:03 info (AppService.py) : 添加app：
+Id: -1
+AppId: id586447913
+URL: https://apps.apple.com/cn/app/microsoft-word/id586447913
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/d5/00/ad/d500adf6-c024-04e0-43be-8b2c5f85a830/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Microsoft Word
+ApplicationCategory: 效率
+Author: Microsoft Corporation
+Star: 0
+
+2020-01-30 16:53:23 info (AppService.py) : 更新app：id1208145167
+2020-01-30 16:53:31 info (AppService.py) : 更新app：id549039908
+2020-01-30 16:53:33 info (AppService.py) : 更新app：id1444383602
+2020-01-30 16:53:42 info (AppService.py) : 更新app：id888483369
+2020-01-30 16:53:51 info (AppService.py) : 更新app：id896694807
+2020-01-30 16:54:13 info (AppService.py) : 更新app：id432079746
+2020-01-30 16:54:20 info (AppService.py) : 更新app：id1441303445
+2020-01-30 16:54:39 info (AppService.py) : 更新app：id1406266008
+2020-01-30 16:55:46 info (AppService.py) : 更新app：id948857526
+2020-01-30 16:55:56 info (AppService.py) : 更新app：id837860959
+2020-01-30 16:56:16 info (AppService.py) : 更新app：id489265199
+2020-01-30 16:56:21 info (AppService.py) : 更新app：id1467063160
+2020-01-30 16:56:31 info (AppService.py) : 更新app：id1085978097
+2020-01-30 16:56:40 info (AppService.py) : 更新app：id1146717204
+2020-01-30 16:56:50 info (AppService.py) : 更新app：id1439723850
+2020-01-30 16:56:57 info (AppService.py) : 更新app：id1183407767
+2020-01-30 16:57:03 info (AppService.py) : 更新app：id1016366447
+2020-01-30 16:57:06 info (AppService.py) : 更新app：id1316883372
+2020-01-30 16:57:10 info (AppService.py) : 更新app：id1370289240
+2020-01-30 16:57:24 info (AppService.py) : 更新app：id1219074514
+2020-01-30 16:57:27 info (AppService.py) : 更新app：id883738213
+2020-01-30 16:57:36 info (AppService.py) : 更新app：id458535809
+2020-01-30 16:57:44 info (AppService.py) : 更新app：id1357539654
+2020-01-30 16:57:52 info (AppService.py) : 更新app：id1077776989
+2020-01-30 16:57:54 info (AppService.py) : 更新app：id1116905928
+2020-01-30 16:58:32 info (AppService.py) : 更新app：id410395246
+2020-01-30 16:58:36 info (AppService.py) : 更新app：id586449534
+2020-01-30 16:59:35 info (AppService.py) : 更新app：id586683407
+2020-01-30 16:59:37 info (AppService.py) : 更新app：id586447913
+2020-01-30 17:32:43 warning (PriceService.py) : 删除price: appid:id1357539654
+2020-01-30 17:32:43 warning (AppService.py) : deleteApp()删除app：id1357539654
+2020-01-30 17:34:29 warning (PriceService.py) : 删除price: appid:id1219074514
+2020-01-30 17:34:29 warning (AppService.py) : deleteApp()删除app：id1219074514
+2020-01-30 17:35:24 warning (PriceService.py) : 删除price: appid:id1406266008
+2020-01-30 17:35:24 warning (AppService.py) : deleteApp()删除app：id1406266008
+2020-01-30 17:36:08 warning (PriceService.py) : 删除price: appid:id586449534
+2020-01-30 17:36:08 warning (AppService.py) : deleteApp()删除app：id586449534
+2020-01-30 17:37:42 info (PriceService.py) : 添加price：Id: -1	AppId: id692035811	Price: 0	Noticed: 0
+2020-01-30 17:37:42 info (AppService.py) : 添加app：
+Id: -1
+AppId: id692035811
+URL: https://apps.apple.com/cn/app/teamviewer-remote-control/id692035811
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/d0/01/46/d00146e6-86a3-75c1-7413-989a7523cecb/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/1200x630wa.png
+Name: TeamViewer: Remote Control
+ApplicationCategory: 效率
+Author: TeamViewer
+Star: 0
+
+2020-01-30 17:38:08 info (PriceService.py) : 添加price：Id: -1	AppId: id360593530	Price: 60	Noticed: 0
+2020-01-30 17:38:08 info (AppService.py) : 添加app：
+Id: -1
+AppId: id360593530
+URL: https://apps.apple.com/cn/app/notability/id360593530
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/de/f1/8b/def18b16-def0-3957-7804-cbcc847f9827/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Notability
+ApplicationCategory: 效率
+Author: Ginger Labs
+Star: 0
+
+2020-01-30 17:38:18 info (PriceService.py) : 添加price：Id: -1	AppId: id866450515	Price: 12	Noticed: 0
+2020-01-30 17:38:18 info (AppService.py) : 添加app：
+Id: -1
+AppId: id866450515
+URL: https://apps.apple.com/cn/app/forest-%E4%B8%93%E6%B3%A8%E6%A3%AE%E6%9E%97/id866450515
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/31/09/48/3109480f-e031-e2ef-b40e-24e5f8ff067f/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Forest 专注森林
+ApplicationCategory: 效率
+Author: SEEKRTECH CO., LTD.
+Star: 0
+
+2020-01-30 17:38:30 info (PriceService.py) : 添加price：Id: -1	AppId: id1274090551	Price: 128	Noticed: 0
+2020-01-30 17:38:30 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1274090551
+URL: https://apps.apple.com/cn/app/affinity-designer/id1274090551
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/bc/ca/25/bcca2567-caa2-6371-703c-5f2d9d1c7fdc/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-5.png/1200x630wa.png
+Name: Affinity Designer
+ApplicationCategory: 效率
+Author: Serif Labs
+Star: 0
+
+2020-01-30 17:38:49 info (PriceService.py) : 添加price：Id: -1	AppId: id1013469088	Price: 6	Noticed: 0
+2020-01-30 17:38:49 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1013469088
+URL: https://apps.apple.com/cn/app/%E6%97%A0%E9%99%90%E7%AC%94%E8%AE%B0-%E6%97%A0%E9%99%90%E5%A4%A7%E5%B0%8F%E7%AC%94%E8%AE%B0%E6%9C%AC/id1013469088
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/7d/c3/4c/7dc34cf5-d8f9-5594-37d0-1b9c570ffaff/AppIcon-0-0-1x_U007emarketing-0-0-0-9-0-85-220.png/1200x630wa.png
+Name: 无限笔记 -无限大小笔记本-
+ApplicationCategory: 效率
+Author: Naoya Enokida
+Star: 0
+
+2020-01-30 17:39:07 info (AppService.py) : 更新app：id1208145167
+2020-01-30 17:39:13 info (AppService.py) : 更新app：id549039908
+2020-01-30 17:39:16 info (AppService.py) : 更新app：id1444383602
+2020-01-30 17:39:21 info (AppService.py) : 更新app：id888483369
+2020-01-30 17:39:25 info (AppService.py) : 更新app：id896694807
+2020-01-30 17:39:28 info (AppService.py) : 更新app：id432079746
+2020-01-30 17:39:32 info (AppService.py) : 更新app：id1441303445
+2020-01-30 17:39:36 info (AppService.py) : 更新app：id948857526
+2020-01-30 17:39:41 info (AppService.py) : 更新app：id837860959
+2020-01-30 17:39:44 info (AppService.py) : 更新app：id489265199
+2020-01-30 17:39:46 info (AppService.py) : 更新app：id1467063160
+2020-01-30 17:39:48 info (AppService.py) : 更新app：id1085978097
+2020-01-30 17:39:55 info (AppService.py) : 更新app：id1146717204
+2020-01-30 17:40:03 info (AppService.py) : 更新app：id1439723850
+2020-01-30 17:40:06 info (AppService.py) : 更新app：id1183407767
+2020-01-30 17:40:08 info (AppService.py) : 更新app：id1016366447
+2020-01-30 17:40:12 info (AppService.py) : 更新app：id1316883372
+2020-01-30 17:40:14 info (AppService.py) : 更新app：id1370289240
+2020-01-30 17:40:17 info (AppService.py) : 更新app：id883738213
+2020-01-30 17:40:21 info (AppService.py) : 更新app：id458535809
+2020-01-30 17:40:23 info (AppService.py) : 更新app：id1077776989
+2020-01-30 17:40:25 info (AppService.py) : 更新app：id1116905928
+2020-01-30 17:40:28 info (AppService.py) : 更新app：id410395246
+2020-01-30 17:40:31 info (AppService.py) : 更新app：id586683407
+2020-01-30 17:40:33 info (AppService.py) : 更新app：id586447913
+2020-01-30 17:40:42 info (AppService.py) : 更新app：id692035811
+2020-01-30 17:40:46 info (AppService.py) : 更新app：id360593530
+2020-01-30 17:40:54 info (AppService.py) : 更新app：id866450515
+2020-01-30 17:40:57 info (AppService.py) : 更新app：id1274090551
+2020-01-30 17:41:01 info (AppService.py) : 更新app：id1013469088
+2020-01-30 17:43:06 info (AppService.py) : 更新app：id1208145167
+2020-01-30 17:43:07 info (AppService.py) : 更新app：id549039908
+2020-01-30 17:43:11 info (AppService.py) : 更新app：id1444383602
+2020-01-30 17:43:16 info (AppService.py) : 更新app：id888483369
+2020-01-30 17:43:18 info (AppService.py) : 更新app：id896694807
+2020-01-30 17:43:22 info (AppService.py) : 更新app：id432079746
+2020-01-30 17:43:22 info (AppService.py) : 更新app：id1441303445
+2020-01-30 17:43:23 info (AppService.py) : 更新app：id948857526
+2020-01-30 17:43:23 info (AppService.py) : 更新app：id837860959
+2020-01-30 17:43:26 info (AppService.py) : 更新app：id489265199
+2020-01-30 17:43:29 info (AppService.py) : 更新app：id1467063160
+2020-01-30 17:43:32 info (AppService.py) : 更新app：id1085978097
+2020-01-30 17:43:38 info (AppService.py) : 更新app：id1146717204
+2020-01-30 17:43:44 info (AppService.py) : 更新app：id1439723850
+2020-01-30 17:43:47 info (AppService.py) : 更新app：id1183407767
+2020-01-30 17:43:57 info (AppService.py) : 更新app：id1016366447
+2020-01-30 17:44:03 info (AppService.py) : 更新app：id1316883372
+2020-01-30 17:44:04 info (AppService.py) : 更新app：id1370289240
+2020-01-30 17:44:05 info (AppService.py) : 更新app：id883738213
+2020-01-30 17:44:07 info (AppService.py) : 更新app：id458535809
+2020-01-30 17:44:10 info (AppService.py) : 更新app：id1077776989
+2020-01-30 17:44:13 info (AppService.py) : 更新app：id1116905928
+2020-01-30 17:44:17 info (AppService.py) : 更新app：id410395246
+2020-01-30 17:44:19 info (AppService.py) : 更新app：id586683407
+2020-01-30 17:44:27 info (AppService.py) : 更新app：id586447913
+2020-01-30 17:44:28 info (AppService.py) : 更新app：id692035811
+2020-01-30 17:44:29 info (AppService.py) : 更新app：id360593530
+2020-01-30 17:44:32 info (AppService.py) : 更新app：id866450515
+2020-01-30 17:44:33 info (AppService.py) : 更新app：id1274090551
+2020-01-30 17:44:35 info (AppService.py) : 更新app：id1013469088
+2020-01-30 17:45:42 info (AppService.py) : 更新app：id1208145167
+2020-01-30 17:45:50 info (AppService.py) : 更新app：id549039908
+2020-01-30 17:45:50 info (AppService.py) : 更新app：id1444383602
+2020-01-30 17:45:51 info (AppService.py) : 更新app：id888483369
+2020-01-30 17:45:51 info (AppService.py) : 更新app：id896694807
+2020-01-30 17:45:52 info (AppService.py) : 更新app：id432079746
+2020-01-30 17:45:53 info (AppService.py) : 更新app：id1441303445
+2020-01-30 17:45:53 info (AppService.py) : 更新app：id948857526
+2020-01-30 17:45:54 info (AppService.py) : 更新app：id837860959
+2020-01-30 17:45:58 info (AppService.py) : 更新app：id489265199
+2020-01-30 17:45:58 info (AppService.py) : 更新app：id1467063160
+2020-01-30 17:45:59 info (AppService.py) : 更新app：id1085978097
+2020-01-30 17:46:02 info (AppService.py) : 更新app：id1146717204
+2020-01-30 17:46:02 info (AppService.py) : 更新app：id1439723850
+2020-01-30 17:46:02 info (AppService.py) : 更新app：id1183407767
+2020-01-30 17:46:03 info (AppService.py) : 更新app：id1016366447
+2020-01-30 17:46:07 info (AppService.py) : 更新app：id1316883372
+2020-01-30 17:46:07 info (AppService.py) : 更新app：id1370289240
+2020-01-30 17:46:14 info (AppService.py) : 更新app：id883738213
+2020-01-30 17:46:14 info (AppService.py) : 更新app：id458535809
+2020-01-30 17:46:15 info (AppService.py) : 更新app：id1077776989
+2020-01-30 17:46:16 info (AppService.py) : 更新app：id1116905928
+2020-01-30 17:46:16 info (AppService.py) : 更新app：id410395246
+2020-01-30 17:46:26 info (AppService.py) : 更新app：id586683407
+2020-01-30 17:46:32 info (AppService.py) : 更新app：id586447913
+2020-01-30 17:46:35 info (AppService.py) : 更新app：id692035811
+2020-01-30 17:46:35 info (AppService.py) : 更新app：id360593530
+2020-01-30 17:46:41 info (AppService.py) : 更新app：id866450515
+2020-01-30 17:46:49 info (AppService.py) : 更新app：id1274090551
+2020-01-30 17:46:49 info (AppService.py) : 更新app：id1013469088
+2020-01-30 21:39:15 warning (PriceService.py) : 删除price: appid:id896694807
+2020-01-30 21:39:15 warning (AppService.py) : deleteApp()删除app：id896694807
+2020-01-30 21:39:17 warning (PriceService.py) : 删除price: appid:id1085978097
+2020-01-30 21:39:17 warning (AppService.py) : deleteApp()删除app：id1085978097
+2020-01-30 22:52:57 warning (PriceService.py) : 删除price: appid:id692035811
+2020-01-30 22:52:57 warning (AppService.py) : deleteApp()删除app：id692035811
+2020-01-31 01:25:12 info (PriceService.py) : 添加price：Id: -1	AppId: id1208145167	Price: 0	Noticed: 0
+2020-01-31 01:25:13 info (AppService.py) : 更新app：id1208145167
+2020-01-31 01:25:14 info (PriceService.py) : 添加price：Id: -1	AppId: id549039908	Price: 0	Noticed: 0
+2020-01-31 01:25:14 info (AppService.py) : 更新app：id549039908
+2020-01-31 01:25:26 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/goodnotes-5/id1444383602
+2020-01-31 01:25:29 info (PriceService.py) : 添加price：Id: -1	AppId: id888483369	Price: 0	Noticed: 0
+2020-01-31 01:25:29 info (AppService.py) : 更新app：id888483369
+2020-01-31 01:25:33 info (PriceService.py) : 添加price：Id: -1	AppId: id432079746	Price: 0	Noticed: 0
+2020-01-31 01:25:33 info (AppService.py) : 更新app：id432079746
+2020-01-31 01:25:36 info (PriceService.py) : 添加price：Id: -1	AppId: id1441303445	Price: 6	Noticed: 0
+2020-01-31 01:25:36 info (AppService.py) : 更新app：id1441303445
+2020-01-31 01:25:37 info (PriceService.py) : 添加price：Id: -1	AppId: id948857526	Price: 30	Noticed: 0
+2020-01-31 01:25:37 info (AppService.py) : 更新app：id948857526
+2020-01-31 01:25:40 info (PriceService.py) : 添加price：Id: -1	AppId: id837860959	Price: 25	Noticed: 0
+2020-01-31 01:25:40 info (AppService.py) : 更新app：id837860959
+2020-01-31 01:25:44 info (PriceService.py) : 添加price：Id: -1	AppId: id489265199	Price: 0	Noticed: 0
+2020-01-31 01:25:44 info (AppService.py) : 更新app：id489265199
+2020-01-31 01:25:46 info (PriceService.py) : 添加price：Id: -1	AppId: id1467063160	Price: 0	Noticed: 0
+2020-01-31 01:25:46 info (AppService.py) : 更新app：id1467063160
+2020-01-31 01:25:48 info (PriceService.py) : 添加price：Id: -1	AppId: id1146717204	Price: 0	Noticed: 0
+2020-01-31 01:25:48 info (AppService.py) : 更新app：id1146717204
+2020-01-31 01:25:50 info (PriceService.py) : 添加price：Id: -1	AppId: id1439723850	Price: 1	Noticed: 0
+2020-01-31 01:25:50 info (AppService.py) : 更新app：id1439723850
+2020-01-31 01:25:52 info (PriceService.py) : 添加price：Id: -1	AppId: id1183407767	Price: 0	Noticed: 0
+2020-01-31 01:25:52 info (AppService.py) : 更新app：id1183407767
+2020-01-31 01:25:54 info (PriceService.py) : 添加price：Id: -1	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 01:25:54 info (AppService.py) : 更新app：id1016366447
+2020-01-31 01:25:57 info (PriceService.py) : 添加price：Id: -1	AppId: id1316883372	Price: 0	Noticed: 0
+2020-01-31 01:25:57 info (AppService.py) : 更新app：id1316883372
+2020-01-31 01:26:00 info (PriceService.py) : 添加price：Id: -1	AppId: id1370289240	Price: 0	Noticed: 0
+2020-01-31 01:26:00 info (AppService.py) : 更新app：id1370289240
+2020-01-31 01:26:04 info (PriceService.py) : 添加price：Id: -1	AppId: id883738213	Price: 0	Noticed: 0
+2020-01-31 01:26:04 info (AppService.py) : 更新app：id883738213
+2020-01-31 01:26:06 info (PriceService.py) : 添加price：Id: -1	AppId: id458535809	Price: 18	Noticed: 0
+2020-01-31 01:26:06 info (AppService.py) : 更新app：id458535809
+2020-01-31 01:26:08 info (PriceService.py) : 添加price：Id: -1	AppId: id1077776989	Price: 0	Noticed: 0
+2020-01-31 01:26:08 info (AppService.py) : 更新app：id1077776989
+2020-01-31 01:26:10 info (PriceService.py) : 添加price：Id: -1	AppId: id1116905928	Price: 30	Noticed: 0
+2020-01-31 01:26:10 info (AppService.py) : 更新app：id1116905928
+2020-01-31 01:26:15 info (PriceService.py) : 添加price：Id: -1	AppId: id410395246	Price: 0	Noticed: 0
+2020-01-31 01:26:15 info (AppService.py) : 更新app：id410395246
+2020-01-31 01:26:18 info (PriceService.py) : 添加price：Id: -1	AppId: id586683407	Price: 0	Noticed: 0
+2020-01-31 01:26:18 info (AppService.py) : 更新app：id586683407
+2020-01-31 01:26:20 info (PriceService.py) : 添加price：Id: -1	AppId: id586447913	Price: 0	Noticed: 0
+2020-01-31 01:26:20 info (AppService.py) : 更新app：id586447913
+2020-01-31 01:26:24 info (PriceService.py) : 添加price：Id: -1	AppId: id360593530	Price: 60	Noticed: 0
+2020-01-31 01:26:24 info (AppService.py) : 更新app：id360593530
+2020-01-31 01:26:26 info (PriceService.py) : 添加price：Id: -1	AppId: id866450515	Price: 12	Noticed: 0
+2020-01-31 01:26:26 info (AppService.py) : 更新app：id866450515
+2020-01-31 01:26:27 info (PriceService.py) : 添加price：Id: -1	AppId: id1274090551	Price: 128	Noticed: 0
+2020-01-31 01:26:27 info (AppService.py) : 更新app：id1274090551
+2020-01-31 01:26:31 info (PriceService.py) : 添加price：Id: -1	AppId: id1013469088	Price: 6	Noticed: 0
+2020-01-31 01:26:31 info (AppService.py) : 更新app：id1013469088
+2020-01-31 01:30:22 info (AppService.py) : 更新app：id1208145167
+2020-01-31 01:30:23 info (AppService.py) : 更新app：id549039908
+2020-01-31 01:30:24 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/goodnotes-5/id1444383602
+2020-01-31 01:30:25 info (AppService.py) : 更新app：id888483369
+2020-01-31 01:30:27 info (AppService.py) : 更新app：id432079746
+2020-01-31 01:30:27 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/sqlite-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E8%BE%91%E5%99%A8-%E5%86%85%E5%AE%B9%E6%B5%8F%E8%A7%88%E5%99%A8/id1441303445
+2020-01-31 01:30:29 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/transistor/id948857526
+2020-01-31 01:30:32 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/%E8%BF%B7%E4%BD%A0%E5%9C%B0%E9%93%81/id837860959
+2020-01-31 01:33:06 warning (PriceService.py) : 删除price: appid:id1013469088
+2020-01-31 01:33:06 warning (AppService.py) : deleteApp()删除app：id1013469088
+2020-01-31 01:33:10 warning (PriceService.py) : 删除price: appid:id866450515
+2020-01-31 01:33:10 warning (AppService.py) : deleteApp()删除app：id866450515
+2020-01-31 01:34:37 info (PriceService.py) : 添加price：Id: -1	AppId: id896694807	Price: 0	Noticed: 0
+2020-01-31 01:34:37 info (AppService.py) : 添加app：
+Id: -1
+AppId: id896694807
+URL: https://apps.apple.com/cn/app/working-copy-git-client/id896694807
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/b3/ee/db/b3eedbb6-d715-b7dc-24fe-15e8ac314c04/Regular-Icon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Working Copy - Git client
+ApplicationCategory: 效率
+Author: Anders Borum
+Star: 0
+
+2020-01-31 01:34:55 info (PriceService.py) : 添加price：Id: -1	AppId: id1406266008	Price: 0	Noticed: 0
+2020-01-31 01:34:55 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1406266008
+URL: https://apps.apple.com/cn/app/sqliteflow-sqlite%E7%BC%96%E8%BE%91%E5%99%A8/id1406266008
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/2c/67/f6/2c67f6b3-3768-be74-62eb-1a6888582e79/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: SQLiteFlow - SQLite编辑器
+ApplicationCategory: 效率
+Author: Chenliang Jia
+Star: 0
+
+2020-01-31 01:35:20 info (PriceService.py) : 添加price：Id: -1	AppId: id1085978097	Price: 68	Noticed: 0
+2020-01-31 01:35:20 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1085978097
+URL: https://apps.apple.com/cn/app/pythonista-3/id1085978097
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/06/40/84/06408413-3cf1-76c7-6ccd-31e3a9f77b9a/AppIcon-1x_U007emarketing-85-220-0-3.png/1200x630wa.png
+Name: Pythonista 3
+ApplicationCategory: 效率
+Author: omz:software
+Star: 0
+
+2020-01-31 01:35:31 error (AppService.py) : app已经存在：https://apps.apple.com/cn/app/bastion/id1467063160
+2020-01-31 01:35:49 info (PriceService.py) : 添加price：Id: -1	AppId: id1447489375	Price: 0	Noticed: 0
+2020-01-31 01:35:49 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1447489375
+URL: https://apps.apple.com/cn/app/koder-code-editor/id1447489375
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/8a/33/35/8a333592-4d5f-753f-41b6-bebacc63c5ab/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/1200x630wa.png
+Name: Koder Code Editor
+ApplicationCategory: 效率
+Author: Reny Mustika
+Star: 0
+
+2020-01-31 01:36:04 info (PriceService.py) : 添加price：Id: -1	AppId: id1445871976	Price: 0	Noticed: 0
+2020-01-31 01:36:04 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1445871976
+URL: https://apps.apple.com/cn/app/geogebra-3d-%E8%AE%A1%E7%AE%97%E5%99%A8/id1445871976
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/e0/35/9e/e0359e8a-39f7-dfd9-ba80-562aaa831dd9/Graphing3DAppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/1200x630wa.png
+Name: GeoGebra 3D 计算器
+ApplicationCategory: 教育
+Author: International GeoGebra Institute (IGI)
+Star: 0
+
+2020-01-31 01:36:40 info (PriceService.py) : 添加price：Id: -1	AppId: id1348317163	Price: 0	Noticed: 0
+2020-01-31 01:36:40 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1348317163
+URL: https://apps.apple.com/cn/app/marginnote-3/id1348317163
+ImgURL: https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/62/f3/bf/62f3bf07-6d6f-b1fc-5a7d-a1bcd4679eed/AppIcon-0-0-1x_U007emarketing-0-0-0-8-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: MarginNote 3
+ApplicationCategory: 效率
+Author: Sun Min
+Star: 0
+
+2020-01-31 01:36:51 info (PriceService.py) : 添加price：Id: -1	AppId: id1219074514	Price: 0	Noticed: 0
+2020-01-31 01:36:51 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1219074514
+URL: https://apps.apple.com/cn/app/vectornator-x/id1219074514
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/3c/99/44/3c9944cb-05e9-8bba-1bc5-6af5566f36c2/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Vectornator X
+ApplicationCategory: 效率
+Author: Linearity GmbH
+Star: 0
+
+2020-01-31 01:37:29 info (PriceService.py) : 添加price：Id: -1	AppId: id535886823	Price: 0	Noticed: 0
+2020-01-31 01:37:29 info (AppService.py) : 添加app：
+Id: -1
+AppId: id535886823
+URL: https://apps.apple.com/cn/app/chrome-%E7%94%B1google%E5%BC%80%E5%8F%91%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B5%8F%E8%A7%88%E5%99%A8/id535886823
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/13/d0/dc/13d0dce6-2de5-71dd-9cde-968fd1a8e5ff/AppIcon-0-0-1x_U007emarketing-0-0-0-6-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Chrome - 由Google开发的网络浏览器
+ApplicationCategory: 工具
+Author: Google LLC
+Star: 0
+
+2020-01-31 01:38:27 info (PriceService.py) : 添加price：Id: -1	AppId: id1357539654	Price: 0	Noticed: 0
+2020-01-31 01:38:27 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1357539654
+URL: https://apps.apple.com/cn/app/%E6%89%AB%E6%8F%8F%E5%85%A8%E8%83%BD%E7%8E%8Bhd/id1357539654
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/ee/0c/e3/ee0ce306-135c-27e0-5f9e-a4e1673672b3/AppIcon-2-1x_U007emarketing-0-85-220-0-5.png/1200x630wa.png
+Name: 扫描全能王HD
+ApplicationCategory: 效率
+Author: Linguan Data
+Star: 0
+
+2020-01-31 01:38:43 info (PriceService.py) : 添加price：Id: -1	AppId: id1286983622	Price: 0	Noticed: 0
+2020-01-31 01:38:43 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1286983622
+URL: https://apps.apple.com/cn/app/xmind-%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/id1286983622
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/35/9f/00/359f0073-9339-062a-36a8-16dad5d6f3d3/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: XMind 思维导图
+ApplicationCategory: 效率
+Author: XMind Ltd.
+Star: 0
+
+2020-01-31 01:38:59 info (PriceService.py) : 添加price：Id: -1	AppId: id406644151	Price: 0	Noticed: 0
+2020-01-31 01:38:59 info (AppService.py) : 添加app：
+Id: -1
+AppId: id406644151
+URL: https://apps.apple.com/cn/app/%E5%A5%87%E5%A6%99%E6%B8%85%E5%8D%95-wunderlist/id406644151
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/fa/db/ee/fadbee7c-dc43-37ce-90aa-62485e07452c/AppIcon-AppStore-0-1x_U007emarketing-0-0-85-220-6.png/1200x630wa.png
+Name: 奇妙清单 - Wunderlist
+ApplicationCategory: 效率
+Author: 6 Wunderkinder
+Star: 0
+
+2020-01-31 01:39:10 info (PriceService.py) : 添加price：Id: -1	AppId: id469337564	Price: 0	Noticed: 0
+2020-01-31 01:39:10 info (AppService.py) : 添加app：
+Id: -1
+AppId: id469337564
+URL: https://apps.apple.com/cn/app/adobe-acrobat-reader/id469337564
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/5f/2d/e7/5f2de747-2d61-fb9c-09c1-7009bfd50710/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Adobe Acrobat Reader
+ApplicationCategory: 商务
+Author: Adobe Inc.
+Star: 0
+
+2020-01-31 01:39:21 info (PriceService.py) : 添加price：Id: -1	AppId: id945625854	Price: 0	Noticed: 0
+2020-01-31 01:39:21 info (AppService.py) : 添加app：
+Id: -1
+AppId: id945625854
+URL: https://apps.apple.com/cn/app/%E5%8F%AF%E5%8F%AF%E8%8B%B1%E8%AF%AD-%E8%8B%B1%E8%AF%AD%E5%90%AC%E5%8A%9B%E8%AE%AD%E7%BB%83%E5%BF%85%E5%A4%87%E7%A5%9E%E5%99%A8/id945625854
+ImgURL: https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/e2/14/b5/e214b5fe-bca7-340f-ea82-6596a64c01ad/AppIcon-0-1x_U007emarketing-0-85-220-5.png/1200x630wa.png
+Name: 可可英语-英语听力训练必备神器
+ApplicationCategory: 教育
+Author: yulin ni
+Star: 0
+
+2020-01-31 01:39:34 info (PriceService.py) : 添加price：Id: -1	AppId: id510282524	Price: 0	Noticed: 0
+2020-01-31 01:39:34 info (AppService.py) : 添加app：
+Id: -1
+AppId: id510282524
+URL: https://apps.apple.com/cn/app/fe%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8/id510282524
+ImgURL: https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/df/7b/fa/df7bfaf2-c941-9570-dead-369254dc0611/FEFreeAppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-85-220.png/1200x630wa.png
+Name: FE文件管理器
+ApplicationCategory: 效率
+Author: Skyjos Co., Ltd.
+Star: 0
+
+2020-01-31 01:39:51 info (PriceService.py) : 添加price：Id: -1	AppId: id871041757	Price: 0	Noticed: 0
+2020-01-31 01:39:51 info (AppService.py) : 添加app：
+Id: -1
+AppId: id871041757
+URL: https://apps.apple.com/cn/app/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90hd/id871041757
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/b4/42/b8/b442b8e8-fe9b-7cbf-d116-558d18f389c6/AppIcon-0-0-1x_U007emarketing-0-0-7-0-0-85-220.png/1200x630wa.png
+Name: 网易云音乐HD
+ApplicationCategory: 音乐
+Author: 杭州网易云音乐科技有限公司
+Star: 0
+
+2020-01-31 01:40:22 info (PriceService.py) : 添加price：Id: -1	AppId: id1168502924	Price: 0	Noticed: 0
+2020-01-31 01:40:22 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1168502924
+URL: https://apps.apple.com/cn/app/sony-headphones-connect/id1168502924
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/1f/e1/86/1fe186db-113d-2830-a69e-80e585cd6163/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-2.png/1200x630wa.png
+Name: Sony | Headphones Connect
+ApplicationCategory: 工具
+Author: Sony Home Entertainment &amp; Sound Products Inc.
+Star: 0
+
+2020-01-31 01:40:42 error (AppService.py) : app已经存在：https://apps.apple.com/cn/app/microsoft-onenote/id410395246
+2020-01-31 01:40:55 info (PriceService.py) : 添加price：Id: -1	AppId: id1093486973	Price: 0	Noticed: 0
+2020-01-31 01:40:55 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1093486973
+URL: https://apps.apple.com/cn/app/%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9hd-%E5%BC%B9%E5%B9%95%E7%95%AA%E5%89%A7%E7%9B%B4%E6%92%AD%E9%AB%98%E6%B8%85%E8%A7%86%E9%A2%91/id1093486973
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/c6/b1/87/c6b187f0-6e45-24aa-1c9d-13439c10019b/AppIcon-hd-0-0-1x_U007emarketing-0-0-4-0-0-sRGB-85-220.png/1200x630wa.png
+Name: 哔哩哔哩HD-弹幕番剧直播高清视频
+ApplicationCategory: 娱乐
+Author: bilibili
+Star: 0
+
+2020-01-31 01:41:15 info (PriceService.py) : 添加price：Id: -1	AppId: id610391947	Price: 0	Noticed: 0
+2020-01-31 01:41:15 info (AppService.py) : 添加app：
+Id: -1
+AppId: id610391947
+URL: https://apps.apple.com/cn/app/%E7%8B%82%E9%87%8E%E9%A3%99%E8%BD%A68-%E6%9E%81%E9%80%9F%E5%87%8C%E4%BA%91/id610391947
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/50/d4/7f/50d47f2d-0e43-dc5d-0f9f-f0f32be67bf6/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-85-220.png/1200x630wa.png
+Name: 狂野飙车8：极速凌云
+ApplicationCategory: 游戏
+Author: Gameloft
+Star: 0
+
+2020-01-31 01:41:36 info (PriceService.py) : 添加price：Id: -1	AppId: id524731580	Price: 0	Noticed: 0
+2020-01-31 01:41:36 info (AppService.py) : 添加app：
+Id: -1
+AppId: id524731580
+URL: https://apps.apple.com/cn/app/walking-dead-the-game/id524731580
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple69/v4/82/5d/86/825d868b-95e9-e4e0-c36e-79d9c23641d3/mzl.rixozeyg.png/1200x630wa.png
+Name: Walking Dead: The Game
+ApplicationCategory: 游戏
+Author: Howyaknow, LLC
+Star: 0
+
+2020-01-31 01:44:15 info (AppService.py) : 更新app：id1208145167
+2020-01-31 01:44:17 info (AppService.py) : 更新app：id549039908
+2020-01-31 01:44:20 info (PriceService.py) : 添加price：Id: -1	AppId: id1444383602	Price: 50	Noticed: 0
+2020-01-31 01:44:20 info (AppService.py) : 更新app：id1444383602
+2020-01-31 01:44:29 info (AppService.py) : 更新app：id888483369
+2020-01-31 01:44:36 info (AppService.py) : 更新app：id432079746
+2020-01-31 10:09:35 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/sqlite-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BC%96%E8%BE%91%E5%99%A8-%E5%86%85%E5%AE%B9%E6%B5%8F%E8%A7%88%E5%99%A8/id1441303445
+2020-01-31 10:09:37 info (AppService.py) : 更新app：id948857526
+2020-01-31 10:09:41 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/%E8%BF%B7%E4%BD%A0%E5%9C%B0%E9%93%81/id837860959
+2020-01-31 10:09:43 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/kingdom-rush-hd/id489265199
+2020-01-31 10:09:44 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/bastion/id1467063160
+2020-01-31 10:10:19 info (AppService.py) : 更新app：id1208145167
+2020-01-31 10:10:21 info (AppService.py) : 更新app：id549039908
+2020-01-31 10:10:21 info (AppService.py) : 更新app：id1444383602
+2020-01-31 10:10:25 info (AppService.py) : 更新app：id888483369
+2020-01-31 10:10:29 info (AppService.py) : 更新app：id432079746
+2020-01-31 10:10:31 info (AppService.py) : 更新app：id1441303445
+2020-01-31 10:10:32 info (AppService.py) : 更新app：id948857526
+2020-01-31 10:10:33 info (AppService.py) : 更新app：id837860959
+2020-01-31 10:10:34 info (AppService.py) : 更新app：id489265199
+2020-01-31 10:10:34 info (AppService.py) : 更新app：id1467063160
+2020-01-31 10:10:36 info (AppService.py) : 更新app：id1146717204
+2020-01-31 10:10:40 info (AppService.py) : 更新app：id1439723850
+2020-01-31 10:10:42 info (AppService.py) : 更新app：id1183407767
+2020-01-31 10:10:45 info (AppService.py) : 更新app：id1016366447
+2020-01-31 10:10:47 info (AppService.py) : 更新app：id1316883372
+2020-01-31 10:10:50 info (AppService.py) : 更新app：id1370289240
+2020-01-31 10:10:51 info (AppService.py) : 更新app：id883738213
+2020-01-31 10:10:53 info (AppService.py) : 更新app：id458535809
+2020-01-31 10:11:00 info (AppService.py) : 更新app：id1077776989
+2020-01-31 10:11:01 info (AppService.py) : 更新app：id1116905928
+2020-01-31 10:11:04 info (AppService.py) : 更新app：id410395246
+2020-01-31 10:11:05 info (AppService.py) : 更新app：id586683407
+2020-01-31 10:11:08 info (AppService.py) : 更新app：id586447913
+2020-01-31 10:11:08 info (AppService.py) : 更新app：id360593530
+2020-01-31 10:11:10 info (AppService.py) : 更新app：id1274090551
+2020-01-31 10:11:12 info (AppService.py) : 更新app：id896694807
+2020-01-31 10:11:16 info (AppService.py) : 更新app：id1406266008
+2020-01-31 10:11:16 info (AppService.py) : 更新app：id1085978097
+2020-01-31 10:11:21 info (AppService.py) : 更新app：id1447489375
+2020-01-31 10:11:24 info (AppService.py) : 更新app：id1445871976
+2020-01-31 10:11:31 info (AppService.py) : 更新app：id1348317163
+2020-01-31 10:11:33 info (AppService.py) : 更新app：id1219074514
+2020-01-31 10:11:35 info (AppService.py) : 更新app：id535886823
+2020-01-31 10:11:37 info (AppService.py) : 更新app：id1357539654
+2020-01-31 10:11:45 info (AppService.py) : 更新app：id1286983622
+2020-01-31 10:11:50 info (AppService.py) : 更新app：id406644151
+2020-01-31 10:12:02 info (AppService.py) : 更新app：id469337564
+2020-01-31 10:12:06 info (AppService.py) : 更新app：id945625854
+2020-01-31 10:12:10 info (AppService.py) : 更新app：id510282524
+2020-01-31 10:12:12 info (AppService.py) : 更新app：id871041757
+2020-01-31 10:12:14 info (AppService.py) : 更新app：id1168502924
+2020-01-31 10:12:19 info (AppService.py) : 更新app：id1093486973
+2020-01-31 10:12:21 info (AppService.py) : 更新app：id610391947
+2020-01-31 10:12:32 info (AppService.py) : 更新app：id524731580
+2020-01-31 21:01:00 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/picsew-%E9%95%BF%E6%88%AA%E5%9B%BE%E5%92%8C%E9%95%BF%E5%9B%BE%E6%8B%BC%E6%8E%A5/id1208145167
+2020-01-31 21:01:02 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/termius-ssh-client/id549039908
+2020-01-31 21:01:04 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/goodnotes-5/id1444383602
+2020-01-31 21:56:53 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:01:49 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:06:58 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:09:14 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:09:14 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:09:14 info (AppService.py) : 价格更新。
+2020-01-31 22:23:16 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:23:16 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:23:16 info (AppService.py) : 价格更新。
+2020-01-31 22:23:52 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:23:52 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:23:52 info (AppService.py) : 价格更新。
+2020-01-31 22:24:03 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:24:03 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:24:03 info (AppService.py) : 价格更新。
+2020-01-31 22:25:48 info (AppService.py) : 更新app：id535886823
+2020-01-31 22:25:48 info (PriceService.py) : 更新price：Id: 68	AppId: id535886823	Price: 0	Noticed: 0
+2020-01-31 22:25:48 info (AppService.py) : 价格更新。
+2020-01-31 22:30:16 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:30:16 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:30:16 info (AppService.py) : 价格更新。
+2020-01-31 22:32:52 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:32:52 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:43:54 info (AppService.py) : 更新app：id1439723850
+2020-01-31 22:43:54 info (PriceService.py) : 更新price：Id: 45	AppId: id1439723850	Price: 1	Noticed: 0
+2020-01-31 22:46:08 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:46:08 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:49:05 info (AppService.py) : 更新app：id1016366447
+2020-01-31 22:49:05 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 22:49:25 info (AppService.py) : 更新app：id1274090551
+2020-01-31 22:49:25 info (PriceService.py) : 更新price：Id: 59	AppId: id1274090551	Price: 128	Noticed: 0
+2020-01-31 22:59:34 info (AppService.py) : 更新app：id1274090551
+2020-01-31 22:59:34 info (PriceService.py) : 更新price：Id: 59	AppId: id1274090551	Price: 128	Noticed: 0
+2020-01-31 23:18:22 info (PriceService.py) : 添加price：Id: -1	AppId: id1425579722	Price: 0	Noticed: 0
+2020-01-31 23:18:22 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1425579722
+URL: https://apps.apple.com/cn/app/%E5%8A%A8%E7%89%A9%E6%B8%A9%E6%B3%89/id1425579722
+ImgURL: https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/3d/63/dc/3d63dc8b-c023-9a6a-df27-e8aebe75161b/AppIcon-0-1x_U007emarketing-0-85-220-7.png/1200x630wa.png
+Name: 动物温泉
+ApplicationCategory: 游戏
+Author: SUNG AH JUNG
+Star: 0
+
+2020-01-31 23:18:36 info (PriceService.py) : 添加price：Id: -1	AppId: id1298839048	Price: 0	Noticed: 0
+2020-01-31 23:18:36 info (AppService.py) : 添加app：
+Id: -1
+AppId: id1298839048
+URL: https://apps.apple.com/cn/app/%E8%B6%85%E7%BA%A7%E6%98%9F%E9%B1%BC/id1298839048
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/31/dc/3c/31dc3ca8-e954-e554-1475-567a6ddffe9e/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: 超级星鱼
+ApplicationCategory: 游戏
+Author: Protostar
+Star: 0
+
+2020-01-31 23:19:40 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:19:40 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:19:46 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:19:46 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:22:14 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:22:14 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:23:23 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:23:23 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:24:50 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:24:50 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:25:18 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:25:18 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:26:55 info (AppService.py) : 更新app：id1016366447
+2020-01-31 23:26:55 info (PriceService.py) : 更新price：Id: 47	AppId: id1016366447	Price: 0	Noticed: 0
+2020-01-31 23:33:19 warning (PriceService.py) : 删除price: appid:id1425579722
+2020-01-31 23:33:19 warning (AppService.py) : deleteApp()删除app：id1425579722
+2020-01-31 23:33:31 warning (PriceService.py) : 删除price: appid:id1298839048
+2020-01-31 23:33:31 warning (AppService.py) : deleteApp()删除app：id1298839048
+2020-02-01 00:56:26 info (AppService.py) : 更新app：id1208145167
+2020-02-01 00:56:26 info (PriceService.py) : 添加price：Id: -1	AppId: id1208145167	Price: 0	Noticed: 0
+2020-02-01 00:56:34 info (AppService.py) : 更新app：id549039908
+2020-02-01 00:56:34 info (PriceService.py) : 添加price：Id: -1	AppId: id549039908	Price: 0	Noticed: 0
+2020-02-01 00:56:41 info (AppService.py) : 更新app：id1444383602
+2020-02-01 00:56:41 info (PriceService.py) : 添加price：Id: -1	AppId: id1444383602	Price: 50	Noticed: 0
+2020-02-01 00:56:47 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/%E5%A2%A8%E5%A2%A8%E8%83%8C%E5%8D%95%E8%AF%8D-%E5%9B%9B%E5%85%AD%E7%BA%A7%E8%80%83%E7%A0%94%E7%AD%89%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87%E8%AE%B0%E5%BF%86/id888483369
+2020-02-01 00:56:53 info (AppService.py) : 更新app：id432079746
+2020-02-01 00:56:53 info (PriceService.py) : 添加price：Id: -1	AppId: id432079746	Price: 0	Noticed: 0
+2020-02-01 00:56:55 info (AppService.py) : 更新app：id1441303445
+2020-02-01 00:56:55 info (PriceService.py) : 添加price：Id: -1	AppId: id1441303445	Price: 6	Noticed: 0
+2020-02-01 00:56:57 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/transistor/id948857526
+2020-02-01 00:56:58 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/%E8%BF%B7%E4%BD%A0%E5%9C%B0%E9%93%81/id837860959
+2020-02-01 00:58:44 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 00:59:18 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:03:33 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:03:34 info (AppService.py) : 收藏app：id1016366447
+2020-02-01 01:03:51 info (AppService.py) : 取消收藏app：id1016366447
+2020-02-01 01:03:51 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:05:22 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:05:22 info (AppService.py) : 收藏app：id1016366447
+2020-02-01 01:06:00 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:06:00 info (AppService.py) : 收藏app：id1016366447
+2020-02-01 01:06:01 info (AppService.py) : 取消收藏app：id1016366447
+2020-02-01 01:06:01 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:06:03 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:06:03 info (AppService.py) : 收藏app：id1016366447
+2020-02-01 01:06:05 info (AppService.py) : 取消收藏app：id1016366447
+2020-02-01 01:06:05 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:06:07 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:06:07 info (AppService.py) : 收藏app：id1016366447
+2020-02-01 01:06:09 info (AppService.py) : 取消收藏app：id1016366447
+2020-02-01 01:06:09 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:07:32 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:07:32 info (AppService.py) : 收藏app：id1274090551
+2020-02-01 01:07:37 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:07:37 info (AppService.py) : 收藏app：id360593530
+2020-02-01 01:07:45 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:08:15 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:08:23 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:08:58 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:09:01 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:09:02 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:09:33 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:09:44 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:09:52 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:10:33 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:10:45 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:11:13 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:11:46 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:11:48 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:11:49 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:11:49 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:12:03 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:12:46 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:12:46 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:12:50 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:12:50 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:12:59 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:12:59 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:13:03 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:13:03 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:13:04 info (AppService.py) : 取消收藏app：id610391947
+2020-02-01 01:13:04 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:13:06 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:13:06 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:13:07 info (AppService.py) : 取消收藏app：id610391947
+2020-02-01 01:13:07 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:13:09 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:13:09 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:13:33 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:16:30 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:16:30 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:18:42 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:18:42 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:19:14 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:19:14 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:19:58 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:19:58 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:20:23 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:20:23 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:20:30 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:20:30 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:21:14 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:21:14 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:22:43 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:22:43 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:23:14 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:23:14 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:24:27 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:24:27 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:26:08 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:26:08 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:27:05 info (AppService.py) : 取消收藏app：id524731580
+2020-02-01 01:27:05 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:07 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:07 info (AppService.py) : 收藏app：id524731580
+2020-02-01 01:27:10 info (AppService.py) : 修改收藏app顺序：id524731580 1
+2020-02-01 01:27:10 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:10 info (AppService.py) : 收藏app：id1467063160
+2020-02-01 01:27:14 info (AppService.py) : 修改收藏app顺序：id1467063160 2
+2020-02-01 01:27:14 info (AppService.py) : 修改收藏app顺序：id524731580 1
+2020-02-01 01:27:14 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:14 info (AppService.py) : 收藏app：id1316883372
+2020-02-01 01:27:17 info (AppService.py) : 修改收藏app顺序：id1316883372 3
+2020-02-01 01:27:17 info (AppService.py) : 修改收藏app顺序：id1467063160 2
+2020-02-01 01:27:17 info (AppService.py) : 修改收藏app顺序：id524731580 1
+2020-02-01 01:27:17 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:17 info (AppService.py) : 收藏app：id610391947
+2020-02-01 01:27:20 info (AppService.py) : 修改收藏app顺序：id610391947 4
+2020-02-01 01:27:20 info (AppService.py) : 修改收藏app顺序：id1316883372 3
+2020-02-01 01:27:20 info (AppService.py) : 修改收藏app顺序：id1467063160 2
+2020-02-01 01:27:20 info (AppService.py) : 修改收藏app顺序：id524731580 1
+2020-02-01 01:27:20 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:27:20 info (AppService.py) : 收藏app：id837860959
+2020-02-01 01:30:52 info (AppService.py) : 修改收藏app顺序：id524731580 1
+2020-02-01 01:30:52 info (AppService.py) : 修改收藏app顺序：id1467063160 2
+2020-02-01 01:30:52 info (AppService.py) : 修改收藏app顺序：id1316883372 3
+2020-02-01 01:30:52 info (AppService.py) : 修改收藏app顺序：id610391947 4
+2020-02-01 01:30:52 info (AppService.py) : 修改收藏app顺序：id837860959 5
+2020-02-01 01:30:52 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:32:52 info (AppService.py) : 取消收藏app：id524731580
+2020-02-01 01:32:52 info (AppService.py) : 修改收藏app顺序：id1467063160 1
+2020-02-01 01:32:52 info (AppService.py) : 修改收藏app顺序：id1316883372 2
+2020-02-01 01:32:52 info (AppService.py) : 修改收藏app顺序：id610391947 3
+2020-02-01 01:32:52 info (AppService.py) : 修改收藏app顺序：id837860959 4
+2020-02-01 01:32:52 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:32:55 info (AppService.py) : 取消收藏app：id610391947
+2020-02-01 01:32:55 info (AppService.py) : 修改收藏app顺序：id1467063160 1
+2020-02-01 01:32:55 info (AppService.py) : 修改收藏app顺序：id1316883372 2
+2020-02-01 01:32:55 info (AppService.py) : 修改收藏app顺序：id837860959 3
+2020-02-01 01:32:55 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:33:00 info (AppService.py) : 取消收藏app：id1316883372
+2020-02-01 01:33:00 info (AppService.py) : 修改收藏app顺序：id1467063160 1
+2020-02-01 01:33:00 info (AppService.py) : 修改收藏app顺序：id837860959 2
+2020-02-01 01:33:00 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:33:04 info (AppService.py) : 取消收藏app：id1467063160
+2020-02-01 01:33:04 info (AppService.py) : 修改收藏app顺序：id837860959 1
+2020-02-01 01:33:04 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:33:22 info (AppService.py) : 取消收藏app：id837860959
+2020-02-01 01:33:22 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:33:53 info (AppService.py) : 更新app：id1208145167
+2020-02-01 01:33:53 info (PriceService.py) : 更新price：Id: 83	AppId: id1208145167	Price: 0	Noticed: 0
+2020-02-01 01:33:57 info (AppService.py) : 更新app：id549039908
+2020-02-01 01:33:57 info (PriceService.py) : 更新price：Id: 84	AppId: id549039908	Price: 0	Noticed: 0
+2020-02-01 01:34:00 info (AppService.py) : 更新app：id1444383602
+2020-02-01 01:34:00 info (PriceService.py) : 更新price：Id: 85	AppId: id1444383602	Price: 50	Noticed: 0
+2020-02-01 01:34:04 info (AppService.py) : 更新app：id888483369
+2020-02-01 01:34:04 info (PriceService.py) : 添加price：Id: -1	AppId: id888483369	Price: 0	Noticed: 0
+2020-02-01 01:34:08 info (AppService.py) : 更新app：id432079746
+2020-02-01 01:34:08 info (PriceService.py) : 更新price：Id: 86	AppId: id432079746	Price: 0	Noticed: 0
+2020-02-01 01:34:10 info (AppService.py) : 更新app：id1441303445
+2020-02-01 01:34:10 info (PriceService.py) : 更新price：Id: 87	AppId: id1441303445	Price: 6	Noticed: 0
+2020-02-01 01:34:14 info (AppService.py) : 更新app：id948857526
+2020-02-01 01:34:14 info (PriceService.py) : 添加price：Id: -1	AppId: id948857526	Price: 30	Noticed: 0
+2020-02-01 01:34:26 info (AppService.py) : 更新app：id837860959
+2020-02-01 01:34:26 info (PriceService.py) : 添加price：Id: -1	AppId: id837860959	Price: 25	Noticed: 0
+2020-02-01 01:34:28 info (AppService.py) : 更新app：id489265199
+2020-02-01 01:34:28 info (PriceService.py) : 添加price：Id: -1	AppId: id489265199	Price: 0	Noticed: 0
+2020-02-01 01:34:32 info (AppService.py) : 更新app：id1467063160
+2020-02-01 01:34:32 info (PriceService.py) : 添加price：Id: -1	AppId: id1467063160	Price: 0	Noticed: 0
+2020-02-01 01:34:37 info (AppService.py) : 更新app：id1146717204
+2020-02-01 01:34:37 info (PriceService.py) : 添加price：Id: -1	AppId: id1146717204	Price: 0	Noticed: 0
+2020-02-01 01:34:40 info (AppService.py) : 更新app：id1439723850
+2020-02-01 01:34:40 info (PriceService.py) : 添加price：Id: -1	AppId: id1439723850	Price: 1	Noticed: 0
+2020-02-01 01:34:46 info (AppService.py) : 更新app：id1183407767
+2020-02-01 01:34:46 info (PriceService.py) : 添加price：Id: -1	AppId: id1183407767	Price: 0	Noticed: 0
+2020-02-01 01:34:52 info (AppService.py) : 更新app：id1016366447
+2020-02-01 01:34:52 info (PriceService.py) : 添加price：Id: -1	AppId: id1016366447	Price: 0	Noticed: 0
+2020-02-01 01:34:54 info (AppService.py) : 更新app：id1316883372
+2020-02-01 01:34:54 info (PriceService.py) : 添加price：Id: -1	AppId: id1316883372	Price: 0	Noticed: 0
+2020-02-01 01:34:57 info (AppService.py) : 更新app：id1370289240
+2020-02-01 01:34:57 info (PriceService.py) : 添加price：Id: -1	AppId: id1370289240	Price: 0	Noticed: 0
+2020-02-01 01:34:59 info (AppService.py) : 更新app：id883738213
+2020-02-01 01:34:59 info (PriceService.py) : 添加price：Id: -1	AppId: id883738213	Price: 0	Noticed: 0
+2020-02-01 01:35:02 info (AppService.py) : 更新app：id458535809
+2020-02-01 01:35:02 info (PriceService.py) : 添加price：Id: -1	AppId: id458535809	Price: 18	Noticed: 0
+2020-02-01 01:35:12 info (AppService.py) : 更新app：id1077776989
+2020-02-01 01:35:12 info (PriceService.py) : 添加price：Id: -1	AppId: id1077776989	Price: 0	Noticed: 0
+2020-02-01 01:35:19 info (AppService.py) : 更新app：id1116905928
+2020-02-01 01:35:19 info (PriceService.py) : 添加price：Id: -1	AppId: id1116905928	Price: 30	Noticed: 0
+2020-02-01 01:35:22 info (AppService.py) : 更新app：id410395246
+2020-02-01 01:35:22 info (PriceService.py) : 添加price：Id: -1	AppId: id410395246	Price: 0	Noticed: 0
+2020-02-01 01:35:26 info (AppService.py) : 更新app：id586683407
+2020-02-01 01:35:26 info (PriceService.py) : 添加price：Id: -1	AppId: id586683407	Price: 0	Noticed: 0
+2020-02-01 01:35:30 info (AppService.py) : 更新app：id586447913
+2020-02-01 01:35:30 info (PriceService.py) : 添加price：Id: -1	AppId: id586447913	Price: 0	Noticed: 0
+2020-02-01 01:35:37 info (AppService.py) : 更新app：id360593530
+2020-02-01 01:35:37 info (PriceService.py) : 添加price：Id: -1	AppId: id360593530	Price: 60	Noticed: 0
+2020-02-01 01:35:42 info (AppService.py) : 更新app：id1274090551
+2020-02-01 01:35:42 info (PriceService.py) : 添加price：Id: -1	AppId: id1274090551	Price: 128	Noticed: 0
+2020-02-01 01:35:48 info (AppService.py) : 更新app：id896694807
+2020-02-01 01:35:48 info (PriceService.py) : 添加price：Id: -1	AppId: id896694807	Price: 0	Noticed: 0
+2020-02-01 01:35:51 info (AppService.py) : 更新app：id1406266008
+2020-02-01 01:35:51 info (PriceService.py) : 添加price：Id: -1	AppId: id1406266008	Price: 0	Noticed: 0
+2020-02-01 01:35:53 info (AppService.py) : 更新app：id1085978097
+2020-02-01 01:35:53 info (PriceService.py) : 添加price：Id: -1	AppId: id1085978097	Price: 68	Noticed: 0
+2020-02-01 01:35:57 info (AppService.py) : 更新app：id1447489375
+2020-02-01 01:35:57 info (PriceService.py) : 添加price：Id: -1	AppId: id1447489375	Price: 0	Noticed: 0
+2020-02-01 01:36:02 info (AppService.py) : 更新app：id1445871976
+2020-02-01 01:36:02 info (PriceService.py) : 添加price：Id: -1	AppId: id1445871976	Price: 0	Noticed: 0
+2020-02-01 01:36:04 info (AppService.py) : 更新app：id1348317163
+2020-02-01 01:36:04 info (PriceService.py) : 添加price：Id: -1	AppId: id1348317163	Price: 0	Noticed: 0
+2020-02-01 01:36:08 info (AppService.py) : 更新app：id1219074514
+2020-02-01 01:36:08 info (PriceService.py) : 添加price：Id: -1	AppId: id1219074514	Price: 0	Noticed: 0
+2020-02-01 01:36:41 error (AppService.py) : jsontxt获取失败：https://apps.apple.com/cn/app/chrome-%E7%94%B1google%E5%BC%80%E5%8F%91%E7%9A%84%E7%BD%91%E7%BB%9C%E6%B5%8F%E8%A7%88%E5%99%A8/id535886823
+2020-02-01 01:36:44 info (AppService.py) : 更新app：id1357539654
+2020-02-01 01:36:44 info (PriceService.py) : 添加price：Id: -1	AppId: id1357539654	Price: 0	Noticed: 0
+2020-02-01 01:36:53 info (AppService.py) : 更新app：id1286983622
+2020-02-01 01:36:53 info (PriceService.py) : 添加price：Id: -1	AppId: id1286983622	Price: 0	Noticed: 0
+2020-02-01 01:36:57 info (AppService.py) : 更新app：id406644151
+2020-02-01 01:36:57 info (PriceService.py) : 添加price：Id: -1	AppId: id406644151	Price: 0	Noticed: 0
+2020-02-01 01:37:00 info (AppService.py) : 更新app：id469337564
+2020-02-01 01:37:00 info (PriceService.py) : 添加price：Id: -1	AppId: id469337564	Price: 0	Noticed: 0
+2020-02-01 01:37:03 info (AppService.py) : 更新app：id945625854
+2020-02-01 01:37:03 info (PriceService.py) : 添加price：Id: -1	AppId: id945625854	Price: 0	Noticed: 0
+2020-02-01 01:37:07 info (AppService.py) : 更新app：id510282524
+2020-02-01 01:37:08 info (PriceService.py) : 添加price：Id: -1	AppId: id510282524	Price: 0	Noticed: 0
+2020-02-01 01:37:11 info (AppService.py) : 更新app：id871041757
+2020-02-01 01:37:11 info (PriceService.py) : 添加price：Id: -1	AppId: id871041757	Price: 0	Noticed: 0
+2020-02-01 01:37:15 info (AppService.py) : 更新app：id1168502924
+2020-02-01 01:37:15 info (PriceService.py) : 添加price：Id: -1	AppId: id1168502924	Price: 0	Noticed: 0
+2020-02-01 01:37:22 info (AppService.py) : 更新app：id1093486973
+2020-02-01 01:37:22 info (PriceService.py) : 添加price：Id: -1	AppId: id1093486973	Price: 0	Noticed: 0
+2020-02-01 01:37:25 info (AppService.py) : 更新app：id610391947
+2020-02-01 01:37:25 info (PriceService.py) : 添加price：Id: -1	AppId: id610391947	Price: 0	Noticed: 0
+2020-02-01 01:37:27 info (AppService.py) : 更新app：id524731580
+2020-02-01 01:37:27 info (PriceService.py) : 添加price：Id: -1	AppId: id524731580	Price: 0	Noticed: 0
+2020-02-01 01:38:37 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:38:37 info (AppService.py) : 收藏app：id360593530
+2020-02-01 01:38:41 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 01:38:41 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 01:38:41 info (AppService.py) : 收藏app：id1274090551
+2020-02-01 10:23:55 info (AutoUpdateApp.py.py) : 开始自动更新:
+2020-02-01 10:23:57 info (AppService.py) : 更新app：id1208145167
+2020-02-01 10:23:57 info (PriceService.py) : 更新price：Id: 83	AppId: id1208145167	Price: 0	Noticed: 0
+2020-02-01 10:24:02 info (AppService.py) : 更新app：id549039908
+2020-02-01 10:24:02 info (PriceService.py) : 更新price：Id: 84	AppId: id549039908	Price: 0	Noticed: 0
+2020-02-01 10:24:04 info (AppService.py) : 更新app：id1444383602
+2020-02-01 10:24:04 info (PriceService.py) : 更新price：Id: 85	AppId: id1444383602	Price: 50	Noticed: 0
+2020-02-01 10:24:05 info (AppService.py) : 更新app：id888483369
+2020-02-01 10:24:06 info (PriceService.py) : 更新price：Id: 88	AppId: id888483369	Price: 0	Noticed: 0
+2020-02-01 10:24:11 info (AppService.py) : 更新app：id432079746
+2020-02-01 10:24:11 info (PriceService.py) : 更新price：Id: 86	AppId: id432079746	Price: 0	Noticed: 0
+2020-02-01 10:24:13 info (AppService.py) : 更新app：id1441303445
+2020-02-01 10:24:13 info (PriceService.py) : 更新price：Id: 87	AppId: id1441303445	Price: 6	Noticed: 0
+2020-02-01 10:24:15 info (AppService.py) : 更新app：id948857526
+2020-02-01 10:24:15 info (PriceService.py) : 更新price：Id: 89	AppId: id948857526	Price: 30	Noticed: 0
+2020-02-01 10:24:18 info (AppService.py) : 更新app：id837860959
+2020-02-01 10:24:18 info (PriceService.py) : 更新price：Id: 90	AppId: id837860959	Price: 25	Noticed: 0
+2020-02-01 10:24:21 info (AppService.py) : 更新app：id489265199
+2020-02-01 10:24:21 info (PriceService.py) : 更新price：Id: 91	AppId: id489265199	Price: 0	Noticed: 0
+2020-02-01 10:24:25 info (AppService.py) : 更新app：id1467063160
+2020-02-01 10:24:25 info (PriceService.py) : 更新price：Id: 92	AppId: id1467063160	Price: 0	Noticed: 0
+2020-02-01 10:24:28 info (AppService.py) : 更新app：id1146717204
+2020-02-01 10:24:28 info (PriceService.py) : 更新price：Id: 93	AppId: id1146717204	Price: 0	Noticed: 0
+2020-02-01 10:24:32 info (AppService.py) : 更新app：id1439723850
+2020-02-01 10:24:32 info (PriceService.py) : 更新price：Id: 94	AppId: id1439723850	Price: 1	Noticed: 0
+2020-02-01 10:24:35 info (AppService.py) : 更新app：id1183407767
+2020-02-01 10:24:35 info (PriceService.py) : 更新price：Id: 95	AppId: id1183407767	Price: 0	Noticed: 0
+2020-02-01 10:24:42 info (AppService.py) : 更新app：id1016366447
+2020-02-01 10:24:42 info (PriceService.py) : 更新price：Id: 96	AppId: id1016366447	Price: 0	Noticed: 0
+2020-02-01 10:24:50 info (AppService.py) : 更新app：id1316883372
+2020-02-01 10:24:50 info (PriceService.py) : 更新price：Id: 97	AppId: id1316883372	Price: 0	Noticed: 0
+2020-02-01 10:24:52 info (AppService.py) : 更新app：id1370289240
+2020-02-01 10:24:52 info (PriceService.py) : 更新price：Id: 98	AppId: id1370289240	Price: 0	Noticed: 0
+2020-02-01 10:24:54 info (AppService.py) : 更新app：id883738213
+2020-02-01 10:24:54 info (PriceService.py) : 更新price：Id: 99	AppId: id883738213	Price: 0	Noticed: 0
+2020-02-01 10:24:56 info (AppService.py) : 更新app：id458535809
+2020-02-01 10:24:56 info (PriceService.py) : 更新price：Id: 100	AppId: id458535809	Price: 18	Noticed: 0
+2020-02-01 10:25:00 info (AppService.py) : 更新app：id1077776989
+2020-02-01 10:25:00 info (PriceService.py) : 更新price：Id: 101	AppId: id1077776989	Price: 0	Noticed: 0
+2020-02-01 10:25:02 info (AppService.py) : 更新app：id1116905928
+2020-02-01 10:25:02 info (PriceService.py) : 更新price：Id: 102	AppId: id1116905928	Price: 30	Noticed: 0
+2020-02-01 10:25:04 info (AppService.py) : 更新app：id410395246
+2020-02-01 10:25:04 info (PriceService.py) : 更新price：Id: 103	AppId: id410395246	Price: 0	Noticed: 0
+2020-02-01 10:25:08 info (AppService.py) : 更新app：id586683407
+2020-02-01 10:25:08 info (PriceService.py) : 更新price：Id: 104	AppId: id586683407	Price: 0	Noticed: 0
+2020-02-01 10:25:13 info (AppService.py) : 更新app：id586447913
+2020-02-01 10:25:13 info (PriceService.py) : 更新price：Id: 105	AppId: id586447913	Price: 0	Noticed: 0
+2020-02-01 10:25:15 info (AppService.py) : 更新app：id360593530
+2020-02-01 10:25:15 info (PriceService.py) : 更新price：Id: 106	AppId: id360593530	Price: 60	Noticed: 0
+2020-02-01 10:25:20 info (AppService.py) : 更新app：id1274090551
+2020-02-01 10:25:20 info (PriceService.py) : 更新price：Id: 107	AppId: id1274090551	Price: 128	Noticed: 0
+2020-02-01 10:25:26 info (AppService.py) : 更新app：id896694807
+2020-02-01 10:25:26 info (PriceService.py) : 更新price：Id: 108	AppId: id896694807	Price: 0	Noticed: 0
+2020-02-01 10:25:28 info (AppService.py) : 更新app：id1406266008
+2020-02-01 10:25:29 info (PriceService.py) : 更新price：Id: 109	AppId: id1406266008	Price: 0	Noticed: 0
+2020-02-01 10:25:30 info (AppService.py) : 更新app：id1085978097
+2020-02-01 10:25:30 info (PriceService.py) : 更新price：Id: 110	AppId: id1085978097	Price: 68	Noticed: 0
+2020-02-01 10:25:32 info (AppService.py) : 更新app：id1447489375
+2020-02-01 10:25:32 info (PriceService.py) : 更新price：Id: 111	AppId: id1447489375	Price: 0	Noticed: 0
+2020-02-01 10:25:35 info (AppService.py) : 更新app：id1445871976
+2020-02-01 10:25:35 info (PriceService.py) : 更新price：Id: 112	AppId: id1445871976	Price: 0	Noticed: 0
+2020-02-01 10:25:37 info (AppService.py) : 更新app：id1348317163
+2020-02-01 10:25:37 info (PriceService.py) : 更新price：Id: 113	AppId: id1348317163	Price: 0	Noticed: 0
+2020-02-01 10:25:40 info (AppService.py) : 更新app：id1219074514
+2020-02-01 10:25:40 info (PriceService.py) : 更新price：Id: 114	AppId: id1219074514	Price: 0	Noticed: 0
+2020-02-01 10:25:42 info (AppService.py) : 更新app：id535886823
+2020-02-01 10:25:42 info (PriceService.py) : 添加price：Id: -1	AppId: id535886823	Price: 0	Noticed: 0
+2020-02-01 10:25:45 info (AppService.py) : 更新app：id1357539654
+2020-02-01 10:25:45 info (PriceService.py) : 更新price：Id: 115	AppId: id1357539654	Price: 0	Noticed: 0
+2020-02-01 10:25:50 info (AppService.py) : 更新app：id1286983622
+2020-02-01 10:25:50 info (PriceService.py) : 更新price：Id: 116	AppId: id1286983622	Price: 0	Noticed: 0
+2020-02-01 10:25:53 info (AppService.py) : 更新app：id406644151
+2020-02-01 10:25:53 info (PriceService.py) : 更新price：Id: 117	AppId: id406644151	Price: 0	Noticed: 0
+2020-02-01 10:25:54 info (AppService.py) : 更新app：id469337564
+2020-02-01 10:25:54 info (PriceService.py) : 更新price：Id: 118	AppId: id469337564	Price: 0	Noticed: 0
+2020-02-01 10:25:55 info (AppService.py) : 更新app：id945625854
+2020-02-01 10:25:55 info (PriceService.py) : 更新price：Id: 119	AppId: id945625854	Price: 0	Noticed: 0
+2020-02-01 10:25:59 info (AppService.py) : 更新app：id510282524
+2020-02-01 10:25:59 info (PriceService.py) : 更新price：Id: 120	AppId: id510282524	Price: 0	Noticed: 0
+2020-02-01 10:26:01 info (AppService.py) : 更新app：id871041757
+2020-02-01 10:26:01 info (PriceService.py) : 更新price：Id: 121	AppId: id871041757	Price: 0	Noticed: 0
+2020-02-01 10:26:03 info (AppService.py) : 更新app：id1168502924
+2020-02-01 10:26:03 info (PriceService.py) : 更新price：Id: 122	AppId: id1168502924	Price: 0	Noticed: 0
+2020-02-01 10:26:06 info (AppService.py) : 更新app：id1093486973
+2020-02-01 10:26:06 info (PriceService.py) : 更新price：Id: 123	AppId: id1093486973	Price: 0	Noticed: 0
+2020-02-01 10:26:11 info (AppService.py) : 更新app：id610391947
+2020-02-01 10:26:11 info (PriceService.py) : 更新price：Id: 124	AppId: id610391947	Price: 0	Noticed: 0
+2020-02-01 10:26:15 info (AppService.py) : 更新app：id524731580
+2020-02-01 10:26:15 info (PriceService.py) : 更新price：Id: 125	AppId: id524731580	Price: 0	Noticed: 0
+2020-02-01 10:26:15 info (AutoUpdateApp.py.py) : 自动更新完成。
+
+2020-02-01 11:17:45 info (AppService.py) : 取消收藏app：id1274090551
+2020-02-01 11:17:45 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:17:45 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:17:57 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:17:57 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:17:57 info (AppService.py) : 收藏app：id1274090551
+2020-02-01 11:32:10 info (AppService.py) : 取消收藏app：id1274090551
+2020-02-01 11:32:10 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:32:10 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:32:41 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:32:41 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:32:41 info (AppService.py) : 收藏app：id1274090551
+2020-02-01 11:32:44 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:32:44 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:32:44 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:32:44 info (AppService.py) : 收藏app：id896694807
+2020-02-01 11:32:49 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:32:49 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:32:50 info (AppService.py) : 修改收藏app顺序：id896694807 3
+2020-02-01 11:32:50 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:32:50 info (AppService.py) : 收藏app：id1085978097
+2020-02-01 11:32:52 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:32:52 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:32:52 info (AppService.py) : 修改收藏app顺序：id896694807 3
+2020-02-01 11:32:52 info (AppService.py) : 修改收藏app顺序：id1085978097 4
+2020-02-01 11:32:52 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:32:52 info (AppService.py) : 收藏app：id1406266008
+2020-02-01 11:33:09 info (AppService.py) : 取消收藏app：id896694807
+2020-02-01 11:33:09 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:33:09 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:33:09 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 11:33:09 info (AppService.py) : 修改收藏app顺序：id1406266008 4
+2020-02-01 11:33:09 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:46:27 info (AppService.py) : 取消收藏app：id1406266008
+2020-02-01 11:46:27 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:46:27 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:46:27 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 11:46:27 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 11:56:56 info (AppService.py) : 修改收藏app顺序：id1085978097 2
+2020-02-01 11:56:56 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:57:02 info (AppService.py) : 修改收藏app顺序：id1085978097 2
+2020-02-01 11:57:02 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:57:07 info (AppService.py) : 修改收藏app顺序：id1085978097 1
+2020-02-01 11:57:07 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:57:07 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:58:55 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:58:55 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 11:58:59 info (AppService.py) : 修改收藏app顺序：id1085978097 1
+2020-02-01 11:58:59 info (AppService.py) : 修改收藏app顺序：id360593530 2
+2020-02-01 11:58:59 info (AppService.py) : 修改收藏app顺序：id1274090551 3
+2020-02-01 11:59:02 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 11:59:02 info (AppService.py) : 修改收藏app顺序：id1085978097 2
+2020-02-01 11:59:26 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 11:59:26 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 12:00:38 info (PriceService.py) : 添加price：Id: -1	AppId: id425073498	Price: 68	Noticed: 0
+2020-02-01 12:00:38 info (AppService.py) : 添加app：
+Id: -1
+AppId: id425073498
+URL: https://apps.apple.com/cn/app/procreate/id425073498
+ImgURL: https://is4-ssl.mzstatic.com/image/thumb/Purple123/v4/a5/a7/8e/a5a78e00-3110-5a69-4b3c-b4723e2c8cd7/AppIcon-0-0-1x_U007emarketing-0-0-0-4-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x630wa.png
+Name: Procreate
+ApplicationCategory: 娱乐
+Author: Savage Interactive Pty Ltd
+Star: 0
+
+2020-02-01 12:02:15 info (AppService.py) : 更新app：id425073498
+2020-02-01 12:02:16 info (PriceService.py) : 更新price：Id: 127	AppId: id425073498	Price: 68	Noticed: 0
+2020-02-01 12:02:38 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:02:38 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 12:02:38 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 12:02:38 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:02:38 info (AppService.py) : 收藏app：id425073498
+2020-02-01 12:02:49 info (AppService.py) : 修改收藏app顺序：id425073498 3
+2020-02-01 12:02:49 info (AppService.py) : 修改收藏app顺序：id1085978097 4
+2020-02-01 12:02:56 info (AppService.py) : 取消收藏app：id425073498
+2020-02-01 12:02:56 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:02:56 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 12:02:56 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 12:02:56 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:04:20 info (AppService.py) : 修改收藏app顺序：id1085978097 2
+2020-02-01 12:04:20 info (AppService.py) : 修改收藏app顺序：id1274090551 3
+2020-02-01 12:06:53 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 12:06:53 info (AppService.py) : 修改收藏app顺序：id1085978097 3
+2020-02-01 12:07:30 info (AppService.py) : 取消收藏app：id1085978097
+2020-02-01 12:07:30 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:07:30 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 12:07:30 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:08:50 info (AppService.py) : 取消收藏app：id1274090551
+2020-02-01 12:08:50 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:08:50 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:09:02 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:09:02 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:09:02 info (AppService.py) : 收藏app：id425073498
+2020-02-01 12:09:22 info (AppService.py) : 修改收藏app顺序：id360593530 1
+2020-02-01 12:09:22 info (AppService.py) : 修改收藏app顺序：id425073498 2
+2020-02-01 12:09:22 info (AppService.py) : 排序app收藏顺序。
+2020-02-01 12:09:22 info (AppService.py) : 收藏app：id1274090551
+2020-02-01 12:09:34 info (AppService.py) : 修改收藏app顺序：id1274090551 2
+2020-02-01 12:09:34 info (AppService.py) : 修改收藏app顺序：id425073498 3
+2020-02-01 12:09:35 info (AppService.py) : 修改收藏app顺序：id425073498 2
+2020-02-01 12:09:35 info (AppService.py) : 修改收藏app顺序：id1274090551 3

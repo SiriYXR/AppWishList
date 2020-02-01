@@ -79,8 +79,7 @@ class MainTable(ui.View):
 			self.app.activity_indicator.stop()
 	
 	def loadUI(self):
-		self.frame=(0,0,self.app.width,self.app.height)
-		self.tableView.frame=self.frame
+		pass
 	
 	def menu_item_tapped(self, sender):
 		opt_name = sender.items[sender.selected_row]['title']
@@ -104,11 +103,11 @@ class MainTable(ui.View):
 			self.Blog_act()
 		
 	def WishList_act(self):
-		v = WishListView(self.app)
+		v = WishListView(self.app,self)
 		self.app.nav_view.push_view(v)
 
 	def Favorite_act(self):
-		v = CategoryView(self.app)
+		v = CategoryView(self.app,self)
 		self.app.nav_view.push_view(v)
 
 	@ui.in_background
@@ -124,7 +123,10 @@ class MainTable(ui.View):
 			console.hud_alert('Failed to update', 'error', 1.0)
 		finally:
 			self.app.isUpdating=False
-			
+	
+	def updateData(self):
+		self.loadData()
+	
 	def Setting_act(self):
 		pass
 		

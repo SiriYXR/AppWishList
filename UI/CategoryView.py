@@ -18,8 +18,9 @@ from tools.Result import *
 
 class CategoryView(ui.View):
 	
-	def __init__(self,app):
+	def __init__(self,app,father):
 		self.app=app
+		self.father=father
 		
 		self.name="分类"
 		self.background_color="white"
@@ -123,3 +124,7 @@ class CategoryView(ui.View):
 			console.hud_alert('Failed to load Categories_Dict', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()	
+			
+	def updateData(self):
+		self.loadData()
+		self.father.updateData()

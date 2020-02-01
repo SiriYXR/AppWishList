@@ -95,6 +95,12 @@ class App (object):
 	def getAuthor(self):
 		return self.mAuthor
 
+	def setStar(self,star):
+		self.mStar=star
+		
+	def getStar(self):
+		return self.mStar
+
 	def getCreatTime(self):
 		return self.mCreatTime
 		

@@ -30,7 +30,6 @@ class PriceController (object):
 		
 	def updatePrice(self,price):
 		self.mSQLConn.connect()
-		
 		sql='''UPDATE price SET appid="{appid}",price={price},noticed={noticed} WHERE id={id}'''.format(appid=price.getAppId(),price=price.getPrice(),noticed=price.getNoticed(),id=price.getId())
 		#print(sql)
 		self.mSQLConn.execute(sql)

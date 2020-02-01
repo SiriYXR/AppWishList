@@ -20,7 +20,9 @@ class ResultEnum (object):
 	APP_EXIST=(101,"这个应用已经在愿望单里了！")
 	APP_INVALID=(103,"这不是一个有效的app记录！")
 	
-	PRICE_NOTICE=(202,"降价提醒!")
+	APP_UPDATE=(102,"APP更新。")
+	
+	PRICE_UPDATE=(202,"价格更新。")
 	
 	# 网络
 	URL_INVALID=(401,"这不是一个有效链接！")

@@ -52,7 +52,7 @@ class Price(object):
 	def setNoticed(self,noticed):
 		self.mNoticed=noticed
 		
-	def getNoticed(self,noticed):
+	def getNoticed(self):
 		return self.mNoticed
 	
 	def getCreatTime(self):
@@ -68,6 +68,17 @@ class Price(object):
 		self.mNoticed=t[3]
 		self.mCreatTime=t[4]
 		self.mUpdateTime=t[5]
+	
+	def copy(self):
+		t=Price()
+		t.setId(self.mId)
+		t.setAppId(self.mAppId)
+		t.setPrice(self.mPrice)
+		t.setNoticed(self.mNoticed)
+		t.mCreatTime=self.mCreatTime
+		t.mUpdateTime=self.mUpdateTime
+		
+		return t
 	
 	def toString(self):
 		return 'Id: '+str(self.mId)+'\tAppId: '+str(self.mAppId)+'\tPrice: '+str(self.mPrice)+'\tNoticed: '+str(self.mNoticed)
