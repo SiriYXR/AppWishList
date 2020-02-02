@@ -124,6 +124,9 @@ class WishListView(ui.View):
 	def tableview_can_move(self, tableview, section, row):
 		return True
 	
+	def tableview_title_for_delete_button(self,tableview, section, row):
+		return "移出"
+	
 	@ui.in_background		
 	def tableview_did_select(self,tableview, section, row):
 		self.app.activity_indicator.start()
@@ -165,8 +168,8 @@ class WishListView(ui.View):
 		self.app.appService.changeAppStar(self.apps[from_row],to_row+1)
 		for i in range(to_row,from_row):
 			self.app.appService.changeAppStar(self.apps[i],i+2)
-		self.loadData()
-		
+		self.loadData()	
+	
 	@ui.in_background		
 	def scrollview_did_scroll(self,scrollview):
 		if(scrollview.content_offset[1]<-150):

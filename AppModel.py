@@ -32,7 +32,7 @@ class App (object):
 	mStar=None
 	
 	#创建时间
-	mCreatTime=None
+	mCreateTime=None
 	
 	#更新时间	
 	mUpdateTime=None
@@ -101,8 +101,8 @@ class App (object):
 	def getStar(self):
 		return self.mStar
 
-	def getCreatTime(self):
-		return self.mCreatTime
+	def getCreateTime(self):
+		return self.mCreateTime
 		
 	def getUpdateTime(self):
 		return self.mUpdateTime
@@ -125,7 +125,7 @@ class App (object):
 		self.mApplicationCategory=t[5]
 		self.mAuthor=t[6]
 		self.mStar=t[7]
-		self.mCreatTime=t[8]
+		self.mCreateTime=t[8]
 		self.mUpdateTime=t[9]
 		
 	def toString(self):

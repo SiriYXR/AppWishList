@@ -20,7 +20,7 @@ class Price(object):
 	mNoticed=None
 	
 	#创建时间
-	mCreatTime=None
+	mCreateTime=None
 	
 	#更新时间	
 	mUpdateTime=None
@@ -55,8 +55,8 @@ class Price(object):
 	def getNoticed(self):
 		return self.mNoticed
 	
-	def getCreatTime(self):
-		return self.mCreatTime
+	def getCreateTime(self):
+		return self.mCreateTime
 		
 	def getUpdateTime(self):
 		return self.mUpdateTime
@@ -66,7 +66,7 @@ class Price(object):
 		self.mAppId=t[1]
 		self.mPrice=t[2]
 		self.mNoticed=t[3]
-		self.mCreatTime=t[4]
+		self.mCreateTime=t[4]
 		self.mUpdateTime=t[5]
 	
 	def copy(self):
@@ -75,13 +75,13 @@ class Price(object):
 		t.setAppId(self.mAppId)
 		t.setPrice(self.mPrice)
 		t.setNoticed(self.mNoticed)
-		t.mCreatTime=self.mCreatTime
+		t.mCreateTime=self.mCreateTime
 		t.mUpdateTime=self.mUpdateTime
 		
 		return t
 	
 	def toString(self):
-		return 'Id: '+str(self.mId)+'\tAppId: '+str(self.mAppId)+'\tPrice: '+str(self.mPrice)+'\tNoticed: '+str(self.mNoticed)
+		return 'Id: '+str(self.mId)+'\t\tAppId: '+str(self.mAppId)+'\t\tPrice: '+str(self.mPrice)+'\t\tNoticed: '+str(self.mNoticed)
 		
 if __name__ == "__main__":
 	price=Price("1234567890",1.0)

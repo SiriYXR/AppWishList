@@ -23,6 +23,7 @@ class ResultEnum (object):
 	APP_UPDATE=(102,"APP更新。")
 	
 	PRICE_UPDATE=(202,"价格更新。")
+	PRICE_NOTICED=(204,"价格通知。")
 	
 	# 网络
 	URL_INVALID=(401,"这不是一个有效链接！")

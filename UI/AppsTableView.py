@@ -32,7 +32,14 @@ class AppsTableView(ui.View):
 		self.background_color="white"
 		self.frame=(0,0,self.app.width,self.app.height)
 		self.flex="WHLRTB"
-			
+		
+		self.order_key=0
+		self.order_desc=0
+		self.orderBtn=ui.ButtonItem()
+		self.orderBtn.title="收藏时间: 升序"
+		self.orderBtn.action=self.order_Act
+		self.right_button_items=[self.orderBtn]
+					
 		self.tableView = ui.TableView(frame=(0, 0, self.width, self.height))
 		self.tableView.flex="WHLRTB"
 		self.add_subview(self.tableView)
@@ -47,7 +54,7 @@ class AppsTableView(ui.View):
 	
 	def loadData(self):
 		try:
-			res=self.app.appService.getAppsByCategory(self.name)
+			res=self.app.appService.getAppsByCategory(self.name,self.order_key,self.order_desc)
 			
 			if(not res.equal(ResultEnum.SUCCESS)):
 				console.hud_alert(res.toString(), 'error', 1.0)
@@ -118,6 +125,9 @@ class AppsTableView(ui.View):
 	def tableview_can_move(self, tableview, section, row):
 		return False
 	
+	def tableview_title_for_delete_button(self,tableview, section, row):
+		return "删除"
+	
 	@ui.in_background		
 	def tableview_did_select(self,tableview, section, row):
 		self.app.activity_indicator.start()
@@ -125,8 +135,8 @@ class AppsTableView(ui.View):
 			app = self.apps[row]
 			appDetailView = AppDetailView(self.app,self, app)
 			self.app.nav_view.push_view(appDetailView)
-		#except Exception as e:
-			#console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 	
@@ -174,4 +184,27 @@ class AppsTableView(ui.View):
 	def updateData(self):
 		self.loadData()
 		self.father.updateData()
+	
+	def order_Act(self,sender):
+		res=console.alert("排序规则","请选择排序关键字","收藏时间","名称","价格",hide_cancel_button=True)-1
 		
+		keys=["收藏时间","名称","价格"]
+		descs=["升序","降序"]
+		
+		if res == self.order_key:
+			self.order_desc*=-1
+			self.order_desc+=1
+		else:
+			self.order_key=res
+			self.order_desc=0
+		
+		self.orderBtn.title=keys[self.order_key]+": "+descs[self.order_desc]
+		
+		self.loadData()
+		
+		
+		
+		
+		
+				
+			

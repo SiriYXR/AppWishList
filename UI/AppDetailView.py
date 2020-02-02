@@ -126,7 +126,7 @@ class AppDetailView(ui.View):
 				self.presentPrice=self.lastPrice=self.firstPrice=self.lowestPrice=self.prices[0]
 			
 			for i in self.prices :
-				date=datetime.strptime(i.getCreatTime(),"%Y-%m-%d %H:%M:%S")
+				date=datetime.strptime(i.getCreateTime(),"%Y-%m-%d %H:%M:%S")
 				self.dates.append(date)
 				self.prices_v.append(i.getPrice())
 				
@@ -157,7 +157,7 @@ class AppDetailView(ui.View):
 		
 		self.info_categoryLabel.text=self.obj.getApplicationCategory()
 	
-		self.info_createtimeLabel.text="收藏时间:"+self.obj.getCreatTime()
+		self.info_createtimeLabel.text="收藏时间:"+self.obj.getCreateTime()
 		
 		self.info_updatetimeLabel.text="更新时间:"+self.obj.getUpdateTime()
 		

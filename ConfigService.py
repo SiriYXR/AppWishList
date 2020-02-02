@@ -52,6 +52,19 @@ class ConfigService (object):
 		self.mConfigController.updateConfig(res)
 		
 		return Result(ResultEnum.SUCCESS,res)	
+	
+	def setRunTimes(self,times):
+		res=self.mConfigController.selectConfigById(1)
+		
+		if(res==None):
+			self.logger.error("runTimesAddOne()"+ResultEnum.SELECT_ERROR[1])
+			return Result(ResultEnum.SELECT_ERROR)
+		
+		res.setRunTimes(times)
+		
+		self.mConfigController.updateConfig(res)
+		
+		return Result(ResultEnum.SUCCESS,res)	
 
 	def setNotice(self,notice):
 		res=self.mConfigController.selectConfigById(1)
@@ -81,16 +94,38 @@ class ConfigService (object):
 		self.logger.info("setDownLoadImg : "+str(downloadimg))
 		return Result(ResultEnum.SUCCESS,res)
 	
+	def setLog(self,log):
+		res=self.mConfigController.selectConfigById(1)
+		
+		if(res==None):
+			self.logger.error("setLog()"+ResultEnum.SELECT_ERROR[1])
+			return Result(ResultEnum.SELECT_ERROR)
+		
+		res.setLog(log)
+		
+		self.mConfigController.updateConfig(res)
+		
+		self.logger.info("setLog : "+str(log))
+		return Result(ResultEnum.SUCCESS,res)
+	
 	def setDefult(self):
 		self.logger.info("setDefult:")
+		res=self.setRunTimes(1)
+		if(not res.equal(ResultEnum.SUCCESS)):
+			return res
+		
 		res=self.setNotice(1)
 		if(not res.equal(ResultEnum.SUCCESS)):
 			return res
 		
 		res=self.setDownLoadImg(1)
 		if(not res.equal(ResultEnum.SUCCESS)):
-			return res
+			return res	
 			
+		res=self.setLog(1)
+		if(not res.equal(ResultEnum.SUCCESS)):
+			return res
+				
 	def getConfig(self):
 		res=self.mConfigController.selectConfigById(1)
 		
@@ -122,10 +157,22 @@ class ConfigService (object):
 		res=self.getConfig()
 		
 		if(res.isPositive()):
-			return Result(ResultEnum.SUCCESS,res.getData().getDownLoad())
+			return Result(ResultEnum.SUCCESS,res.getData().getDownLoadImg())
 		else:
 			self.logger.error("getDownLoadImg()")
 			return res
+	
+	def getLog(self):
+		res=self.getConfig()
+		
+		if(res.isPositive()):
+			return Result(ResultEnum.SUCCESS,res.getData().getLog())
+		else:
+			self.logger.error("getLog()")
+			return res
+
+	def setLogger_Run(self,arg):
+		self.logger.setRun(arg)
 
 if __name__ == "__main__":
 	serv=ConfigService()

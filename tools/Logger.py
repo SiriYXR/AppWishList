@@ -14,13 +14,13 @@ class Logger (object):
 	mShowLocation=None
 	mIsRun=None
 		
-	def __init__(self,path,location,isshow=False,isrun=True,isdebug=False):
+	def __init__(self,path,location,isrun=True,isshow=False,isdebug=False):
 		self.mPath=path
 		self.mLocation=location
 		self.mShowLocation=isshow
 		self.mIsRun=isrun
 		self.mIsDebug=isdebug
-		self.mIsDebug=True
+		#self.mIsDebug=True
 		
 	def getPath(self):
 		return self.mPath
@@ -40,6 +40,11 @@ class Logger (object):
 	def setShowLocation(self,arg):
 		self.mShowLocation=arg
 	
+	def setRun(self,arg):
+		self.mIsRun=arg
+		
+	def getRun(self):
+		return self.mIsRun
 		
 	def debug(self,msg):
 		if(not self.mIsRun):

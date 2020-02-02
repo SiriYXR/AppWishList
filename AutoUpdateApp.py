@@ -6,28 +6,34 @@
 """
 
 from AppService import AppService
+from ConfigService import ConfigService
 
 from tools.Result import *
 from tools.Logger import *
 from tools.CheckInternet import *
 
-def main(path):
-	logger=Logger(path+"log.txt","AutoUpdateApp.py.py",True)
+def main(rootpath="data/"):
+	logger=Logger(rootpath+"log.txt","AutoUpdateApp.py.py",True)
+	configService=ConfigService(rootpath)
 	
-	logger.info("开始自动更新:")
+	if(configService.getLog().getData()==1):
+		logger.info("开始自动更新:")
 	
 	if(not isConnected("http://www.baidu.com")):
-		logger.error("网络连接超时！\n")
+		if(configService.getLog().getData()==1):
+			logger.error("网络连接超时！\n")
 		return
 	
-	serv=AppService(path)
+	serv=AppService(rootpath)
 			
 	res=serv.updateAllApps()
 	
 	if(not res.equal(ResultEnum.SUCCESS)):
-		logger.error("自动更新出错: "+res.toString())
+		if(configService.getLog().getData()==1):
+			logger.error("自动更新出错: "+res.toString())
 	else:
-		logger.info("自动更新完成。\n")
+		if(configService.getLog().getData()==1):
+			logger.info("自动更新完成。\n")
 	
 if __name__ == "__main__":
 	main("data/")

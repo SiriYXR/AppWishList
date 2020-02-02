@@ -35,7 +35,15 @@ class PriceController (object):
 		self.mSQLConn.execute(sql)
 		
 		self.mSQLConn.close()
+	
+	def deleteAllPrices(self):
+		self.mSQLConn.connect()
 		
+		sql='''DELETE FROM price'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		self.mSQLConn.close()
 		
 	def deletePriceById(self,id):
 		self.mSQLConn.connect()
@@ -58,7 +66,7 @@ class PriceController (object):
 	def selectAllPrice(self):
 		self.mSQLConn.connect()
 		
-		sql='''SELECT * FROM price ORDER BY creattime'''
+		sql='''SELECT * FROM price ORDER BY createtime'''
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -91,7 +99,7 @@ class PriceController (object):
 	def selectPricesByAppId(self,appid):
 		self.mSQLConn.connect()
 		
-		sql='''SELECT * FROM price WHERE appid="{appid}" ORDER BY creattime'''.format(appid=appid)
+		sql='''SELECT * FROM price WHERE appid="{appid}" ORDER BY createtime'''.format(appid=appid)
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -114,7 +122,7 @@ class PriceController (object):
 	def selectPriceByAppId_Day(self,appid,time):
 		self.mSQLConn.connect()
 		
-		sql='''SELECT * FROM price WHERE appid="{appid}" AND strftime("%Y-%m-%d",creattime) = strftime("%Y-%m-%d","{time}") '''.format(appid=appid,time=time)
+		sql='''SELECT * FROM price WHERE appid="{appid}" AND strftime("%Y-%m-%d",createtime) = strftime("%Y-%m-%d","{time}") '''.format(appid=appid,time=time)
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -129,8 +137,57 @@ class PriceController (object):
 		price.initByTuple(res)
 		
 		return price
+		
+	def selectNewestPriceByAppId(self,appid):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT * FROM price WHERE appid="{appid}" AND createtime = (SELECT MAX(createtime) FROM Price WHERE appid="{appid}") '''.format(appid=appid)
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		if(res==None or len(res)<1):
+			return 
+		
+		price=Price()
+		price.initByTuple(res)
+		
+		return price
+		
+	def countPrices(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT COUNT(*) FROM price '''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		return res[0]
+		
+	def sumNewestPrice(self):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT SUM(price) FROM price WHERE createtime IN (SELECT MAX(createtime) FROM price GROUP BY appid)'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		res=self.mSQLConn.fetchone()
+		
+		self.mSQLConn.close()
+		
+		if(res[0]==None):
+			return 0
+		
+		return res[0]
 	
 if __name__ == "__main__":
 	cont=PriceController("data/database.db")
 	
-	
+	print(cont.countPrices())
+	print(cont.sumNewestPrice())

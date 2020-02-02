@@ -22,7 +22,7 @@ class ConfigController (object):
 	def updateConfig(self,config):
 		self.mSQLConn.connect()
 		
-		sql='''UPDATE config SET runtimes={runtimes},notice={notice},downloadimg={downloadimg} WHERE id={id}'''.format(runtimes=config.getRunTimes(),notice=config.getNotice(),downloadimg=config.getDownLoadImg(),id=config.getId())
+		sql='''UPDATE config SET runtimes={runtimes},notice={notice},downloadimg={downloadimg},log={log} WHERE id={id}'''.format(runtimes=config.getRunTimes(),notice=config.getNotice(),downloadimg=config.getDownLoadImg(),log=config.getLog(),id=config.getId())
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		

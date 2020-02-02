@@ -9,14 +9,16 @@ import appex
 import console
 
 from AppService import AppService
-from AppModel import App
+from ConfigService import ConfigService
+
+from UI.AddAppView import AddAppView
 
 from tools.Result import *
 from tools.Logger import *
 
-
-def main():
-	logger=Logger("data/log.txt","ExtAddApp.py",True)
+def main(rootpath="data/"):
+	logger=Logger(rootpath+"log.txt","ExtAddApp.py",True)
+	configService=ConfigService(rootpath)
 	
 	if not appex.is_running_extension():
 		print('This script is intended to be run from the sharing extension.')
@@ -25,18 +27,23 @@ def main():
 	url = appex.get_url()
 	if not url:
 		console.alert("Error","No input URL found.",'OK', hide_cancel_button=True)
-		logger.error("No input URL found.")
-		return
 		
-	serv=AppService("data/")
-	res=serv.addApp(url)
+		if(configService.getLog().getData()==1):
+			logger.error("No input URL found.")
+		return
 	
+	console.hud_alert("正在抓取数据，请等待...","success")
+		
+	appSerVice=AppService(rootpath)	
+	res=appSerVice.addApp(url)
+		
 	if(res.equal(ResultEnum.APP_UPDATE)):
-		console.alert("Success","应用更新成功!",'OK', hide_cancel_button=True)
+		console.hud_alert("应用更新成功!",'success')
 	elif(res.equal(ResultEnum.SUCCESS)):
-		console.alert("Success","应用添加成功!",'OK', hide_cancel_button=True)
+		console.hud_alert("应用添加成功!",'success')
 	else:
-		console.alert("Error",res.getInfo(),'OK', hide_cancel_button=True)
+		console.hud_alert(res.getInfo(),'error')
+	
 		
 if __name__ == "__main__":	
 	main()

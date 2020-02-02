@@ -36,6 +36,14 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
+	def deleteAllApps(self):
+		self.mSQLConn.connect()
+		
+		sql='''DELETE FROM apps'''
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		self.mSQLConn.close()
 		
 	def deleteAppById(self,id):
 		self.mSQLConn.connect()
@@ -78,10 +86,10 @@ class AppController (object):
 			
 		return apps
 		
-	def selectAppsByCategory(self,category):
+	def selectAppsByCategory(self,category,order=""):
 		self.mSQLConn.connect()
 		
-		sql='''SELECT * FROM apps WHERE applicationCategory="{category}"'''.format(category=category)
+		sql='''SELECT * FROM apps WHERE applicationCategory="{category}" {order}'''.format(category=category,order=order)
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -123,7 +131,30 @@ class AppController (object):
 			apps.append(app)
 			
 		return apps
+	
+	def selectAppsByCategoryOrderByNewestPrice(self,category,order=""):
+		self.mSQLConn.connect()
+	
+		sql='''SELECT * FROM (SELECT apps.*,price.price FROM apps,price WHERE apps.appid=price.appid AND price.createtime IN (SELECT MAX(price.createtime) FROM price GROUP BY price.appid)) WHERE applicationcategory="{category}" {order}'''.format(category=category,order=order)
+	
+		self.mSQLConn.execute(sql)
+	
+		res=self.mSQLConn.fetchall()
+	
+		self.mSQLConn.close()
 		
+		if(res==None):
+			return 	
+		
+		apps=[]	
+		
+		for i in res:
+			app=App()
+			app.initByTuple(i)
+			apps.append(app)
+			
+		return apps
+	
 	def selectAppById(self,id):
 		self.mSQLConn.connect()
 		

@@ -12,11 +12,14 @@ import webbrowser
 
 from WishListView import WishListView
 from CategoryView import CategoryView
+from SettingView import SettingView
+from UpdateDataView import UpdateDataView
 
 sys.path.append("..")
 
 from AppModel import App
 from AppService import AppService
+from ConfigService import ConfigService
 
 from tools.Result import *
 
@@ -62,7 +65,7 @@ class MainTable(ui.View):
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
-				{"title": "\t\t\t\t\t\t\t\t\tCopyright © by SiriYang", "accessory_type": "none"},
+				{"title": "\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.0", "accessory_type": "none"},
 				{"title": self.MENU_BLOG, "accessory_type": "none"},
 				]
 			)
@@ -113,12 +116,7 @@ class MainTable(ui.View):
 	@ui.in_background
 	def Update_act(self):
 		try:
-			res=self.app.appService.updateAllApps()
-			if(not res.equal(ResultEnum.SUCCESS)):
-				console.hud_alert('更新出错！', 'error', 1.0)
-			else:
-				console.hud_alert('更新成功'+str(len(res.getData()[0]))+'个App,失败'+str(res.getData()[1])+'个!', 'success', 2.0)
-				
+			UpdateDataView(self.app)	
 		except Exception as e:
 			console.hud_alert('Failed to update', 'error', 1.0)
 		finally:
@@ -128,10 +126,13 @@ class MainTable(ui.View):
 		self.loadData()
 	
 	def Setting_act(self):
-		pass
+		v = SettingView(self.app,self)
+		#self.app.nav_view.push_view(v)
+		v.frame=(0,0,550,600)
+		v.present("sheet")
 		
 	def About_act(self):
-		webbrowser.open("safari-https://github.com/SiriYXR/AppWishList")
+		webbrowser.open("safari-https://blog.siriyang.cn/posts/20200202171851id.html")
 	
 	def Blog_act(self):
 		webbrowser.open("safari-https://blog.siriyang.cn")
@@ -145,7 +146,8 @@ class MainWindow(ui.View):
 		
 		self.rootpath=rootpath
 		self.appService=AppService(rootpath)
-					
+		self.configService=ConfigService(rootpath)
+		
 		self.isUpdating=False
 		self.orientation = self.LANDSCAPE
 								
@@ -178,6 +180,7 @@ class MainWindow(ui.View):
 	
 	def launch(self):
 		self.present(style='full_screen',)
+		self.configService.runTimesAddOne()
 
 if __name__ == '__main__':
 	mainWindow = MainWindow("../data/")

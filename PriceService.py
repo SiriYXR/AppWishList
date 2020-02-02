@@ -52,6 +52,13 @@ class PriceService (object):
 						
 		return Result(ResultEnum.SUCCESS,res)
 		
+	def setNoticed(self,price):
+		price.setNoticed(1)
+		self.mPriceController.updatePrice(price)
+		self.logger.info("通知price："+price.toString())
+		
+		return Result(ResultEnum.PRICE_NOTICED,price)
+		
 	def deletePriceById(self,id):
 		self.mPriceController.deletePriceById(id)
 		
@@ -64,5 +71,23 @@ class PriceService (object):
 		self.logger.warning("删除price: appid:"+appid)
 		return Result(ResultEnum.SUCCESS,appid)
 		
+	def deleteAllPrices(self):
+		self.mPriceController.deleteAllPrices()
+		self.logger.warning("删除所有price!")
+		return Result(ResultEnum.SUCCESS)
+		
+	def countPrices(self):
+		res=self.mPriceController.countPrices()
+		
+		return Result(ResultEnum.SUCCESS,res)
+
+	def sumNewestPrices(self):
+		res=self.mPriceController.sumNewestPrice()
+		
+		return Result(ResultEnum.SUCCESS,res)
+		
+	def setLogger_Run(self,arg):
+		self.logger.setRun(arg)
+			
 if __name__ == "__main__":
 	pass

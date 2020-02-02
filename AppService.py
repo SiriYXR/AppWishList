@@ -16,6 +16,7 @@ from ConfigService import ConfigService
 from tools.GetJson import *
 from tools.DownLoadImage import *
 from tools.CutImage import *
+from tools.Notification import *
 from tools.Result import *
 from tools.Logger import *
 
@@ -28,6 +29,8 @@ class AppService (object):
 		self.mAppController=AppController(dbpath)
 		self.mPriceService=PriceService(rootpath)
 		self.mConfigService=ConfigService(rootpath)
+		
+		self.mNotification=Notification("AppWishList")
 		
 		self.logger=Logger(self.rootpath+"log.txt","AppService.py",True)
 		
@@ -84,8 +87,15 @@ class AppService (object):
 		
 		return Result(ResultEnum.SUCCESS,res)
 		
-	def getAppsByCategory(self,category):
-		res=self.mAppController.selectAppsByCategory(category)
+	def getAppsByCategory(self,category,key=0,desc=0):
+		keys=["createtime","name","price"]
+		descs=["","DESC"]
+		order="ORDER BY "+keys[key]+" "+descs[desc]
+		
+		if(key==2):
+			res=self.mAppController.selectAppsByCategoryOrderByNewestPrice(category,order)
+		else:
+			res=self.mAppController.selectAppsByCategory(category,order)
 		
 		if(res==None):
 			self.logger.error("getAppsByCategory()"+ResultEnum.SELECT_ERROR[1])			
@@ -132,9 +142,7 @@ class AppService (object):
 		if(res.isPositive()):
 			notice=self.mConfigService.getNotice()
 			if(notice.isPositive() and notice.getData()==1 and res.getData().getNoticed()==0):
-				#print(res.getInfo())
-				#self.logger.info(res.getInfo())
-				pass
+				self.noticePrice(app)
 				
 		return Result(ResultEnum.SUCCESS,app)
 		
@@ -165,6 +173,30 @@ class AppService (object):
 			
 		return Result(ResultEnum.SUCCESS,(newapps,fault))
 	
+	def updateAllApps_Syn(self,syn=None):
+		res=self.getAllApps()
+		
+		if(not res.equal(ResultEnum.SUCCESS)):
+			return res
+		
+		apps=res.getData()
+		newapps=[]
+		fault=0
+		
+		l=len(apps)
+		if(not syn==None):
+				syn(0,l)
+		for i in range(l):
+			if(not syn==None):
+				syn(i+1,l)
+			res=self.updateApp(apps[i])
+			if(res.isPositive()):
+				newapps.append(res.getData())
+			else:
+				fault+=1
+			
+		return Result(ResultEnum.SUCCESS,(l,fault))
+	
 	def deleteApp(self,app):
 		if(app.getId()<0):
 			self.logger.warning("deleteApp()"+ResultEnum.APP_INVALID[1])
@@ -185,7 +217,12 @@ class AppService (object):
 		self.logger.warning("deleteAppByAppId删除app："+appid)
 		
 		return Result(ResultEnum.SUCCESS)
-		
+	
+	def deleteAllApps(self):
+		self.mAppController.deleteAllApps()
+		self.logger.warning("删除所有app!")
+		return Result(ResultEnum.SUCCESS)
+				
 	def getCategories(self):
 		res=self.mAppController.selectCategories()
 
@@ -207,6 +244,21 @@ class AppService (object):
 		res=self.mAppController.countStar()
 		
 		return Result(ResultEnum.SUCCESS,res)
+		
+	def countCategory(self):
+		res=self.mAppController.countCategory()
+		
+		return Result(ResultEnum.SUCCESS,res)
+	
+	def countPrices(self):
+		res=self.mPriceService.countPrices()
+		
+		return Result(ResultEnum.SUCCESS,res.getData())
+		
+	def sumNewestPrices(self):
+		res=self.mPriceService.sumNewestPrices()
+		
+		return Result(ResultEnum.SUCCESS,res.getData())
 	
 	def starApp(self,app):
 		cnt=self.sortAppStar().getData()
@@ -246,21 +298,57 @@ class AppService (object):
 		for i in range(cnt):
 			self.changeAppStar(apps[i],i+1)
 		
-		self.logger.info("排序app收藏顺序。")
+		#self.logger.info("排序app收藏顺序。")
 		return Result(ResultEnum.SUCCESS,cnt)	
 	
+	def noticePrice(self,app):
+		
+		res=self.getPricesByApp(app)
+		if(not res.isPositive()):
+			return res
+			
+		prices=res.getData()
+		
+		if (len(prices)<2):
+			return Result(ResultEnum.FAULT)
+			
+		newprice=prices[-1]
+		oldprice=prices[-2]
+		
+		if(newprice.getPrice()>oldprice.getPrice()):
+			return Result(ResultEnum.FAULT)
+		
+		self.mPriceService.setNoticed(newprice)
+		note='你关注的"'+app.getName()+'"降价啦！ 当前价格:¥ '+str(newprice.getPrice())
+		self.mNotification.addNotice(note)
+		
+		self.logger.info("降价通知："+app.getName()+"\n"+newprice.toString())
+		return Result(ResultEnum.SUCCESS)
+		
 	def isExist(self,app):
 		if(self.mAppController.selectAppByAppId(app.getAppId()) != None):
 			return True
 		else:
 			return  False
 
+	def clearDataBase(self):
+		self.logger.warning("清理数据库:")
+		self.deleteAllApps()
+		self.mPriceService.deleteAllPrices()	
+		return Result(ResultEnum.SUCCESS)
+
+	def setLogger_Run(self,arg):
+		self.logger.setRun(arg)
+		self.mPriceService.setLogger_Run(arg)
+		self.mConfigService.setLogger_Run(arg)
+		return Result(ResultEnum.SUCCESS)
+
 if __name__ == "__main__":
 	serv=AppService()
 
-	res=serv.getAppsByStar()
+	#res=serv.getAppsByStar()
 
-	if(res.equal(ResultEnum.SUCCESS)):
-		for i in res.getData():
-			print(i.toString()+"\n")
+	#if(res.equal(ResultEnum.SUCCESS)):
+		#for i in res.getData():
+			#print(i.toString()+"\n")
 	
