@@ -16,7 +16,7 @@ def CreateDataBase(path="../../data/database.db"):
 	# c.execute('''PRAGMA foreign_keys=ON''')#sqlite外键功能使用起来不是很方便，还是自己手动实现
 	
 	#创建表apps
-	c.execute('''CREATE TABLE apps(id INTEGER PRIMARY KEY AUTOINCREMENT,appid VARCHAR(255),url VARCHAR(255),imgurl VARCHAR(255),name VARCHAR(255),applicationCategory VARCHAR(255),author VARCHAR(255),star INT(64) DEFAULT(0),createTime TIMESTAMP DEFAULT(datetime('now','localtime')),updateTime TIMESTAMP DEFAULT(datetime('now','localtime')))''')
+	c.execute('''CREATE TABLE apps(id INTEGER PRIMARY KEY AUTOINCREMENT,appid VARCHAR(255),url VARCHAR(255),imgurl VARCHAR(255),name VARCHAR(255),applicationCategory VARCHAR(255),author VARCHAR(255),note TEXT,star INT(64) DEFAULT(0),autoupdate INT(1) DEFAULT(1),createTime TIMESTAMP DEFAULT(datetime('now','localtime')),updateTime TIMESTAMP DEFAULT(datetime('now','localtime')))''')
 	
 	#创建触发器，在更新apps表项的时候更新updateTime
 	c.execute('''CREATE TRIGGER apps_update BEFORE UPDATE ON apps FOR EACH ROW BEGIN UPDATE apps SET updateTime=datetime('now','localtime') WHERE id= old.id; END;''')

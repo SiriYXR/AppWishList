@@ -56,13 +56,15 @@ class AppDetailView(ui.View):
 		self.info_inconView=ui.ImageView()
 		self.info_nameLabel=ui.Label()
 		self.info_authorLabel=ui.Label()
-		self.info_categoryLabel=ui.Label()
+		self.info_categoryLabel=ui.Button()
 		self.info_createtimeLabel=ui.Label()
 		self.info_updatetimeLabel=ui.Label()
 		self.info_starBtn=ui.Button()
 		self.info_storeBtn=ui.Button()
 		self.info_updateBtn=ui.Button()
 		self.info_deleteBtn=ui.Button()
+		self.info_autoupdateLabel=ui.Label()
+		self.info_autoupdateBtn=ui.Switch()
 		
 		self.infoView.add_subview(self.info_inconView)
 		self.infoView.add_subview(self.info_nameLabel)
@@ -74,6 +76,8 @@ class AppDetailView(ui.View):
 		self.infoView.add_subview(self.info_storeBtn)
 		self.infoView.add_subview(self.info_updateBtn)
 		self.infoView.add_subview(self.info_deleteBtn)
+		self.infoView.add_subview(self.info_autoupdateLabel)
+		self.infoView.add_subview(self.info_autoupdateBtn)
 		
 		self.priceView=ui.View()
 		self.price_offLabel=SteamPriceLabel(self.lastPrice.getPrice(),self.presentPrice.getPrice())
@@ -155,8 +159,16 @@ class AppDetailView(ui.View):
 		self.info_authorLabel.text=StringProcess(self.obj.getAuthor())
 		self.info_authorLabel.text_color='#979797'
 		
-		self.info_categoryLabel.text=self.obj.getApplicationCategory()
-	
+		self.info_categoryLabel.title=self.obj.getApplicationCategory()
+		self.info_categoryLabel.font=("<system>",15)
+		self.info_categoryLabel.action=self.changeCategory_Act
+		
+		self.info_autoupdateLabel.text="自动更新"
+		
+		self.info_autoupdateBtn.value=self.obj.getAutoUpdate()
+		self.info_autoupdateBtn.tint_color="#0987b4"
+		self.info_autoupdateBtn.action=self.changeAutoUpdate_Act
+		
 		self.info_createtimeLabel.text="收藏时间:"+self.obj.getCreateTime()
 		
 		self.info_updatetimeLabel.text="更新时间:"+self.obj.getUpdateTime()
@@ -237,11 +249,16 @@ class AppDetailView(ui.View):
 		self.info_authorLabel.frame=(self.info_nameLabel.x,50,600,40)
 		#self.info_authorLabel.background_color="blue"
 		
-		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,120,40)
-		#self.info_categoryLabel.background_color="blue"
 		
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,len(self.obj.getApplicationCategory())*16,30)
+		#self.info_categoryLabel.background_color="blue"
+
 		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
 		#self.info_createtimeLabel.background_color="green"
+		
+		self.info_autoupdateLabel.frame=(self.width-175,self.info_categoryLabel.y,100,30)
+		
+		self.info_autoupdateBtn.frame=(self.width-100,self.info_categoryLabel.y,100,30)
 		
 		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
 		#self.info_updatetimeLabel.background_color="green"
@@ -310,9 +327,12 @@ class AppDetailView(ui.View):
 		self.info_authorLabel.frame=(self.info_nameLabel.x,50,460,40)
 		#self.info_authorLabel.background_color="blue"
 		
-		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,120,40)
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,len(self.obj.getApplicationCategory())*16,30)
 		#self.info_categoryLabel.background_color="blue"
 		
+		self.info_autoupdateLabel.frame=(self.width-155,self.info_categoryLabel.y,100,30)
+		
+		self.info_autoupdateBtn.frame=(self.width-80,self.info_categoryLabel.y,100,30)
 		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
 		#self.info_createtimeLabel.background_color="green"
 		
@@ -477,6 +497,40 @@ class AppDetailView(ui.View):
 	def epoch_Act(self,sender):
 		self.epoch=self.graph_epochBtn.selected_index
 		self.loadUI()
+		
+	def changeCategory_Act(self,sender):
+		res=console.input_alert("修改分类","请输入分类名称(20字以内):",self.obj.getApplicationCategory(),"确认",True)
+		category=res.replace(" ","")
+		if(category=="" or category==self.obj.getApplicationCategory()):
+			return
+		
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.changeAppCategory(self.obj,category)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			self.layout()
+			console.hud_alert('分类修改成功!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to delete App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		
+		
+	def changeAutoUpdate_Act(self,sender):
+		value=self.info_autoupdateBtn.value
+		
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.changeAppAutoUpdate(self.obj,value)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+		except Exception as e:
+			console.hud_alert('Failed to delete App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
 		
 if __name__ == "__main__":
 	pass

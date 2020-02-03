@@ -92,7 +92,7 @@ class CategoryView(ui.View):
 		return cell
 
 	def tableview_can_delete(self, tableview, section, row):
-		return False
+		return True
 
 	def tableview_can_move(self, tableview, section, row):
 		return False
@@ -108,12 +108,23 @@ class CategoryView(ui.View):
 			console.hud_alert('Failed to load apps list', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
+	
+	def tableview_title_for_delete_button(self,tableview, section, row):
+		return "删除"
+		
+	def tableview_delete(self,tableview, section, row):
+		category=self.categories_names[row]
 			
+		res=console.alert("删除分类",'你确定要删除"'+category+'"分类及其下所有App吗？',"确定","取消",hide_cancel_button=True)
+		
+		if(res==1):
+			self.deleteCategory(category)	
+	
 	@ui.in_background		
 	def scrollview_did_scroll(self,scrollview):
 		if(scrollview.content_offset[1]<-150):
 			self.renovate()
-				
+	
 	@ui.in_background
 	def renovate(self):
 		self.app.activity_indicator.start()
@@ -128,3 +139,13 @@ class CategoryView(ui.View):
 	def updateData(self):
 		self.loadData()
 		self.father.updateData()
+		
+	def deleteCategory(self,category):
+		self.app.activity_indicator.start()
+		try:
+			self.app.appService.deleteAppsByCategory(category)
+			self.loadData()
+		except Exception as e:
+			console.hud_alert('Failed to delete category', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()

@@ -4,14 +4,12 @@
 @file: ExtAddApp.py
 @time: 2019.12.25 11:29
 """
-
+import sys
 import appex
 import console
 
 from AppService import AppService
 from ConfigService import ConfigService
-
-from UI.AddAppView import AddAppView
 
 from tools.Result import *
 from tools.Logger import *

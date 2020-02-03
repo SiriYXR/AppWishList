@@ -28,8 +28,14 @@ class App (object):
 	#应用作者
 	mAuthor=None
 	
+	#用户备注
+	mNote=None
+	
 	#愿望单top
 	mStar=None
+	
+	#自动更新
+	mAutoUpdate=None
 	
 	#创建时间
 	mCreateTime=None
@@ -51,7 +57,9 @@ class App (object):
 		self.mName=""
 		self.mApplicationCategory=""
 		self.mAuthor=""
+		self.mNote="暂无备注"
 		self.mStar=0
+		self.mAutoUpdate=1
 
 	def setId(self,id):
 		self.mId=id
@@ -94,12 +102,24 @@ class App (object):
 		
 	def getAuthor(self):
 		return self.mAuthor
-
+	
+	def setNote(self,note):
+		self.mNote=note
+		
+	def getNote(self):
+		return self.mNote
+	
 	def setStar(self,star):
 		self.mStar=star
 		
 	def getStar(self):
 		return self.mStar
+
+	def setAutoUpdate(self,arg):
+		self.mAutoUpdate=arg
+		
+	def getAutoUpdate(self):
+		return self.mAutoUpdate
 
 	def getCreateTime(self):
 		return self.mCreateTime
@@ -115,6 +135,15 @@ class App (object):
 		self.mApplicationCategory=json["applicationCategory"]
 		
 		self.mAuthor=json["author"]["name"]
+	
+	def updateByJson(self, json):
+		self.mName=json["name"]
+		
+		self.mImgURL=json["image"]
+		
+		#self.mApplicationCategory=json["applicationCategory"]
+		
+		self.mAuthor=json["author"]["name"]
 		
 	def initByTuple(self,t):
 		self.mId=t[0]
@@ -124,12 +153,14 @@ class App (object):
 		self.mName=t[4]
 		self.mApplicationCategory=t[5]
 		self.mAuthor=t[6]
-		self.mStar=t[7]
-		self.mCreateTime=t[8]
-		self.mUpdateTime=t[9]
+		self.mNote=t[7]
+		self.mStar=t[8]
+		self.mAutoUpdate=t[9]
+		self.mCreateTime=t[10]
+		self.mUpdateTime=t[11]
 		
 	def toString(self):
-		return 'Id: '+str(self.mId)+'\nAppId: '+self.mAppId+'\nURL: '+self.mURL+'\nImgURL: '+self.mImgURL+'\nName: '+self.mName+'\nApplicationCategory: '+self.mApplicationCategory+'\nAuthor: '+self.mAuthor+'\nStar: '+str(self.mStar)
+		return '\nId:\t'+str(self.mId)+'\nAppId:\t'+self.mAppId+'\nURL:\t'+self.mURL+'\nName:\t'+self.mName+'\nApplicationCategory:\t'+self.mApplicationCategory+'\nAuthor:\t'+self.mAuthor+'\nNote:\t'+str(self.mNote)+'\nStar:\t'+str(self.mStar)+'\nAutoUpdate:\t'+str(self.mAutoUpdate)
 		
 if __name__ == "__main__":
 	app=App("https://apps.apple.com/cn/app/playdeads-inside/id1201642309")

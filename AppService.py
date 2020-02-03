@@ -78,8 +78,8 @@ class AppService (object):
 		
 		return Result(ResultEnum.SUCCESS,res)
 		
-	def getAllApps(self):
-		res=self.mAppController.selectAllApps()
+	def getAllApps(self,where=""):
+		res=self.mAppController.selectAllApps(where)
 		
 		if(res==None):
 			self.logger.error("getAllApps()"+ResultEnum.SELECT_ERROR[1])
@@ -126,7 +126,7 @@ class AppService (object):
 			self.logger.error("无效json："+app.getURL())
 			return Result(ResultEnum.URL_INVALID)
 			
-		app.initByJson(jsondic)
+		app.updateByJson(jsondic)
 		
 		self.mAppController.updateApp(app)
 		self.logger.info("更新app："+app.getAppId())
@@ -139,9 +139,9 @@ class AppService (object):
 		
 		res=self.mPriceService.addPrice(app,jsondic)
 		
-		if(res.isPositive()):
+		if(app.getStar() and res.isPositive()):
 			notice=self.mConfigService.getNotice()
-			if(notice.isPositive() and notice.getData()==1 and res.getData().getNoticed()==0):
+			if(notice.isPositive() and notice.getData()==1):
 				self.noticePrice(app)
 				
 		return Result(ResultEnum.SUCCESS,app)
@@ -155,7 +155,7 @@ class AppService (object):
 			return self.updateApp(res.getData())
 		
 	def updateAllApps(self):
-		res=self.getAllApps()
+		res=self.getAllApps("WHERE autoupdate=1")
 		
 		if(not res.equal(ResultEnum.SUCCESS)):
 			return res
@@ -174,7 +174,7 @@ class AppService (object):
 		return Result(ResultEnum.SUCCESS,(newapps,fault))
 	
 	def updateAllApps_Syn(self,syn=None):
-		res=self.getAllApps()
+		res=self.getAllApps("WHERE autoupdate=1")
 		
 		if(not res.equal(ResultEnum.SUCCESS)):
 			return res
@@ -214,7 +214,14 @@ class AppService (object):
 		self.mAppController.deleteAppByAppId(appid)
 		self.mPriceService.deletePriceByAppId(appid)
 		
-		self.logger.warning("deleteAppByAppId删除app："+appid)
+		self.logger.warning("deleteAppByAppId()删除app："+appid)
+		
+		return Result(ResultEnum.SUCCESS)
+	
+	def deleteAppsByCategory(self,category):
+		self.mAppController.deleteAppByCategory(category)
+		
+		self.logger.warning("deleteAppByCategory()删除分类为'"+category+"'的app")
 		
 		return Result(ResultEnum.SUCCESS)
 	
@@ -301,6 +308,20 @@ class AppService (object):
 		#self.logger.info("排序app收藏顺序。")
 		return Result(ResultEnum.SUCCESS,cnt)	
 	
+	def changeAppCategory(self,app,category):
+		self.logger.info("修改app分类: "+app.getId()+" "+app.getApplicationCategory()+" -> "+category)
+		app.setApplicationCategory(category)
+		res=self.mAppController.updateApp(app)
+	
+		return Result(ResultEnum.SUCCESS)
+	
+	def changeAppAutoUpdate(self,app,arg):
+		self.logger.info("修改app自动更新: "+app.getId()+" "+str(arg))
+		app.setAutoUpdate(arg)
+		res=self.mAppController.updateApp(app)
+	
+		return Result(ResultEnum.SUCCESS)
+	
 	def noticePrice(self,app):
 		
 		res=self.getPricesByApp(app)
@@ -315,7 +336,7 @@ class AppService (object):
 		newprice=prices[-1]
 		oldprice=prices[-2]
 		
-		if(newprice.getPrice()>oldprice.getPrice()):
+		if(newprice.getPrice()>=oldprice.getPrice()):
 			return Result(ResultEnum.FAULT)
 		
 		self.mPriceService.setNoticed(newprice)

@@ -21,7 +21,7 @@ class AppController (object):
 	def insertApp(self,app):
 		self.mSQLConn.connect()
 		
-		sql='''INSERT INTO apps (appid,url,imgurl,name,applicationCategory,author) VALUES ("{appid}","{url}","{imgurl}", "{name}","{category}","{author}")'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor())
+		sql='''INSERT INTO apps (appid,url,imgurl,name,applicationCategory,author,note) VALUES ("{appid}","{url}","{imgurl}", "{name}","{category}","{author}","{note}")'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor(),note=app.getNote())
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -30,7 +30,7 @@ class AppController (object):
 	def updateApp(self,app):
 		self.mSQLConn.connect()
 
-		sql='''UPDATE apps SET appid="{appid}",url="{url}",imgurl="{imgurl}",name="{name}",applicationCategory="{category}",author="{author}",star={star} WHERE id={id}'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor(),star=app.getStar(),id=app.getId())
+		sql='''UPDATE apps SET appid="{appid}",url="{url}",imgurl="{imgurl}",name="{name}",applicationCategory="{category}",author="{author}",note="{note}",star={star},autoupdate={autoupdate} WHERE id={id}'''.format(appid=app.getAppId(),url=app.getURL(),imgurl=app.getImgURL(),name=app.getName(),category=app.getApplicationCategory(),author=app.getAuthor(),note=app.getNote(),star=app.getStar(),autoupdate=app.getAutoUpdate(),id=app.getId())
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
@@ -63,10 +63,22 @@ class AppController (object):
 		
 		self.mSQLConn.close()
 		
-	def selectAllApps(self):
+	def deleteAppByCategory(self,category):
 		self.mSQLConn.connect()
 		
-		sql='''SELECT * FROM apps '''
+		sql='''DELETE FROM price WHERE appid in (SELECT appid FROM apps WHERE applicationcategory="{category}")'''.format(category=category)
+		self.mSQLConn.execute(sql)
+			
+		sql='''DELETE FROM apps WHERE applicationcategory="{category}"'''.format(category=category)
+		#print(sql)
+		self.mSQLConn.execute(sql)
+		
+		self.mSQLConn.close()
+		
+	def selectAllApps(self,where=""):
+		self.mSQLConn.connect()
+		
+		sql='''SELECT * FROM apps {where}'''.format(where=where)
 		#print(sql)
 		self.mSQLConn.execute(sql)
 		
