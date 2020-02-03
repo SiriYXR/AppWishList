@@ -249,8 +249,9 @@ class AppDetailView(ui.View):
 		self.info_authorLabel.frame=(self.info_nameLabel.x,50,600,40)
 		#self.info_authorLabel.background_color="blue"
 		
-		
-		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,len(self.obj.getApplicationCategory())*16,30)
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
 		#self.info_categoryLabel.background_color="blue"
 
 		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
@@ -327,7 +328,9 @@ class AppDetailView(ui.View):
 		self.info_authorLabel.frame=(self.info_nameLabel.x,50,460,40)
 		#self.info_authorLabel.background_color="blue"
 		
-		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,len(self.obj.getApplicationCategory())*16,30)
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
 		#self.info_categoryLabel.background_color="blue"
 		
 		self.info_autoupdateLabel.frame=(self.width-155,self.info_categoryLabel.y,100,30)
@@ -501,8 +504,16 @@ class AppDetailView(ui.View):
 	def changeCategory_Act(self,sender):
 		res=console.input_alert("修改分类","请输入分类名称(20字以内):",self.obj.getApplicationCategory(),"确认",True)
 		category=res.replace(" ","")
-		if(category=="" or category==self.obj.getApplicationCategory()):
+		if(category==""):
+			console.hud_alert('分类不能为空!', 'error', 1.0)
 			return
+		
+		if(len(category)>20):
+			console.hud_alert('分类名称长度不能超过20字!', 'error', 1.0)
+			return 
+		
+		if(category==self.obj.getApplicationCategory()):
+			return 
 		
 		self.app.activity_indicator.start()
 		try:
@@ -513,7 +524,7 @@ class AppDetailView(ui.View):
 			self.layout()
 			console.hud_alert('分类修改成功!', 'success', 1.0)
 		except Exception as e:
-			console.hud_alert('Failed to delete App', 'error', 1.0)
+			console.hud_alert('Failed to change App category', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 		

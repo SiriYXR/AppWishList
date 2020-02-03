@@ -309,7 +309,7 @@ class AppService (object):
 		return Result(ResultEnum.SUCCESS,cnt)	
 	
 	def changeAppCategory(self,app,category):
-		self.logger.info("修改app分类: "+app.getId()+" "+app.getApplicationCategory()+" -> "+category)
+		self.logger.info("修改app分类: "+str(app.getId())+" "+app.getApplicationCategory()+" -> "+category)
 		app.setApplicationCategory(category)
 		res=self.mAppController.updateApp(app)
 	
