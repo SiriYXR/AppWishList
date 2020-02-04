@@ -316,7 +316,7 @@ class AppService (object):
 		return Result(ResultEnum.SUCCESS)
 	
 	def changeAppAutoUpdate(self,app,arg):
-		self.logger.info("修改app自动更新: "+app.getId()+" "+str(arg))
+		self.logger.info("修改app自动更新: "+str(app.getAppId())+" "+str(arg))
 		app.setAutoUpdate(arg)
 		res=self.mAppController.updateApp(app)
 	

@@ -539,7 +539,7 @@ class AppDetailView(ui.View):
 				raise Exception()  
 			self.updateData()
 		except Exception as e:
-			console.hud_alert('Failed to delete App', 'error', 1.0)
+			console.hud_alert('Failed to change App autoupdate', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 		
