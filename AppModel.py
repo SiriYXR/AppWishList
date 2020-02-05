@@ -59,7 +59,7 @@ class App (object):
 		self.mAuthor=""
 		self.mNote="暂无备注"
 		self.mStar=0
-		self.mAutoUpdate=1
+		self.mAutoUpdate=0
 
 	def setId(self,id):
 		self.mId=id
@@ -160,7 +160,7 @@ class App (object):
 		self.mUpdateTime=t[11]
 		
 	def toString(self):
-		return '\nId:\t'+str(self.mId)+'\nAppId:\t'+self.mAppId+'\nURL:\t'+self.mURL+'\nName:\t'+self.mName+'\nApplicationCategory:\t'+self.mApplicationCategory+'\nAuthor:\t'+self.mAuthor+'\nNote:\t'+str(self.mNote)+'\nStar:\t'+str(self.mStar)+'\nAutoUpdate:\t'+str(self.mAutoUpdate)
+		return 'Id:\t'+str(self.mId)+'\nAppId:\t'+self.mAppId+'\nURL:\t'+self.mURL+'\nName:\t'+self.mName+'\nApplicationCategory:\t'+self.mApplicationCategory+'\nAuthor:\t'+self.mAuthor+'\nNote:\t'+str(self.mNote)+'\nStar:\t'+str(self.mStar)+'\nAutoUpdate:\t'+str(self.mAutoUpdate)
 		
 if __name__ == "__main__":
 	app=App("https://apps.apple.com/cn/app/playdeads-inside/id1201642309")
