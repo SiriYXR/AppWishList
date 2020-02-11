@@ -105,12 +105,12 @@ class PricePlotView(ui.View):
 		i=self.index	
 		while date.strftime("%Y%m%d") <= x[-1].strftime("%Y%m%d") and date.strftime("%Y%m%d") < "{Y}0101".format(Y=self.epoch+1):
 			self.data_x.append(date)
-			date+=timedelta(days=1)
-			if((x[i]-date).days<1):
+			if(date.strftime("%Y%m%d") == x[i].strftime("%Y%m%d")):
 				self.data_y.append(y[i])
 				i+=1
 			else:
 				self.data_y.append(-1)
+			date+=timedelta(days=1)
 		
 	def layout(self):
 		for i in self.scrollViewitems:
