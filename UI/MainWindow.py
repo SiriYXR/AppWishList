@@ -40,7 +40,8 @@ class MainTable(ui.View):
 		self.flex='WHLRTB'
 		
 		self.tableView=ui.TableView()
-		self.tableView.flex='WHLRTB'
+		self.tableView.flex='HLRTB'
+		self.tableView.width=710
 		
 		self.add_subview(self.tableView)
 		
@@ -179,7 +180,7 @@ class MainWindow(ui.View):
 			self.orientation=self.PORTRAIT
 	
 	def launch(self):
-		self.present(style='full_screen',)
+		self.present(style='fullscreen')
 		self.configService.runTimesAddOne()
 
 if __name__ == '__main__':
