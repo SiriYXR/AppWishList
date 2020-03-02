@@ -336,7 +336,7 @@ class AppService (object):
 		newprice=prices[-1]
 		oldprice=prices[-2]
 		
-		if(newprice.getPrice()>=oldprice.getPrice()):
+		if(newprice.getPrice()>=oldprice.getPrice() or newprice.getNoticed()==1):
 			return Result(ResultEnum.FAULT)
 		
 		self.mPriceService.setNoticed(newprice)
