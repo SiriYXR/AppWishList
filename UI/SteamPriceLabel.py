@@ -32,7 +32,7 @@ class SteamPriceLabel(ui.View):
 		
 	def loadOff(self):
 		self.off_label.frame=(0,0,90,40)
-		self.off_label.font=('Arial',30)
+		self.off_label.font=('Arial',26)
 		self.off_label.alignment=ui.ALIGN_CENTER
 		
 		rate=0
