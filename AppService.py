@@ -60,8 +60,13 @@ class AppService (object):
 				return Result(ResultEnum.APP_UPDATE)
 			return res 
 		
-		self.mAppController.insertApp(app)
-		res=self.mPriceService.addPrice(app,jsondic)
+		self.mAppController.insertApp(app)		
+		self.mPriceService.addPrice(app,jsondic)
+		
+		# 默认开启自动更新，并设置为愿望单
+		app=self.getAppByAppId(app.getAppId()).getData()
+		self.starApp(app)
+		self.changeAppAutoUpdate(app,1)
 		
 		# 调用更新时再下载，加快应用添加速度，以免用户长时间等待
 		# downLoadImage(app.getImgURL(),"data/img/"+app.getAppId()+".png")

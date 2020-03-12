@@ -57,7 +57,7 @@ class App (object):
 		self.mName=""
 		self.mApplicationCategory=""
 		self.mAuthor=""
-		self.mNote="暂无备注"
+		self.mNote=""
 		self.mStar=0
 		self.mAutoUpdate=0
 
@@ -140,8 +140,6 @@ class App (object):
 		self.mName=json["name"]
 		
 		self.mImgURL=json["image"]
-		
-		#self.mApplicationCategory=json["applicationCategory"]
 		
 		self.mAuthor=json["author"]["name"]
 		

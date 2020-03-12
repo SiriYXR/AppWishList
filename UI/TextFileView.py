@@ -19,11 +19,9 @@ class TextFileView (ui.View):
 		self.flex="WHRLTB"
 		self.background_color="white"
 		
-		self.scrollView=ui.ScrollView()
 		self.contentView=ui.TextView()
 		
 		self.add_subview(self.contentView)
-		#self.add_subview(self.scrollView)
 		
 		self.loadData()
 		
@@ -45,9 +43,6 @@ class TextFileView (ui.View):
 		self.contentView.text=self.content
 		self.contentView.frame=(0,0,self.width,self.height)
 		self.contentView.font=("<system>",16)
-		
-		self.scrollView.frame=(0,0,self.width,self.height)
-		self.scrollView.content_size=(self.width,max(self.contentView.height+30,self.height))
 		
 	def layout(self):
 		self.loadUI()

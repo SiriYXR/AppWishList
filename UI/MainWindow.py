@@ -66,7 +66,7 @@ class MainTable(ui.View):
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
-				{"title": "\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.0", "accessory_type": "none"},
+				{"title": "\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.0.1", "accessory_type": "none"},
 				{"title": self.MENU_BLOG, "accessory_type": "none"},
 				]
 			)
