@@ -37,7 +37,7 @@ class AppService (object):
 	def __del__(self):
 		pass
 		
-	def addApp(self,url):
+	def addApp(self,url,star=True):
 		app=App(url)
 		
 		jsontxt=GetJson(url)
@@ -65,8 +65,11 @@ class AppService (object):
 		
 		# 默认开启自动更新，并设置为愿望单
 		app=self.getAppByAppId(app.getAppId()).getData()
-		self.starApp(app)
-		self.changeAppAutoUpdate(app,1)
+		if(star):
+			self.starApp(app)
+			self.changeAppAutoUpdate(app,1)
+		else:
+			self.changeAppAutoUpdate(app,0)
 		
 		# 调用更新时再下载，加快应用添加速度，以免用户长时间等待
 		# downLoadImage(app.getImgURL(),"data/img/"+app.getAppId()+".png")

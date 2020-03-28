@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AppsTableView.py
-@time: 2020.1.29 00:29
+@createTime: 2020-01-29 00:29
+@updateTime: 2020-03-28 14:52:02
 """
 
 import sys
@@ -27,6 +28,9 @@ class AppsTableView(ui.View):
 	def __init__(self,app,father,name):
 		self.app=app
 		self.father=father
+		
+		self.imgStar=ui.Image.named(self.app.rootpath+"UI/img/star_full.PNG")
+		self.imgUnStar=ui.Image.named(self.app.rootpath+"UI/img/star_vacancy.PNG")
 		
 		self.name=name
 		self.background_color="white"
@@ -89,13 +93,16 @@ class AppsTableView(ui.View):
 		cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		cell.accessory_type='disclosure_indicator'
 	
-		self.loadCellPrice(cell,row)
+		self.loadCellItem(cell,app)
 
 		return cell
 	
-	def loadCellPrice(self,cell,row):
-		res=self.app.appService.getPricesByApp(self.apps[row])
+	def loadCellItem(self,cell,app):
+		itemView=ui.View()
+		itemView.width=300
+		itemView.height=50
 		
+		res=self.app.appService.getPricesByApp(app)
 		newprice=0;
 		oldprice=0;
 		if(not res.equal(ResultEnum.SUCCESS)):
@@ -112,12 +119,33 @@ class AppsTableView(ui.View):
 				
 		pricelabel=SteamPriceLabel(oldprice,newprice)
 		
-		if(self.app.orientation==self.app.LANDSCAPE):
-			pricelabel.x,pricelabel.y=self.width-350,10
+		starBtn=ui.Button()
+		starBtn.name=app.getAppId() # 利用name属性来记录其对应的app
+		starBtn.width=starBtn.height=40
+		if(app.getStar()>0):
+			starBtn.background_image=self.imgStar
 		else:
-			pricelabel.x,pricelabel.y=self.width-220,10
+			starBtn.background_image=self.imgUnStar
+		starBtn.action=self.star_Act
 		
-		cell.add_subview(pricelabel)
+		autoUpdateBtn=ui.Switch()
+		autoUpdateBtn.name=app.getAppId() # 利用name属性来记录其对应的app
+		autoUpdateBtn.width,autoUpdateBtn.height=100,30
+		autoUpdateBtn.value=app.getAutoUpdate()
+		autoUpdateBtn.tint_color="#0987b4"
+		autoUpdateBtn.action=self.changeAutoUpdate_Act
+		
+		# 设置布局
+		pricelabel.x,pricelabel.y=0,10
+		starBtn.x,starBtn.y=pricelabel.x+150,pricelabel.y # 以pricelabel为参考系
+		autoUpdateBtn.x,autoUpdateBtn.y= starBtn.x+50,starBtn.y+6 # 以starBtn为参考系
+		
+		itemView.x=self.tableView.width-300
+		
+		itemView.add_subview(pricelabel)
+		itemView.add_subview(starBtn)
+		itemView.add_subview(autoUpdateBtn)
+		cell.content_view.add_subview(itemView)
 	
 	def tableview_can_delete(self, tableview, section, row):
 		return True
@@ -202,9 +230,63 @@ class AppsTableView(ui.View):
 		
 		self.loadData()
 		
+	def star_Act(self,sender):
+		res=self.app.appService.getAppByAppId(sender.name)
+		if(not res.isPositive()):
+			console.hud_alert('App获取失败!', 'error', 1.0)
+			return
+		app=res.getData()	
+		if(app.getStar()==0):
+			self.starApp(app)
+		else:
+			self.unstarApp(app)	
+
+	def starApp(self,app):
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.starApp(app)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App加入愿望单!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to star App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+			pass
+
+	def unstarApp(self,app):
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.unstarApp(app)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App已移出愿望单。', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to unstar App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+			pass	
+	
+	def changeAutoUpdate_Act(self,sender):
+		value=sender.value
 		
-		
-		
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.getAppByAppId(sender.name)
+			if(not res.isPositive()):
+				raise Exception()
+				
+			res=self.app.appService.changeAppAutoUpdate(res.getData(),value)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App自动更新状态已更改!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to change App autoupdate', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
 		
 				
 			

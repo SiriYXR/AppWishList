@@ -42,7 +42,8 @@ def IsJsonValid(jsondic):
 		
 if __name__ == '__main__':
 	
-	url = "https://apps.apple.com/cn/app/notability/id360593530"
+	url = "https://apps.apple.com/cn/app/%E8%BF%9C%E7%A8%8B%E8%BE%93%E5%85%A5%E6%B3%95/id1474458879"
+	
 	jsondata=GetJson(url)
 	
 	print(jsondata)

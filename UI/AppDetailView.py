@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AppDetailView.py
-@time: 2020.1.29 20:39
+@createTime: 2020-01-29 20:39
+@updateTime: 2020-03-28 14:48:10
 """
 
 import sys
@@ -129,6 +130,8 @@ class AppDetailView(ui.View):
 			else:
 				self.presentPrice=self.lastPrice=self.firstPrice=self.lowestPrice=self.prices[0]
 			
+			self.dates.clear()
+			self.prices_v.clear()
 			for i in self.prices :
 				date=datetime.strptime(i.getCreateTime(),"%Y-%m-%d %H:%M:%S")
 				self.dates.append(date)
@@ -402,8 +405,8 @@ class AppDetailView(ui.View):
 			console.hud_alert('Failed to load Prices', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
-			
-		
+	
+	@ui.in_background		
 	def star_Act(self,sender):
 		if(self.obj.getStar()==0):
 			self.starApp()
@@ -424,7 +427,6 @@ class AppDetailView(ui.View):
 			self.app.activity_indicator.stop()
 			pass
 
-	@ui.in_background
 	def unstarApp(self):
 		self.app.activity_indicator.start()
 		try:
@@ -538,6 +540,7 @@ class AppDetailView(ui.View):
 			if(not res.isPositive()):
 				raise Exception()  
 			self.updateData()
+			console.hud_alert('App自动更新状态已更改!', 'success', 1.0)
 		except Exception as e:
 			console.hud_alert('Failed to change App autoupdate', 'error', 1.0)
 		finally:

@@ -30,10 +30,15 @@ def main(rootpath="data/"):
 			logger.error("No input URL found.")
 		return
 	
+	# 选择添加到愿望单还是收藏夹
+	star=True
+	if(console.alert("添加应用","请选择添加到愿望单还是收藏夹","愿望单","收藏夹", hide_cancel_button=True)==2):
+		star=False
+		
 	console.hud_alert("正在抓取数据，请等待...","success")
 		
 	appSerVice=AppService(rootpath)	
-	res=appSerVice.addApp(url)
+	res=appSerVice.addApp(url,star)
 		
 	if(res.equal(ResultEnum.APP_UPDATE)):
 		console.hud_alert("应用更新成功!",'success')
@@ -42,6 +47,7 @@ def main(rootpath="data/"):
 	else:
 		console.hud_alert(res.getInfo(),'error')
 	
+	appex.finish()
 		
 if __name__ == "__main__":	
 	main()

@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: CategoryView.py
-@time: 2020.1.28 21:13
+@createTime: 2020-01-28 21:13
+@updateTime: 2020-03-28 13:40:45
 """
+
 import sys
 import ui
 import console
@@ -27,8 +29,9 @@ class CategoryView(ui.View):
 		self.frame=(0,0,self.app.width,self.app.height)
 		self.flex="WHLRTB"
 			
-		self.tableView = ui.TableView(frame=(0, 0, self.width, self.height))
-		self.tableView.flex="WHLRTB"
+		self.tableView = ui.TableView()
+		self.tableView.width=710
+		self.tableView.y=0
 		self.add_subview(self.tableView)
 		
 		self.categories_dict = {}
@@ -59,7 +62,10 @@ class CategoryView(ui.View):
 	
 	def layout(self):
 		self.tableView.reload()
-		pass
+		
+		# tabelView手动居中
+		self.tableView.height=self.height
+		self.tableView.x=(self.width-self.tableView.width)/2
 	
 	def tableview_number_of_sections(self, tableview):
 		return 1
@@ -76,9 +82,9 @@ class CategoryView(ui.View):
 		
 		label=ui.Label()
 		if(self.app.orientation==self.app.LANDSCAPE):
-			label.frame=(self.width-250,10,50,25)
+			label.frame=(self.tableView.width-150,10,50,25)
 		else:
-			label.frame=(self.width-125,10,50,25)
+			label.frame=(self.tableView.width-125,10,50,25)
 		label.alignment=ui.ALIGN_CENTER
 		label.border_width = 1
 		label.corner_radius=5
@@ -87,7 +93,7 @@ class CategoryView(ui.View):
 		label.border_color="#9400d3"
 		label.text=str(categories_count)
 		
-		cell.add_subview(label)
+		cell.content_view.add_subview(label)
 		
 		return cell
 
