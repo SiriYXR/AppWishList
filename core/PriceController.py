@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: PriceController.py
-@time: 2020.1.28 13:07
+@createTime: 2020.1.28 13:07
+@updateTime: 2020-03-29 10:54:10
 """
 
-from PriceModel import Price
+from .PriceModel import Price
 
 from tools.sql.SQLConnector import SQLConnector
 
@@ -187,7 +188,7 @@ class PriceController (object):
 		return res[0]
 	
 if __name__ == "__main__":
-	cont=PriceController("data/database.db")
+	cont=PriceController("../data/database.db")
 	
 	print(cont.countPrices())
 	print(cont.sumNewestPrice())

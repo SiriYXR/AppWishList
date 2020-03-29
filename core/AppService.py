@@ -1,17 +1,19 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AppService.py
-@time: 2019.12.25 09:56
+@createTime: 2019.12.25 09:56
+@updateTime: 2020-03-29 10:53:48
 """
+
 import os
 import json
 
-from AppModel import App
-from PriceModel import Price
-from AppController import AppController
-from PriceService import PriceService
-from ConfigService import ConfigService
+from .AppModel import App
+from .PriceModel import Price
+from .AppController import AppController
+from .PriceService import PriceService
+from .ConfigService import ConfigService
 
 from tools.GetJson import *
 from tools.DownLoadImage import *
@@ -22,7 +24,7 @@ from tools.Logger import *
 
 class AppService (object):
 	
-	def __init__(self,rootpath="data/"):
+	def __init__(self,rootpath="../data/"):
 		self.rootpath=rootpath
 		
 		dbpath=self.rootpath+"database.db"
@@ -348,7 +350,7 @@ class AppService (object):
 			return Result(ResultEnum.FAULT)
 		
 		self.mPriceService.setNoticed(newprice)
-		note='你关注的"'+app.getName()+'"降价啦！ 当前价格:¥ '+str(newprice.getPrice())
+		note='你关注的"'+app.getName()+'"降价啦！🎉 当前价格:¥ '+str(newprice.getPrice())
 		self.mNotification.addNotice(note)
 		
 		self.logger.info("降价通知："+app.getName()+"\n"+newprice.toString())

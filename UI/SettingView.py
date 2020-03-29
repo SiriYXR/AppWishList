@@ -1,22 +1,21 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: SettingView.py
-@time: 2020.2.1 21:17
+@createTime: 2020.2.1 21:17
+@updateTime: 2020-03-29 10:53:09
 """
-import sys
+
 import os
 
 import ui
 import console
 
-from AlertView import AlertView
-from TextFileView import TextFileView
+from .AlertView import AlertView
+from .TextFileView import TextFileView
 
-sys.path.append("..")
-
-from AppService import AppService
-from ConfigService import ConfigService
+from core.AppService import AppService
+from core.ConfigService import ConfigService
 
 class SettingDelegate(object):
 	def __init__(self,app,father):

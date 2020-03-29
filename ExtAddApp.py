@@ -1,15 +1,18 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: ExtAddApp.py
-@time: 2019.12.25 11:29
+@createTime: 2019.12.25 11:29
+@updateTime: 2020-03-29 11:18:31
 """
 import sys
 import appex
 import console
+import sys
+sys.path.append('.') # 将项目根目录加入模块搜索路径，这样其他模块才能成功导包
 
-from AppService import AppService
-from ConfigService import ConfigService
+from core.AppService import AppService
+from core.ConfigService import ConfigService
 
 from tools.Result import *
 from tools.Logger import *

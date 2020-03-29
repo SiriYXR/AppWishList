@@ -1,18 +1,14 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: UpdateDataView.py
-@time: 2020.2.2 16:26
+@createTime: 2020.2.2 16:26
 """
-
-import sys
 
 import ui
 import console
 
-sys.path.append("..")
-
-from AppService import AppService
+from core.AppService import AppService
 
 from tools.Result import *
 

@@ -1,19 +1,20 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: ConfigService.py
-@time: 2020.1.30 14:00
+@createTime: 2020.1.30 14:00
+@updateTime: 2020-03-29 10:53:59
 """
 
-from ConfigModel import Config
-from ConfigController import ConfigController
+from .ConfigModel import Config
+from .ConfigController import ConfigController
 
 from tools.Result import *
 from tools.Logger import *
 
 class ConfigService (object):
 	
-	def __init__(self,rootpath="data/"):
+	def __init__(self,rootpath="../data/"):
 		self.rootpath=rootpath
 		
 		dbpath=self.rootpath+"database.db"

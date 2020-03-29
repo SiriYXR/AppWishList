@@ -3,31 +3,27 @@
 @author: SiriYang
 @file: AppDetailView.py
 @createTime: 2020-01-29 20:39
-@updateTime: 2020-03-28 14:48:10
+@updateTime: 2020-03-29 10:52:36
 """
 
-import sys
 from datetime import datetime,timedelta
 
 import ui
 import console
 import webbrowser
 
-from PriceLabel import PriceLabel
-from SteamPriceLabel import SteamPriceLabel
-from DividingLineLabel import DividingLineLabel
-from PricePlotView import PricePlotView
+from .PriceLabel import PriceLabel
+from .SteamPriceLabel import SteamPriceLabel
+from .DividingLineLabel import DividingLineLabel
+from .PricePlotView import PricePlotView
 
-sys.path.append("..")
-
-from AppModel import App
-from AppService import AppService
-from PriceModel import Price
-from PriceService import PriceService
+from core.AppModel import App
+from core.AppService import AppService
+from core.PriceModel import Price
+from core.PriceService import PriceService
 
 from tools.Result import *
 from tools.StringProcess import *
-
 		
 class AppDetailView(ui.View):
 	

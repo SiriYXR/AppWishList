@@ -1,25 +1,23 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: MainWindow.py
-@time: 2020.1.28 18:59
+@createTime: 2020.1.28 18:59
+@updateTime: 2020-03-29 10:52:56
 """
 
-import sys
 import ui
 import console
 import webbrowser
 
-from WishListView import WishListView
-from CategoryView import CategoryView
-from SettingView import SettingView
-from UpdateDataView import UpdateDataView
+from .WishListView import WishListView
+from .CategoryView import CategoryView
+from .SettingView import SettingView
+from .UpdateDataView import UpdateDataView
 
-sys.path.append("..")
-
-from AppModel import App
-from AppService import AppService
-from ConfigService import ConfigService
+from core.AppModel import App
+from core.AppService import AppService
+from core.ConfigService import ConfigService
 
 from tools.Result import *
 
@@ -66,7 +64,7 @@ class MainTable(ui.View):
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
 				{"title": "", "accessory_type": "none"},
-				{"title": "\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.0.2", "accessory_type": "none"},
+				{"title": "\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.1.0", "accessory_type": "none"},
 				{"title": self.MENU_BLOG, "accessory_type": "none"},
 				]
 			)

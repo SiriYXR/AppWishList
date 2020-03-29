@@ -2,15 +2,13 @@
 """
 @author:SiriYang
 @file: PriceLabel.py
-@time: 2020.1.31 12:29
+@createTime: 2020.1.31 12:29
+@updateTime: 2020-03-28 15:18:51
 """
 
-import sys
 import ui
 
-sys.path.append("..")
-
-from PriceModel import Price
+from core.PriceModel import Price
 
 
 class PriceLabel (ui.View):

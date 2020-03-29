@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: ConfigController.py
-@time: 2020.1.30 13:24
+@createTime: 2020.1.30 13:24
+@updateTime: 2020-03-29 10:53:52
 """
 
-from ConfigModel import Config
+from .ConfigModel import Config
 
 from tools.sql.SQLConnector import SQLConnector
 
@@ -45,7 +46,7 @@ class ConfigController (object):
 		return config
 		
 if __name__ == "__main__":
-	cont=ConfigController("data/database.db")
+	cont=ConfigController("../data/database.db")
 	
 	res=cont.selectConfigById(1)
 	

@@ -1,24 +1,21 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: WishListView.py
-@time: 2020.1.28 21:18
+@createTime: 2020-01-28 21:18
+@updateTime: 2020-03-29 10:57:51
 """
-			
-import sys
 
 import ui
 import console
 
-from AppDetailView import AppDetailView
-from SteamPriceLabel import SteamPriceLabel
+from .AppDetailView import AppDetailView
+from .SteamPriceLabel import SteamPriceLabel
 
-sys.path.append("..")
-
-from AppModel import App
-from AppService import AppService
-from PriceModel import Price
-from PriceService import PriceService
+from core.AppModel import App
+from core.AppService import AppService
+from core.PriceModel import Price
+from core.PriceService import PriceService
 
 from tools.Result import *
 from tools.StringProcess import *
@@ -111,12 +108,9 @@ class WishListView(ui.View):
 				
 		pricelabel=SteamPriceLabel(oldprice,newprice)
 		
-		if(self.app.orientation==self.app.LANDSCAPE):
-			pricelabel.x,pricelabel.y=self.width-350,10
-		else:
-			pricelabel.x,pricelabel.y=self.width-220,10
+		pricelabel.x,pricelabel.y=self.tableView.width-250,10
 		
-		cell.add_subview(pricelabel)
+		cell.content_view.add_subview(pricelabel)
 	
 	def tableview_can_delete(self, tableview, section, row):
 		return True

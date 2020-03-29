@@ -1,12 +1,16 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AutoUpdateApp.py
-@time: 2020.1.28 16:28
+@createTime: 2020.1.28 16:28
+@updateTime: 2020-03-29 11:18:44
 """
 
-from AppService import AppService
-from ConfigService import ConfigService
+import sys
+sys.path.append('.') # 将项目根目录加入模块搜索路径，这样其他模块才能成功导包
+
+from core.AppService import AppService
+from core.ConfigService import ConfigService
 
 from tools.Result import *
 from tools.Logger import *

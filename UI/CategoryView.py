@@ -3,18 +3,15 @@
 @author: SiriYang
 @file: CategoryView.py
 @createTime: 2020-01-28 21:13
-@updateTime: 2020-03-28 13:40:45
+@updateTime: 2020-03-29 10:52:45
 """
 
-import sys
 import ui
 import console
 
-from AppsTableView import AppsTableView
+from .AppsTableView import AppsTableView
 
-sys.path.append("..")
-
-from AppService import AppService
+from core.AppService import AppService
 
 from tools.Result import *
 

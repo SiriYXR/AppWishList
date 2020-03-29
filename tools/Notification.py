@@ -1,45 +1,25 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: Notification.py
-@time: 2020.2.1 20:11
+@createTime: 2020.2.1 20:11
+@updateTime: 2020-03-29 17:24:30
 """
 
-import reminders
-from datetime import datetime,timedelta
+import notification
+import os
 
 class Notification (object):
 	
-	def __init__(self,calendar):
-		self.calendar=calendar
+	def __init__(self,title):
+		self.title=title
+		rootpath=os.path.abspath('..')
+		localpath=rootpath.split('Documents/')[1]
+		self.url='pythonista3://'+localpath+'/LunchMainWin.py?action=run'
 		
 	def addNotice(self,info):
-		notice=reminders.Reminder(self.getCalendar())
-		notice.title=info
-		due=datetime.now()+timedelta(seconds=1)
-		notice.due_date=due
-		alarm=reminders.Alarm()
-		alarm.date=due
-		notice.alarms=[alarm]
-		
-		notice.save()
-		
-	def getCalendar(self):
-		
-		c=None
-		cs=reminders.get_all_calendars()
-		
-		for i in cs:
-			if i.title == self.calendar:
-				c=i
-				break
-		else:
-			c=reminders.Calendar()
-			c.title=self.calendar
-			c.save()	
-		
-		return c
+		notification.schedule(message=info,delay=0,sound_name='default',action_url=self.url,title=self.title)
 		
 if __name__ == "__main__":
 	n=Notification("AppWishList")
-	n.addNotice("hello world!")
+	n.addNotice('你关注的"Pythonista"降价啦！🎉 当前价格:¥ 0.0')

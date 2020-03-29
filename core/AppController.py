@@ -1,10 +1,12 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AppController.py
-@time: 2019.12.24 23:01
+@createTime: 2019.12.24 23:01
+@updateTime: 2020-03-29 10:53:38
 """
-from AppModel import App
+
+from .AppModel import App
 
 from tools.sql.SQLConnector import SQLConnector
 
@@ -289,7 +291,7 @@ class AppController (object):
 		return res[0]
 		
 if __name__ == "__main__":
-	cont=AppController("data/database.db")
+	cont=AppController("../data/database.db")
 	
 	data=cont.selectAllApps()
 	for i in data:
