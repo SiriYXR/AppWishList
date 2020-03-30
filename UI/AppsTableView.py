@@ -3,7 +3,7 @@
 @author: SiriYang
 @file: AppsTableView.py
 @createTime: 2020-01-29 00:29
-@updateTime: 2020-03-29 10:52:41
+@updateTime: 2020-03-29 20:39:34
 """
 
 import ui
@@ -86,6 +86,9 @@ class AppsTableView(ui.View):
 		app = self.apps[row]
 		cell.text_label.text = StringProcess(app.getName())
 		cell.detail_text_label.text = StringProcess(app.getAuthor())
+		if self.app.width<500:
+			# iPhone竖屏
+			cell.detail_text_label.text = " "
 		cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		cell.accessory_type='disclosure_indicator'
 	
@@ -136,7 +139,14 @@ class AppsTableView(ui.View):
 		starBtn.x,starBtn.y=pricelabel.x+150,pricelabel.y # 以pricelabel为参考系
 		autoUpdateBtn.x,autoUpdateBtn.y= starBtn.x+50,starBtn.y+6 # 以starBtn为参考系
 		
+		
 		itemView.x=self.tableView.width-300
+		if self.app.width<500:
+			# iPhone竖屏
+			itemView.x=self.tableView.width-300
+			self.tableView.row_height=80
+			itemView.y=30
+			
 		
 		itemView.add_subview(pricelabel)
 		itemView.add_subview(starBtn)

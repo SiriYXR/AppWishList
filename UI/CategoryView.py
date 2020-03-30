@@ -3,7 +3,7 @@
 @author: SiriYang
 @file: CategoryView.py
 @createTime: 2020-01-28 21:13
-@updateTime: 2020-03-29 10:52:45
+@updateTime: 2020-03-29 19:51:21
 """
 
 import ui
@@ -27,7 +27,10 @@ class CategoryView(ui.View):
 		self.flex="WHLRTB"
 			
 		self.tableView = ui.TableView()
-		self.tableView.width=710
+		if self.app.isIpad():
+			self.tableView.width=710
+		else:
+			self.tableView.width=414
 		self.tableView.y=0
 		self.add_subview(self.tableView)
 		
@@ -78,10 +81,7 @@ class CategoryView(ui.View):
 		cell.accessory_type='disclosure_indicator'
 		
 		label=ui.Label()
-		if(self.app.orientation==self.app.LANDSCAPE):
-			label.frame=(self.tableView.width-150,10,50,25)
-		else:
-			label.frame=(self.tableView.width-125,10,50,25)
+		label.frame=(self.tableView.width-100,10,50,25)
 		label.alignment=ui.ALIGN_CENTER
 		label.border_width = 1
 		label.corner_radius=5

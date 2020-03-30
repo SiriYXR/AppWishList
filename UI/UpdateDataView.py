@@ -2,7 +2,8 @@
 """
 @author: SiriYang
 @file: UpdateDataView.py
-@createTime: 2020.2.2 16:26
+@createTime: 2020-02-02 16:26
+@updateTime: 2020-03-29 23:14:28
 """
 
 import ui
@@ -35,25 +36,28 @@ class UpdateDataView (ui.View):
 		self.name="更新数据"
 		self.frame=(0,0,300,150)
 		self.background_color="white"
+		self.win_w,_=ui.get_window_size()
+		if self.win_w>760:
+			self.win_w=300
 		
 		self.infoLabel.text="数据更新中,请等待..."
-		self.infoLabel.frame=(0,20,self.width,30)
+		self.infoLabel.frame=(0,20,self.win_w,30)
 		self.infoLabel.alignment=ui.ALIGN_CENTER
 		self.infoLabel.font=("<system>",16)
 		
-		self.percentageLabel.frame=(20,60,self.width-40,40)
+		self.percentageLabel.frame=(20,60,self.win_w-40,40)
 		self.percentageLabel.border_width=1
 		self.percentageLabel.border_color="#434343"
 		self.percentageLabel.text="{f:.2f}%".format(f=(self.index/self.max*100))
 		self.percentageLabel.text_color="#d4d4d4"
 		self.percentageLabel.alignment=ui.ALIGN_CENTER
 		
-		self.processionLabel.frame=(20,60,(self.width-40)*(self.index/self.max),40)
+		self.processionLabel.frame=(20,60,(self.win_w-40)*(self.index/self.max),40)
 		self.processionLabel.background_color="#30ba3c"
 		
 	def updateUI(self):
 		self.percentageLabel.text="{f:.2f}%".format(f=(self.index/self.max*100))
-		self.processionLabel.width=(self.width-40)*(self.index/self.max)
+		self.processionLabel.width=(self.win_w-40)*(self.index/self.max)
 		
 	def syndata(self,i,m):
 		self.max=max(m,1)
@@ -63,7 +67,7 @@ class UpdateDataView (ui.View):
 		
 	@ui.in_background
 	def lunch(self):
-		self.present("sheet")
+		self.present("sheet",hide_close_button=True)
 		
 		res=self.app.appService.updateAllApps_Syn(self.syndata)
 		

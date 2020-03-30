@@ -3,7 +3,8 @@
 @author: SiriYang
 @file: AppDetailView.py
 @createTime: 2020-01-29 20:39
-@updateTime: 2020-03-29 10:52:36
+@updateTime: 2020-03-30 09:11:12
+@codeLines: 531
 """
 
 from datetime import datetime,timedelta
@@ -99,9 +100,22 @@ class AppDetailView(ui.View):
 		self.graphView.add_subview(self.graph_pricePlot)
 		self.graphView.add_subview(self.graph_epochBtn)
 		
-		self.add_subview(self.infoView)
-		self.add_subview(self.priceView)
-		self.add_subview(self.graphView)
+		self.scrollView=ui.ScrollView()
+		self.scrollView.frame=(0,0,self.width,self.height)
+		self.scrollView.flex="WHRLTB"
+		self.scrollView.always_bounce_vertical=True
+		self.scrollView.bounces=True
+		if self.width>500:
+			self.scrollView.content_size=(self.width,768)
+		else:
+			# iPhone竖屏
+			self.scrollView.content_size=(self.width,1000)
+		
+		self.scrollView.add_subview(self.infoView)
+		self.scrollView.add_subview(self.priceView)
+		self.scrollView.add_subview(self.graphView)
+		
+		self.add_subview(self.scrollView)
 		
 		self.loadUI()
 		
@@ -149,9 +163,10 @@ class AppDetailView(ui.View):
 		self.infoView.background_color="#fff"
 		
 		self.info_inconView.image=ui.Image.named(self.app.rootpath+"img/"+self.obj.getAppId()+".png")
-		self.info_inconView.border_width=4
-		self.info_inconView.border_color="#f8f8f8"
-		self.info_inconView.corner_radius=30
+		if self.app.isIpad():
+			self.info_inconView.border_width=4
+			self.info_inconView.border_color="#f8f8f8"
+			self.info_inconView.corner_radius=30
 		
 		self.info_nameLabel.text=StringProcess(self.obj.getName())
 		
@@ -231,14 +246,19 @@ class AppDetailView(ui.View):
 		if(self.app.orientation==self.app.LANDSCAPE):
 			self.layOut_L()
 		else:
-			self.layOut_P()
-	
+			if self.width>500:
+				self.layOut_P_IPAD()
+			else:
+				# iPhone竖屏
+				self.layOut_P_IPHONE()
+				
 	def layOut_L(self):
+		content_width,content_height=self.scrollView.content_size
 		'''
 		基本信息布局
 		---------------------------------
 		'''
-		self.infoView.frame=(0,0,self.width,self.height*0.3)
+		self.infoView.frame=(0,0,content_width,content_height*0.3)
 		
 		self.info_inconView.frame=(20,20,160,160)
 		
@@ -256,33 +276,44 @@ class AppDetailView(ui.View):
 		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
 		#self.info_createtimeLabel.background_color="green"
 		
-		self.info_autoupdateLabel.frame=(self.width-175,self.info_categoryLabel.y,100,30)
+		self.info_autoupdateLabel.frame=(content_width-175,self.info_categoryLabel.y,100,30)
 		
-		self.info_autoupdateBtn.frame=(self.width-100,self.info_categoryLabel.y,100,30)
+		self.info_autoupdateBtn.frame=(content_width-100,self.info_categoryLabel.y,100,30)
 		
 		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
 		#self.info_updatetimeLabel.background_color="green"
 		
-		self.info_starBtn.frame=(self.width-100,20,60,60)
+		self.info_starBtn.frame=(content_width-100,20,60,60)
 		#self.info_starBtn.background_color="orange"
 		
-		self.info_storeBtn.frame=(self.info_createtimeLabel.x+self.info_createtimeLabel.width+20,120,150,50)
-		#self.info_storeBtn.background_color="blue"
+		if content_width<1024 and content_width>500:
+			# iPhone横屏
+			self.info_storeBtn.frame=(self.info_createtimeLabel.x-20,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height,150,50)
+			#self.info_storeBtn.background_color="blue"
+			
+			self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,self.info_storeBtn.y,150,50)
+			#self.info_updateBtn.background_color="blue"
+			
+			self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,self.info_storeBtn.y,150,50)
+			#self.info_deleteBtn.background_color="red"
+		else:
+			self.info_storeBtn.frame=(self.info_createtimeLabel.x+self.info_createtimeLabel.width+20,120,150,50)
+			#self.info_storeBtn.background_color="blue"
+			
+			self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,120,150,50)
+			#self.info_updateBtn.background_color="blue"
+			
+			self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,120,150,50)
+			#self.info_deleteBtn.background_color="red"
 		
-		self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,120,150,50)
-		#self.info_updateBtn.background_color="blue"
-		
-		self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,120,150,50)
-		#self.info_deleteBtn.background_color="red"
-	
 		'''
 		价格信息布局
 		---------------------------------
 		'''		
-		self.priceView.frame=(0,self.height*0.3,self.width,self.height*0.1)
+		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.1)
 		#self.priceView.background_color="blue"
 		
-		margin=(self.width-600)/4
+		margin=(content_width-600)/4
 		y=(self.priceView.height-45)/2
 		
 		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
@@ -303,21 +334,22 @@ class AppDetailView(ui.View):
 		价格图表布局
 		---------------------------------
 		'''	
-		self.graphView.frame=(0,self.height*0.4,self.width,self.height*0.6)
+		self.graphView.frame=(0,content_height*0.4,content_width,content_height*0.6)
 		#self.graphView.background_color="red"
 				
-		self.graph_pricePlot.frame=(0,10,self.width,self.graphView.height)
+		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
 	
 		self.graph_epochBtn.height=25
-		self.graph_epochBtn.width=min(50*len(self.years),self.width-40)
-		self.graph_epochBtn.x,self.graph_epochBtn.y=max(self.width-max(20+self.graph_epochBtn.width,100),20),10
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
 		
-	def layOut_P(self):
+	def layOut_P_IPAD(self):
+		content_width,content_height=self.scrollView.content_size
 		'''
 		基本信息布局
 		---------------------------------
 		'''
-		self.infoView.frame=(0,0,self.width,self.height*0.3)
+		self.infoView.frame=(0,0,content_width,content_height*0.3)
 		
 		self.info_inconView.frame=(20,20,160,160)
 		
@@ -332,16 +364,16 @@ class AppDetailView(ui.View):
 		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
 		#self.info_categoryLabel.background_color="blue"
 		
-		self.info_autoupdateLabel.frame=(self.width-155,self.info_categoryLabel.y,100,30)
+		self.info_autoupdateLabel.frame=(content_width-155,self.info_categoryLabel.y,100,30)
 		
-		self.info_autoupdateBtn.frame=(self.width-80,self.info_categoryLabel.y,100,30)
+		self.info_autoupdateBtn.frame=(content_width-80,self.info_categoryLabel.y,100,30)
 		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
 		#self.info_createtimeLabel.background_color="green"
 		
 		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
 		#self.info_updatetimeLabel.background_color="green"
 		
-		self.info_starBtn.frame=(self.width-80,20,60,60)
+		self.info_starBtn.frame=(content_width-80,20,60,60)
 		#self.info_starBtn.background_color="orange"
 		
 		self.info_storeBtn.frame=(self.info_updatetimeLabel.x,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+20,150,50)
@@ -357,10 +389,10 @@ class AppDetailView(ui.View):
 		价格信息布局
 		---------------------------------
 		'''		
-		self.priceView.frame=(0,self.height*0.3,self.width,self.height*0.1)
+		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.1)
 		#self.priceView.background_color="blue"
 		
-		margin=(self.width-600)/4
+		margin=(content_width-600)/4
 		y=(self.priceView.height-45)/2
 		
 		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
@@ -381,15 +413,97 @@ class AppDetailView(ui.View):
 		价格图表布局
 		---------------------------------
 		'''	
-		self.graphView.frame=(0,self.height*0.4,self.width,self.height*0.6)
+		self.graphView.frame=(0,content_height*0.4,content_width,content_height*0.6)
 		#self.graphView.background_color="red"
 				
-		self.graph_pricePlot.frame=(0,10,self.width,self.graphView.height)
+		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
 	
 		self.graph_epochBtn.height=25
-		self.graph_epochBtn.width=min(50*len(self.years),self.width-40)
-		self.graph_epochBtn.x,self.graph_epochBtn.y=max(self.width-max(20+self.graph_epochBtn.width,100),20),10
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
 		
+	def layOut_P_IPHONE(self):
+		content_width,content_height=self.scrollView.content_size
+		'''
+		基本信息布局
+		---------------------------------
+		'''
+		self.infoView.frame=(0,0,content_width,content_height*0.3)
+		
+		self.info_inconView.frame=(20,20,120,120)
+		
+		self.info_nameLabel.frame=(self.info_inconView.width+40,20,content_width-self.info_inconView.width-40,40)
+		#self.info_nameLabel.background_color="blue"
+		
+		self.info_authorLabel.frame=(self.info_nameLabel.x,50,460,40)
+		#self.info_authorLabel.background_color="blue"
+		
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
+		#self.info_categoryLabel.background_color="blue"
+		
+		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
+		#self.info_createtimeLabel.background_color="green"
+		
+		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
+		#self.info_updatetimeLabel.background_color="green"
+	
+		margin_x=(self.info_inconView.width-60)/2
+		self.info_starBtn.frame=(self.info_inconView.x+margin_x,self.info_inconView.y+self.info_inconView.height+20,60,60)
+		#self.info_starBtn.background_color="orange"
+		
+		self.info_autoupdateLabel.frame=(content_width-155,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+10,100,30)
+		
+		self.info_autoupdateBtn.frame=(content_width-80,self.info_autoupdateLabel.y,100,30)
+		
+		margin_x=(content_width-300)/4
+		
+		self.info_storeBtn.frame=(margin_x,self.info_starBtn.y+self.info_starBtn.height+10,100,50)
+		#self.info_storeBtn.background_color="blue"
+		self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+margin_x,self.info_storeBtn.y,100,50)
+		#self.info_updateBtn.background_color="blue"
+		
+		self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+margin_x,self.info_storeBtn.y,100,50)
+		#self.info_deleteBtn.background_color="red"
+		
+		'''
+		价格信息布局
+		---------------------------------
+		'''		
+		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.25)
+		#self.priceView.background_color="blue"
+		
+		margin_x=(content_width-200)/2
+		margin_y=(self.priceView.height-45*3)/4
+
+		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
+			self.price_normalLabel.frame=(margin_x,margin_y,200,45)
+		else:
+			self.price_normalLabel.frame=(margin_x,margin_y,150,55)
+		
+		self.price_offLabel.x,self.price_offLabel.y=self.price_normalLabel.x,self.price_normalLabel.y
+		
+		self.price_firstLabel.frame=(self.price_normalLabel.x,self.price_normalLabel.y+45+margin_y,200,45)
+		
+		self.price_lowestLabel.frame=(self.price_firstLabel.x,self.price_firstLabel.y+45+margin_y,200,45)
+		
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,2)
+		self.price_BLine_Label.frame=(5,self.priceView.height-2,self.priceView.width-10,2)
+	
+		'''
+		价格图表布局
+		---------------------------------
+		'''	
+		self.graphView.frame=(0,content_height*0.55,content_width,content_height*0.45)
+		#self.graphView.background_color="red"
+				
+		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
+	
+		self.graph_epochBtn.height=25
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
+	
 	@ui.in_background
 	def load(self):
 		self.app.activity_indicator.start()

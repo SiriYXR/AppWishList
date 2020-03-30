@@ -3,7 +3,7 @@
 @author: SiriYang
 @file: SettingView.py
 @createTime: 2020.2.1 21:17
-@updateTime: 2020-03-29 10:53:09
+@updateTime: 2020-03-29 20:14:12
 """
 
 import os
@@ -29,7 +29,10 @@ class SettingDelegate(object):
 				self.app.activity_indicator.start()
 				try:
 					v=TextFileView("日志",self.app.rootpath+"log.txt")
-					v.frame=(0,0,self.father.width+100,self.father.height)
+					if self.app.isIpad():
+						v.frame=(0,0,self.father.width+100,self.father.height)
+					else:
+						v.frame=(0,0,self.father.width,self.father.height)
 					v.present("sheet")
 					v.wait_modal()
 				except Exception as e:

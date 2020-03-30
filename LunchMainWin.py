@@ -12,6 +12,7 @@ sys.path.append('.') # 将项目根目录加入模块搜索路径，这样其他
 from UI.MainWindow import MainWindow
 
 if __name__ == '__main__':
-	mainWindow = MainWindow("./data/")
+	mainWindow = MainWindow("./data/",1)
 	mainWindow.launch()
+	
 

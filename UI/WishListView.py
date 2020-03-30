@@ -108,7 +108,12 @@ class WishListView(ui.View):
 				
 		pricelabel=SteamPriceLabel(oldprice,newprice)
 		
-		pricelabel.x,pricelabel.y=self.tableView.width-250,10
+		if self.app.width>500:
+			pricelabel.x,pricelabel.y=self.tableView.width-220,10
+		else:
+			# iPhone竖屏
+			self.tableView.row_height=pricelabel.height*2
+			pricelabel.x,pricelabel.y=self.tableView.width-210,pricelabel.height
 		
 		cell.content_view.add_subview(pricelabel)
 	
@@ -128,8 +133,8 @@ class WishListView(ui.View):
 			app = self.apps[row]
 			appDetailView = AppDetailView(self.app,self, app)
 			self.app.nav_view.push_view(appDetailView)
-		#except Exception as e:
-			#console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to load AppDetailView', 'error', 1.0)
 		finally:
 			self.app.activity_indicator.stop()
 	

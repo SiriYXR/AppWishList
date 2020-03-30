@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: AlertView.py
-@time: 2020.2.2 13:44
+@createTime: 2020.2.2 13:44
+@updateTime: 2020-03-30 09:30:26
+@codeLines: 51
 """
 
 import ui
@@ -16,18 +18,23 @@ class AlertView (ui.View):
 		self.name=title
 		self.frame=(0,0,250,120)
 		self.background_color="white"
+		self.win_w,self.win_h=ui.get_window_size()
+		self.win_h-=50
+		if self.win_w>760:
+			self.win_w=250
+			self.win_h=120
 		
 		self.infoLabel=ui.TextView()
 		self.infoLabel.text=info
 		self.infoLabel.font=("<system>",16)
 		self.infoLabel.text_color="#5a5a5a"
 		self.infoLabel.alignment=ui.ALIGN_CENTER
-		self.infoLabel.frame=(0,20,self.width,self.height-50-20)
+		self.infoLabel.frame=(0,20,self.win_w,self.win_h-50-20)
 		
 		self.okBtn=ui.Button()
 		self.okBtn.title="确定"
 		self.okBtn.border_width=1
-		self.okBtn.frame=(-1,self.height-50,self.width/2+1,50+1)
+		self.okBtn.frame=(-1,self.win_h-50,self.win_w/2+1,50+1)
 		self.okBtn.background_color="white"
 		self.okBtn.border_color="#eaeaea"
 		#self.okBtn.corner_radius=5
@@ -36,7 +43,7 @@ class AlertView (ui.View):
 		self.closeBtn=ui.Button()
 		self.closeBtn.title="取消"
 		self.closeBtn.border_width=1
-		self.closeBtn.frame=(self.width/2,self.height-50,self.width/2,50+1)
+		self.closeBtn.frame=(self.win_w/2,self.win_h-50,self.win_w/2,50+1)
 		self.closeBtn.background_color="white"
 		self.closeBtn.border_color="#eaeaea"
 		#self.closeBtn.corner_radius=5
