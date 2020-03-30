@@ -2,7 +2,7 @@
 # AppWishList 
 &emsp;&emsp;—— 基于`Pythonista`的苹果`AppStore`愿望单系统。
 
-&emsp;&emsp;[GitHub项目地址](https://github.com/SiriYXR/AppWishList)
+&emsp;&emsp;[博客原文链接](https://blog.siriyang.cn/posts/20200202171851id.html)（github上可能无法正常显示图片资源）
 
 ## 前言
 
