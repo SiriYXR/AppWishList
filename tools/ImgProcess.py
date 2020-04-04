@@ -3,7 +3,7 @@
 @author: SiriYang
 @file: ImgProcess.py
 @createTime: 2020.1.31 15:11
-@updateTime: 2020-04-01 00:43:40
+@updateTime: 2020-04-04 17:18:22
 @codeLines: 36
 """
 
@@ -40,12 +40,18 @@ def fig2pil(fig):
 		
 	return Image.frombytes("RGBA",(w,h),buf.tostring())
 
+def uiImgResize(imgIn,size):
+	w,h=size
+	imgOut=None
+	with ui.ImageContext(w,h) as ctx:
+		imgIn.draw(0,0,w,h)
+		imgOut=ctx.get_image()
+	return imgOut
 
-	
 if __name__ == "__main__":
 	uimg=ui.Image.named('../data/img/id360593530.png')
 	
-	#uimg=uiImgResize(uimg,(60,60))
+	uimg=uiImgResize(uimg,(60,60))
 	
-	#uimg.show()
+	uimg.show()
 	
