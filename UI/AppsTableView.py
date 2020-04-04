@@ -3,7 +3,8 @@
 @author: SiriYang
 @file: AppsTableView.py
 @createTime: 2020-01-29 00:29
-@updateTime: 2020-03-29 20:39:34
+@updateTime: 2020-04-01 11:49:45
+@codeLines: 232
 """
 
 import ui
@@ -19,6 +20,7 @@ from core.PriceService import PriceService
 
 from tools.Result import *
 from tools.StringProcess import *
+from tools.ImgProcess import *
 
 class AppsTableView(ui.View):
 	def __init__(self,app,father,name):
@@ -83,13 +85,17 @@ class AppsTableView(ui.View):
 
 	def tableview_cell_for_row(self, tableview, section, row):
 		cell = ui.TableViewCell('subtitle')
+		cell.selectable=False
+		
 		app = self.apps[row]
 		cell.text_label.text = StringProcess(app.getName())
 		cell.detail_text_label.text = StringProcess(app.getAuthor())
+		img=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		if self.app.width<500:
 			# iPhone竖屏
 			cell.detail_text_label.text = " "
-		cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
+			img=uiImgResize(img,(60,60))
+		cell.image_view.image=img
 		cell.accessory_type='disclosure_indicator'
 	
 		self.loadCellItem(cell,app)
@@ -117,6 +123,7 @@ class AppsTableView(ui.View):
 				newprice=oldprice=prices[0].getPrice()
 				
 		pricelabel=SteamPriceLabel(oldprice,newprice)
+		pricelabel.touch_enabled=False
 		
 		starBtn=ui.Button()
 		starBtn.name=app.getAppId() # 利用name属性来记录其对应的app

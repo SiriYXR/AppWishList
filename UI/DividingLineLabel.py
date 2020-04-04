@@ -9,7 +9,7 @@ import ui
 
 class DividingLineLabel(ui.View):
 	
-	def __init__(self,dw=5,dm=3,dcolor="#d0d0d0"):
+	def __init__(self,dw=7,dm=1,dcolor="#d0d0d0"):
 		self.dw=dw
 		self.dm=dm
 		self.dcolor=dcolor
@@ -17,14 +17,12 @@ class DividingLineLabel(ui.View):
 		self.frame=(0,0,200,3)
 		self.background_color="white"
 		
-	def layout(self):
-		for i in self.subviews:
-			self.remove_subview(i)
-			
-		n=int(self.width/(self.dm+self.dw)+1)
-		
+	def draw(self):
+		n=int(self.width/(self.dm+self.dw+self.height)+1)
+		ui.set_color(self.dcolor)
 		for i in range(n):
-			self.add_subview(ui.Label(frame=(i*(self.dm+self.dw),0,self.dw,self.height),bg_color=self.dcolor))
+			for j in range(int(self.height)):
+				ui.fill_rect(i*(self.dm+self.dw+self.height)+j,self.height-j,self.dw,1)
 
 if __name__ == "__main__":
 	v=DividingLineLabel()

@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: MainWindow.py
 @createTime: 2020-01-28 18:59
-@updateTime: 2020-03-30 09:25:02
-@codeLines: 197
+@updateTime: 2020-04-03 23:38:46
+@codeLines: 175
 """
 
 import ui
@@ -24,25 +24,18 @@ from tools.Result import *
 
 class MainTable(ui.View):
 	
-	IPAD_MENU_WISHLIST="\t\t\t\t\t\t\t\t\t愿望单"
-	IPAD_MENU_FAVORITE="\t\t\t\t\t\t\t\t\t收藏夹"
-	IPAD_MENU_UPDATE="\t\t\t\t\t\t\t\t    更新数据"
-	IPAD_MENU_SETTING="\t\t\t\t\t\t\t\t\t  设置"
-	IPAD_MENU_ABOUT="\t\t\t\t\t\t\t\t\t  关于"
-	IPAD_MENU_COPYRIGHT="\t\t\t\t\t\t\tCopyright © 2020 by SiriYang. v1.1.1"
-	IPAD_MENU_BLOG="\t\t\t\t\t\t\t\t\t\tblog.siriyang.cn"
-	
-	IPHONE_MENU_WISHLIST="\t\t\t\t愿望单"
-	IPHONE_MENU_FAVORITE="\t\t\t\t收藏夹"
-	IPHONE_MENU_UPDATE="\t\t\t    更新数据"
-	IPHONE_MENU_SETTING="\t\t\t\t  设置"
-	IPHONE_MENU_ABOUT="\t\t\t\t  关于"
-	IPHONE_MENU_COPYRIGHT="\t\tCopyright © 2020 by SiriYang. v1.1.1"
-	IPHONE_MENU_BLOG="\t\t\t\t\tblog.siriyang.cn"
+	MENU_WISHLIST="愿望单"
+	MENU_FAVORITE="收藏夹"
+	MENU_UPDATE="更新数据"
+	MENU_SETTING="设置"
+	MENU_ABOUT="关于"
+	MENU_COPYRIGHT="Copyright © 2020 by SiriYang. v1.1.2"
+	MENU_BLOG="blog.siriyang.cn"
 	
 	def __init__(self, app):
 		self.app = app
-		
+		self.menuList=[]
+				
 		self.name = '首页'
 		self.background_color="white"
 		self.flex='WHLRTB'
@@ -59,68 +52,62 @@ class MainTable(ui.View):
 		self.loadData()
 		self.loadUI()
 		
-	@ui.in_background
 	def loadData(self):
-		self.app.activity_indicator.start()
-		try:
-			menu_listdatasource=None
-			if self.app.isIpad():
-				menu_listdatasource = ui.ListDataSource(
-				[
-					{"title": "", "accessory_type": "none"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPAD_MENU_WISHLIST, "accessory_type": "disclosure_indicator","image":"typb:Star"},
-					{"title": self.IPAD_MENU_FAVORITE, "accessory_type": "disclosure_indicator","image":"typb:List"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPAD_MENU_UPDATE, "accessory_type": "","image":"typb:Refresh"},
-					{"title": self.IPAD_MENU_SETTING, "accessory_type": "disclosure_indicator","image":"typb:Cog"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPAD_MENU_ABOUT, "accessory_type": "none","image":"typb:Info"},
-					{"title": "", "accessory_type": "none"},
-					{"title": "", "accessory_type": "none"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPAD_MENU_COPYRIGHT, "accessory_type": "none"},
-					{"title": self.IPAD_MENU_BLOG, "accessory_type": "none"},
-					])
-			else:
-				menu_listdatasource = ui.ListDataSource(
-				[
-					{"title": "", "accessory_type": "none"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPHONE_MENU_WISHLIST, "accessory_type": "disclosure_indicator","image":"typb:Star"},
-					{"title": self.IPHONE_MENU_FAVORITE, "accessory_type": "disclosure_indicator","image":"typb:List"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPHONE_MENU_UPDATE, "accessory_type": "","image":"typb:Refresh"},
-					{"title": self.IPHONE_MENU_SETTING, "accessory_type": "disclosure_indicator","image":"typb:Cog"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPHONE_MENU_ABOUT, "accessory_type": "none","image":"typb:Info"},
-					{"title": "", "accessory_type": "none"},
-					{"title": "", "accessory_type": "none"},
-					{"title": self.IPHONE_MENU_COPYRIGHT, "accessory_type": "none"},
-					{"title": self.IPHONE_MENU_BLOG, "accessory_type": "none"},
-					])	
-			
-			menu_listdatasource.action = self.menu_item_tapped
-			menu_listdatasource.delete_enabled = False
-				
-			self.tableView.data_source = menu_listdatasource
-			self.tableView.delegate = menu_listdatasource
-			self.tableView.reload()
-		except Exception as e:
-			console.hud_alert('Failed to load menu', 'error', 1.0)
-		finally:
-			self.app.activity_indicator.stop()
+		self.menuList=[
+			"","",
+			self.MENU_WISHLIST,
+			self.MENU_FAVORITE,
+			"",
+			self.MENU_UPDATE,
+			self.MENU_SETTING,
+			"",
+			self.MENU_ABOUT,
+			"","","",
+			self.MENU_COPYRIGHT,
+			self.MENU_BLOG,
+			]
 	
 	def loadUI(self):
-		pass
+		self.tableView.data_source = self
+		self.tableView.delegate = self
+		self.tableView.reload()
 	
-	def menu_item_tapped(self, sender):
-		opt_name = sender.items[sender.selected_row]['title']
-		if (opt_name==self.IPAD_MENU_WISHLIST or opt_name==self.IPHONE_MENU_WISHLIST):
+	def tableview_number_of_rows(self,tableview,section):
+		return len(self.menuList)
+	
+	def tableview_cell_for_row(self,tableview,section,row):
+		cell=ui.TableViewCell()
+		cell.selectable=False
+		
+		opt_name = self.menuList[row]
+		label=ui.Label()
+		label.alignment=ui.ALIGN_CENTER
+		label.frame=(0,0,tableview.width,cell.height)
+		label.text=opt_name
+		if (opt_name==self.MENU_WISHLIST):
+			cell.image_view.image=ui.Image.named('typb:Star')
+			cell.accessory_type='disclosure_indicator'
+		elif (opt_name==self.MENU_FAVORITE):
+			cell.image_view.image=ui.Image.named('typb:List')
+			cell.accessory_type='disclosure_indicator'
+		elif (opt_name==self.MENU_UPDATE):
+			cell.image_view.image=ui.Image.named('typb:Refresh')
+		elif (opt_name==self.MENU_SETTING):
+			cell.image_view.image=ui.Image.named('typb:Cog')
+			cell.accessory_type='disclosure_indicator'
+		elif (opt_name==self.MENU_ABOUT):
+			cell.image_view.image=ui.Image.named('typb:Info')
+			
+		cell.content_view.add_subview(label)
+		return cell
+	
+	def tableview_did_select(self,tableview,section,row):
+		opt_name = self.menuList[row]
+		if (opt_name==self.MENU_WISHLIST):
 			self.WishList_act()
-		elif (opt_name==self.IPAD_MENU_FAVORITE or opt_name==self.IPHONE_MENU_FAVORITE):
+		elif (opt_name==self.MENU_FAVORITE):
 			self.Favorite_act()
-		elif (opt_name==self.IPAD_MENU_UPDATE or opt_name==self.IPHONE_MENU_UPDATE):
+		elif (opt_name==self.MENU_UPDATE):
 			if(self.app.isUpdating):
 				console.hud_alert('数据更新中，请稍等！', 'error', 1.0)
 				return
@@ -128,11 +115,11 @@ class MainTable(ui.View):
 			console.hud_alert('开始更新中，请稍等！', 'success', 1.0) 
 			self.app.isUpdating=True
 			self.Update_act()
-		elif (opt_name==self.IPAD_MENU_SETTING or opt_name==self.IPHONE_MENU_SETTING):
+		elif (opt_name==self.MENU_SETTING):
 			self.Setting_act()
-		elif (opt_name==self.IPAD_MENU_ABOUT or opt_name==self.IPHONE_MENU_ABOUT):
+		elif (opt_name==self.MENU_ABOUT):
 			self.About_act()
-		elif (opt_name==self.IPAD_MENU_BLOG or opt_name==self.IPHONE_MENU_BLOG):
+		elif (opt_name==self.MENU_BLOG):
 			self.Blog_act()
 		
 	def WishList_act(self):
@@ -183,7 +170,7 @@ class MainWindow(ui.View):
 	TEST_IPHOE_P=2
 	
 	def __init__(self,rootpath,test_mod=0):
-		
+		self.name = 'AppWishList'
 		self.rootpath=rootpath
 		self.appService=AppService(rootpath)
 		self.configService=ConfigService(rootpath)
@@ -208,7 +195,6 @@ class MainWindow(ui.View):
 		
 		self.mainTable=MainTable(self)
 		self.nav_view=ui.NavigationView(self.mainTable)
-		self.nav_view.name = 'AppWishList'
 		self.nav_view.flex="WHLRTB"
 		
 		self.nav_view.add_subview(self.activity_indicator)

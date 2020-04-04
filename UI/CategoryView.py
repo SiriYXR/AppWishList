@@ -3,7 +3,8 @@
 @author: SiriYang
 @file: CategoryView.py
 @createTime: 2020-01-28 21:13
-@updateTime: 2020-03-29 19:51:21
+@updateTime: 2020-04-01 11:50:42
+@codeLines: 112
 """
 
 import ui
@@ -79,6 +80,7 @@ class CategoryView(ui.View):
 		categories_count = self.categories_dict[categories_name]
 		cell.text_label.text = categories_name
 		cell.accessory_type='disclosure_indicator'
+		cell.selectable=False
 		
 		label=ui.Label()
 		label.frame=(self.tableView.width-100,10,50,25)

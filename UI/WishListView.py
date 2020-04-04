@@ -3,7 +3,8 @@
 @author: SiriYang
 @file: WishListView.py
 @createTime: 2020-01-28 21:18
-@updateTime: 2020-03-29 10:57:51
+@updateTime: 2020-04-01 11:50:01
+@codeLines: 154
 """
 
 import ui
@@ -19,6 +20,7 @@ from core.PriceService import PriceService
 
 from tools.Result import *
 from tools.StringProcess import *
+from tools.ImgProcess import *
 
 class WishListView(ui.View):
 	
@@ -79,10 +81,17 @@ class WishListView(ui.View):
 
 	def tableview_cell_for_row(self, tableview, section, row):
 		cell = ui.TableViewCell('subtitle')
+		cell.selectable=False
+		
 		app = self.apps[row]
 		cell.text_label.text = StringProcess(app.getName())
 		cell.detail_text_label.text = StringProcess(app.getAuthor())
-		cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
+		img=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
+		if self.app.width<500:
+			# iPhone竖屏
+			img=uiImgResize(img,(60,60))
+		cell.image_view.image=img
+		#cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		cell.accessory_type='disclosure_indicator'
 	
 		self.loadCellPrice(cell,row)
@@ -107,6 +116,7 @@ class WishListView(ui.View):
 				newprice=oldprice=prices[0].getPrice()
 				
 		pricelabel=SteamPriceLabel(oldprice,newprice)
+		pricelabel.touch_enabled=False
 		
 		if self.app.width>500:
 			pricelabel.x,pricelabel.y=self.tableView.width-220,10

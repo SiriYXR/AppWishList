@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
 """
-@author:SiriYang
+@author: SiriYang
 @file: PricePlotView.py
-@time: 2020.1.31 15:09
+@createTime: 2020.1.31 15:09
+@updateTime: 2020-04-03 23:16:06
+@codeLines: 179
 """
 
 from datetime import datetime,timedelta
@@ -11,7 +13,7 @@ import random
 import ui
 
 class AxeLabel(ui.View):
-	def __init__(self,text,t,tc="black",lc="black",frame=(0,0,100,20)):		
+	def __init__(self,text,t,tc="black",lc="black",frame=(0,0,100,20),align=ui.ALIGN_CENTER):		
 		self.t=t
 		self.frame=frame
 		
@@ -22,7 +24,7 @@ class AxeLabel(ui.View):
 		
 		self.info=ui.Label()
 		self.info.text=text
-		self.info.alignment=ui.ALIGN_RIGHT
+		self.info.alignment=align
 		self.info.text_color=tc
 		
 		self.add_subview(self.line)
@@ -33,7 +35,12 @@ class AxeLabel(ui.View):
 			self.line.frame=(self.width-self.lw,(self.height-self.lh)/2,self.lw,self.lh)
 			self.info.frame=(0,0,self.width-self.lw,self.height)
 		else:
-			self.line.frame=((self.width-self.lh)/2,0,self.lh,self.lw)
+			if self.info.alignment==ui.ALIGN_LEFT:
+				self.line.frame=(0,0,self.lh,self.lw)
+			elif self.info.alignment==ui.ALIGN_CENTER:
+				self.line.frame=((self.width-self.lh)/2,0,self.lh,self.lw)
+			else:
+				self.line.frame=(self.width-self.lh,0,self.lh,self.lw)
 			self.info.frame=(0,self.lw,self.width-self.lw,self.height)
 			
 		
@@ -66,21 +73,24 @@ class PricePlotView(ui.View):
 		self.epoch=-1
 		self.index=-1
 		
-		self.offset_x=100
+		self.offset_x=50
 		self.offsey_y=50
 		
 		self.scrollView=ui.ScrollView()
 		self.scrollView.delegate=self
+		self.background_color='white'
 		
-		self.scrollViewitems=[]
+		self.scrollViewitems=[] # 存储柱状图柱子label
 		
 		self.x_axe=ui.Label()
 		self.x_axe.background_color="#494949"
-		self.y_axe=ui.Label()
-		self.y_axe.background_color="#494949"
-		
 		self.scrollView.add_subview(self.x_axe)
-		self.scrollView.add_subview(self.y_axe)
+		
+		# y轴相关参数
+		self.y_axe_x=self.offset_x-5
+		self.y_axe_y=40
+		self.y_axe_w=5
+		self.y_axe_h=self.height-self.offsey_y-35
 		
 		self.info_label=ui.Label()
 		self.info_label.frame=(0,0,220,20)
@@ -113,33 +123,27 @@ class PricePlotView(ui.View):
 			date+=timedelta(days=1)
 		
 	def layout(self):
-		for i in self.scrollViewitems:
-			self.remove_subview(i)
+		self.y_axe_h=self.height-self.offsey_y-35
 		
-		getWidth = lambda x : len(self.data_x)*20+self.offset_x*2 if len(self.data_x)*20+self.offset_x*2>self.width else self.width
-		self.scrollView.frame=(0,0,self.width,self.height)
-		self.scrollView.content_size=(getWidth(self.data_x),self.height)
+		for i in self.scrollViewitems:
+			self.scrollView.remove_subview(i)
+		
+		getWidth = lambda x : len(self.data_x)*20+self.offset_x if len(self.data_x)*20+self.offset_x*2>self.width else self.width
+		self.scrollView.frame=(self.offset_x,0,self.width,self.height)
+		self.scrollView.content_size=(getWidth(self.data_x)+self.offset_x,self.height)
 		self.scrollView.scroll_enabled=True
 		self.scrollView.always_bounce_horizontal=True
 		self.scrollView.background_color="white"
 		
-		self.x_axe.frame=(self.offset_x-10,self.height-self.offsey_y,getWidth(self.data_x)-2*self.offset_x+20,5)
-		
-		self.y_axe.frame=(self.offset_x-10,40,5,self.height-self.offsey_y-40)
-		
-		for i in range(int((self.y_axe.height-25)/25)):
+		self.x_axe.frame=(0,self.height-self.offsey_y,getWidth(self.data_x)-self.offset_x+20,5)
+						
+		for i in range(int((self.y_axe_h-25)/25)):
 			if(i==0):
-				t=AxeLabel("free",0,"#494949","#494949",(50,self.height-self.offsey_y-60,40,20))
-				self.scrollViewitems.append(t)
-				self.scrollView.add_subview(t)
-				t=ui.Label(frame=(self.x_axe.x+5,self.height-self.offsey_y-50,self.x_axe.width,2),background_color="#f1f1f1")
+				t=ui.Label(frame=(self.x_axe.x,self.height-self.offsey_y-50,self.x_axe.width,2),background_color="#f1f1f1")
 				self.scrollViewitems.append(t)
 				self.scrollView.add_subview(t)
 			else:
-				t=AxeLabel(str(i*25),0,"#494949","#494949",(50,self.height-self.offsey_y-60-i*25,40,20))
-				self.scrollViewitems.append(t)
-				self.scrollView.add_subview(t)
-				t=ui.Label(frame=(self.x_axe.x+5,self.height-self.offsey_y-50-i*25,self.x_axe.width,2),background_color="#f1f1f1")
+				t=ui.Label(frame=(self.x_axe.x,self.height-self.offsey_y-50-i*25,self.x_axe.width,2),background_color="#f1f1f1")
 				self.scrollViewitems.append(t)
 				self.scrollView.add_subview(t)
 						
@@ -155,7 +159,7 @@ class PricePlotView(ui.View):
 					
 				data_index+=1
 										
-			bar.frame=(i*20+self.offset_x,self.height-self.data_y[i]-self.offsey_y-50,15,self.data_y[i]+50)
+			bar.frame=(i*20,self.height-self.data_y[i]-self.offsey_y-50,15,self.data_y[i]+50)
 			
 			if(self.data_y[i]<0):
 				bar.color=self.COLOR_NONE
@@ -164,12 +168,33 @@ class PricePlotView(ui.View):
 			
 			if (self.data_x[i].day==1 or self.data_x[i].day==15 or self.data_x[i].strftime("%m%d")=="1230"):
 				datestr=str(self.data_x[i].year)+"年"+str(self.data_x[i].month)+"月"+str(self.data_x[i].day)+"日"
-				t=AxeLabel(datestr,1,"#494949","#494949",(self.offset_x+i*20-68,self.height-self.offsey_y+4,150,25))
+				if i==0:
+					t=AxeLabel(datestr,1,"#494949","#494949",(i*20+7,self.height-self.offsey_y+4,150,25),ui.ALIGN_LEFT)
+				else:
+					t=AxeLabel(datestr,1,"#494949","#494949",(i*20-68,self.height-self.offsey_y+4,150,25))
 				self.scrollViewitems.append(t)
 				self.scrollView.add_subview(t)
 
 			self.scrollViewitems.append(bar)
 			self.scrollView.add_subview(bar)
+	
+	def draw(self):
+		ui.set_color('#494949')
+		
+		# 绘制y轴
+		ui.fill_rect(self.y_axe_x,self.y_axe_y,self.y_axe_w,self.y_axe_h)
+		
+		for i in range(int((self.y_axe_h-25)/25)):
+			price=str(i*25)
+			price_x=self.y_axe_x-45
+			price_y=self.height-self.offsey_y-60-i*25
+			price_w=40
+			price_h=20
+			
+			if(i==0):
+				price="free"
+			ui.draw_string(price,(price_x,price_y,price_w,price_h),('<system>',16),alignment=ui.ALIGN_RIGHT)
+			ui.fill_rect(self.y_axe_x-5,price_y+(price_h-2)/2,5,2)
 	
 	def showInfo(self,i):
 		if(self.data_y[i]<0):

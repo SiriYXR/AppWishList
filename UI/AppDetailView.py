@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: AppDetailView.py
 @createTime: 2020-01-29 20:39
-@updateTime: 2020-03-30 09:11:12
-@codeLines: 531
+@updateTime: 2020-04-03 23:30:20
+@codeLines: 426
 """
 
 from datetime import datetime,timedelta
@@ -105,11 +105,6 @@ class AppDetailView(ui.View):
 		self.scrollView.flex="WHRLTB"
 		self.scrollView.always_bounce_vertical=True
 		self.scrollView.bounces=True
-		if self.width>500:
-			self.scrollView.content_size=(self.width,768)
-		else:
-			# iPhone竖屏
-			self.scrollView.content_size=(self.width,1000)
 		
 		self.scrollView.add_subview(self.infoView)
 		self.scrollView.add_subview(self.priceView)
@@ -243,6 +238,14 @@ class AppDetailView(ui.View):
 		
 	
 	def layout(self):
+		
+		# 更新scrollView.content_size
+		if self.width>500:
+			self.scrollView.content_size=(self.width,650)
+		else:
+			# iPhone竖屏
+			self.scrollView.content_size=(self.width,900)
+		
 		if(self.app.orientation==self.app.LANDSCAPE):
 			self.layOut_L()
 		else:
@@ -258,9 +261,15 @@ class AppDetailView(ui.View):
 		基本信息布局
 		---------------------------------
 		'''
-		self.infoView.frame=(0,0,content_width,content_height*0.3)
+		if self.app.isIpad():
+			self.infoView.frame=(0,0,content_width,190)
+		else:
+			self.infoView.frame=(0,0,content_width,240)
 		
-		self.info_inconView.frame=(20,20,160,160)
+		if self.app.isIpad():
+			self.info_inconView.frame=(20,20,160,160)
+		else:
+			self.info_inconView.frame=(20,20,120,120)
 		
 		self.info_nameLabel.frame=(self.info_inconView.width+40,20,600,40)
 		#self.info_nameLabel.background_color="blue"
@@ -310,7 +319,7 @@ class AppDetailView(ui.View):
 		价格信息布局
 		---------------------------------
 		'''		
-		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.1)
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,65)
 		#self.priceView.background_color="blue"
 		
 		margin=(content_width-600)/4
@@ -327,17 +336,17 @@ class AppDetailView(ui.View):
 		
 		self.price_lowestLabel.frame=(self.price_firstLabel.x+margin+200,y,200,45)
 		
-		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,2)
-		self.price_BLine_Label.frame=(5,self.priceView.height-2,self.priceView.width-10,2)
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
 		
 		'''
 		价格图表布局
 		---------------------------------
 		'''	
-		self.graphView.frame=(0,content_height*0.4,content_width,content_height*0.6)
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,content_height-self.priceView.height-self.priceView.y)
 		#self.graphView.background_color="red"
-				
-		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
+
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
 	
 		self.graph_epochBtn.height=25
 		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
@@ -349,7 +358,7 @@ class AppDetailView(ui.View):
 		基本信息布局
 		---------------------------------
 		'''
-		self.infoView.frame=(0,0,content_width,content_height*0.3)
+		self.infoView.frame=(0,0,content_width,250)
 		
 		self.info_inconView.frame=(20,20,160,160)
 		
@@ -389,7 +398,7 @@ class AppDetailView(ui.View):
 		价格信息布局
 		---------------------------------
 		'''		
-		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.1)
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,65)
 		#self.priceView.background_color="blue"
 		
 		margin=(content_width-600)/4
@@ -406,17 +415,17 @@ class AppDetailView(ui.View):
 		
 		self.price_lowestLabel.frame=(self.price_firstLabel.x+margin+200,y,200,45)
 		
-		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,2)
-		self.price_BLine_Label.frame=(5,self.priceView.height-2,self.priceView.width-10,2)
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
 	
 		'''
 		价格图表布局
 		---------------------------------
 		'''	
-		self.graphView.frame=(0,content_height*0.4,content_width,content_height*0.6)
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,500)
 		#self.graphView.background_color="red"
-				
-		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
+
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
 	
 		self.graph_epochBtn.height=25
 		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
@@ -428,7 +437,7 @@ class AppDetailView(ui.View):
 		基本信息布局
 		---------------------------------
 		'''
-		self.infoView.frame=(0,0,content_width,content_height*0.3)
+		self.infoView.frame=(0,0,content_width,300)
 		
 		self.info_inconView.frame=(20,20,120,120)
 		
@@ -471,7 +480,7 @@ class AppDetailView(ui.View):
 		价格信息布局
 		---------------------------------
 		'''		
-		self.priceView.frame=(0,content_height*0.3,content_width,content_height*0.25)
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,190)
 		#self.priceView.background_color="blue"
 		
 		margin_x=(content_width-200)/2
@@ -488,17 +497,17 @@ class AppDetailView(ui.View):
 		
 		self.price_lowestLabel.frame=(self.price_firstLabel.x,self.price_firstLabel.y+45+margin_y,200,45)
 		
-		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,2)
-		self.price_BLine_Label.frame=(5,self.priceView.height-2,self.priceView.width-10,2)
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
 	
 		'''
 		价格图表布局
 		---------------------------------
 		'''	
-		self.graphView.frame=(0,content_height*0.55,content_width,content_height*0.45)
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,content_height-self.priceView.height-self.priceView.y)
 		#self.graphView.background_color="red"
 				
-		self.graph_pricePlot.frame=(0,10,content_width,self.graphView.height)
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
 	
 		self.graph_epochBtn.height=25
 		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
