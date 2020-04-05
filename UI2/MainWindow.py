@@ -139,6 +139,7 @@ class MainWindow(ui.View):
 			self.present(style='fullscreen',hide_title_bar=True)
 		else:
 			self.present(style='sheet',hide_title_bar=True)
+		self.configService.runTimesAddOne()
 
 	def isIpad(self):
 		return self.divice==self.IPAD
