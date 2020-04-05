@@ -1,0 +1,669 @@
+# -*- coding:utf-8 -*-
+"""
+@author: SiriYang
+@file: AppDetailView.py
+@createTime: 2020-01-29 20:39
+@updateTime: 2020-04-03 23:30:20
+@codeLines: 426
+"""
+
+from datetime import datetime,timedelta
+
+import ui
+import console
+import webbrowser
+
+from .PriceLabel import PriceLabel
+from .SteamPriceLabel import SteamPriceLabel
+from .DividingLineLabel import DividingLineLabel
+from .PricePlotView import PricePlotView
+
+from core.AppModel import App
+from core.AppService import AppService
+from core.PriceModel import Price
+from core.PriceService import PriceService
+
+from tools.Result import *
+from tools.StringProcess import *
+		
+class AppDetailView(ui.View):
+	
+	def __init__(self,app,father,obj):
+		self.app=app
+		self.father=father
+		self.obj=obj
+		
+		self.presentPrice=Price("",-1)
+		self.lastPrice=Price("",-1)
+		self.firstPrice=Price("",-1)
+		self.lowestPrice=Price("",-1)
+		
+		self.dates=[]
+		self.prices=[]
+		self.prices_v=[]
+		self.years=[]
+		self.epoch=0
+		self.loadData()
+		
+		self.name="应用详情"
+		self.background_color="white"
+		self.frame=(0,0,self.app.width,self.app.height)
+		self.flex="WHLRTB"
+		
+		self.infoView=ui.View()
+		self.info_inconView=ui.ImageView()
+		self.info_nameLabel=ui.Label()
+		self.info_authorLabel=ui.Label()
+		self.info_categoryLabel=ui.Button()
+		self.info_createtimeLabel=ui.Label()
+		self.info_updatetimeLabel=ui.Label()
+		self.info_starBtn=ui.Button()
+		self.info_storeBtn=ui.Button()
+		self.info_updateBtn=ui.Button()
+		self.info_deleteBtn=ui.Button()
+		self.info_autoupdateLabel=ui.Label()
+		self.info_autoupdateBtn=ui.Switch()
+		
+		self.infoView.add_subview(self.info_inconView)
+		self.infoView.add_subview(self.info_nameLabel)
+		self.infoView.add_subview(self.info_authorLabel)
+		self.infoView.add_subview(self.info_categoryLabel)
+		self.infoView.add_subview(self.info_createtimeLabel)
+		self.infoView.add_subview(self.info_updatetimeLabel)
+		self.infoView.add_subview(self.info_starBtn)
+		self.infoView.add_subview(self.info_storeBtn)
+		self.infoView.add_subview(self.info_updateBtn)
+		self.infoView.add_subview(self.info_deleteBtn)
+		self.infoView.add_subview(self.info_autoupdateLabel)
+		self.infoView.add_subview(self.info_autoupdateBtn)
+		
+		self.priceView=ui.View()
+		self.price_offLabel=SteamPriceLabel(self.lastPrice.getPrice(),self.presentPrice.getPrice())
+		self.price_normalLabel=PriceLabel("当前价格:",self.presentPrice,100,15)
+		self.price_firstLabel=PriceLabel("收藏价格:",self.firstPrice,100,15)
+		self.price_lowestLabel=PriceLabel("史低价格:",self.lowestPrice,100,15)
+		self.price_TLine_Label=DividingLineLabel(10,5)
+		self.price_BLine_Label=DividingLineLabel(10,5)
+		
+		self.priceView.add_subview(self.price_TLine_Label)
+		self.priceView.add_subview(self.price_normalLabel)
+		self.priceView.add_subview(self.price_offLabel)
+		self.priceView.add_subview(self.price_firstLabel)
+		self.priceView.add_subview(self.price_lowestLabel)
+		self.priceView.add_subview(self.price_BLine_Label)
+		
+		self.graphView=ui.View()
+		
+		self.graph_pricePlot=PricePlotView()
+		self.graph_epochBtn=ui.SegmentedControl()
+		
+		self.graphView.add_subview(self.graph_pricePlot)
+		self.graphView.add_subview(self.graph_epochBtn)
+		
+		self.scrollView=ui.ScrollView()
+		self.scrollView.frame=(0,0,self.width,self.height)
+		self.scrollView.flex="WHRLTB"
+		self.scrollView.always_bounce_vertical=True
+		self.scrollView.bounces=True
+		
+		self.scrollView.add_subview(self.infoView)
+		self.scrollView.add_subview(self.priceView)
+		self.scrollView.add_subview(self.graphView)
+		
+		self.add_subview(self.scrollView)
+		
+		self.loadUI()
+		
+	def loadData(self):
+		try:
+			res=self.app.appService.getPricesByApp(self.obj)
+			
+			if(not res.equal(ResultEnum.SUCCESS)):
+				console.hud_alert(res.toString(), 'error', 1.0)
+				return 
+			
+			self.prices=res.getData()
+			if(len(self.prices)>1):
+				self.presentPrice=self.prices[-1]
+				self.lastPrice=self.prices[-2]
+				self.firstPrice=self.prices[0]
+				
+				for i in self.prices :
+					if(i.getPrice()<self.lowestPrice.getPrice() or self.lowestPrice.getPrice()==-1):
+						self.lowestPrice=i
+						
+			else:
+				self.presentPrice=self.lastPrice=self.firstPrice=self.lowestPrice=self.prices[0]
+			
+			self.dates.clear()
+			self.prices_v.clear()
+			for i in self.prices :
+				date=datetime.strptime(i.getCreateTime(),"%Y-%m-%d %H:%M:%S")
+				self.dates.append(date)
+				self.prices_v.append(i.getPrice())
+				
+				if(len(self.years)==0 or date.year!=self.years[-1]):
+					self.years.append(date.year)
+			
+		except Exception as e:
+			console.hud_alert('Failed to load Prices', 'error', 1.0)
+		finally:
+			pass
+		
+	def loadUI(self):
+		'''
+		基本信息
+		---------------------------------
+		'''
+		self.infoView.background_color="#fff"
+		
+		self.info_inconView.image=ui.Image.named(self.app.rootpath+"img/"+self.obj.getAppId()+".png")
+		if self.app.isIpad():
+			self.info_inconView.border_width=4
+			self.info_inconView.border_color="#f8f8f8"
+			self.info_inconView.corner_radius=30
+		
+		self.info_nameLabel.text=StringProcess(self.obj.getName())
+		
+		self.info_authorLabel.text=StringProcess(self.obj.getAuthor())
+		self.info_authorLabel.text_color='#979797'
+		
+		self.info_categoryLabel.title=self.obj.getApplicationCategory()
+		self.info_categoryLabel.font=("<system>",15)
+		self.info_categoryLabel.action=self.changeCategory_Act
+		
+		self.info_autoupdateLabel.text="自动更新"
+		
+		self.info_autoupdateBtn.value=self.obj.getAutoUpdate()
+		self.info_autoupdateBtn.tint_color="#0987b4"
+		self.info_autoupdateBtn.action=self.changeAutoUpdate_Act
+		
+		self.info_createtimeLabel.text="收藏时间:"+self.obj.getCreateTime()
+		
+		self.info_updatetimeLabel.text="更新时间:"+self.obj.getUpdateTime()
+		
+		if(self.obj.getStar()>0):
+			self.info_starBtn.background_image=ui.Image.named(self.app.rootpath+"UI/img/star_full.PNG")
+		else:
+			self.info_starBtn.background_image=ui.Image.named(self.app.rootpath+"UI/img/star_vacancy.PNG")
+		self.info_starBtn.action=self.star_Act
+		
+		self.info_storeBtn.title="访问商店"
+		self.info_storeBtn.font=('Arial',20)
+		#self.info_storeBtn.corner_radius=5
+		self.info_storeBtn.bg_color="#2f4658"
+		self.info_storeBtn.tint_color="#7ec1ec"
+		self.info_storeBtn.action=self.appstore_Act		
+		
+		self.info_updateBtn.title="更新"
+		self.info_updateBtn.font=('Arial',20)
+		#self.info_updateBtn.corner_radius=5
+		self.info_updateBtn.bg_color="#007800"
+		self.info_updateBtn.tint_color="white"
+		self.info_updateBtn.action=self.update_Act
+		
+		self.info_deleteBtn.title="删除"
+		self.info_deleteBtn.font=('Arial',20)
+		#self.info_deleteBtn.corner_radius=5
+		self.info_deleteBtn.bg_color="#cc0000"
+		self.info_deleteBtn.tint_color="white"
+		self.info_deleteBtn.action=self.delete_Act
+		
+		'''
+		价格信息
+		---------------------------------
+		'''		
+		
+		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
+			self.price_offLabel.hidden=True
+		else:
+			self.price_offLabel.hidden=False
+			
+		self.price_offLabel.updateData(self.lastPrice.getPrice(),self.presentPrice.getPrice())
+		self.price_normalLabel.updateData(self.presentPrice)
+		self.price_firstLabel.updateData(self.firstPrice)
+		self.price_lowestLabel.updateData(self.lowestPrice)
+			
+		'''
+		价格图表
+		---------------------------------
+		'''
+		#self.graphView.background_color="red"
+		
+		self.graph_pricePlot.updateData(self.dates,self.prices_v,self.years[self.epoch])
+		
+		self.graph_epochBtn.segments=[str(x) for x in self.years]
+		self.graph_epochBtn.selected_index=self.epoch
+		self.graph_epochBtn.action=self.epoch_Act
+		
+	
+	def layout(self):
+		
+		# 更新scrollView.content_size
+		if self.width>500:
+			self.scrollView.content_size=(self.width,650)
+		else:
+			# iPhone竖屏
+			self.scrollView.content_size=(self.width,900)
+		
+		if(self.app.orientation==self.app.LANDSCAPE):
+			self.layOut_L()
+		else:
+			if self.width>500:
+				self.layOut_P_IPAD()
+			else:
+				# iPhone竖屏
+				self.layOut_P_IPHONE()
+				
+	def layOut_L(self):
+		content_width,content_height=self.scrollView.content_size
+		'''
+		基本信息布局
+		---------------------------------
+		'''
+		if self.app.isIpad():
+			self.infoView.frame=(0,0,content_width,190)
+		else:
+			self.infoView.frame=(0,0,content_width,240)
+		
+		if self.app.isIpad():
+			self.info_inconView.frame=(20,20,160,160)
+		else:
+			self.info_inconView.frame=(20,20,120,120)
+		
+		self.info_nameLabel.frame=(self.info_inconView.width+40,20,600,40)
+		#self.info_nameLabel.background_color="blue"
+		
+		self.info_authorLabel.frame=(self.info_nameLabel.x,50,600,40)
+		#self.info_authorLabel.background_color="blue"
+		
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
+		#self.info_categoryLabel.background_color="blue"
+
+		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
+		#self.info_createtimeLabel.background_color="green"
+		
+		self.info_autoupdateLabel.frame=(content_width-175,self.info_categoryLabel.y,100,30)
+		
+		self.info_autoupdateBtn.frame=(content_width-100,self.info_categoryLabel.y,100,30)
+		
+		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
+		#self.info_updatetimeLabel.background_color="green"
+		
+		self.info_starBtn.frame=(content_width-100,20,60,60)
+		#self.info_starBtn.background_color="orange"
+		
+		if content_width<1024 and content_width>500:
+			# iPhone横屏
+			self.info_storeBtn.frame=(self.info_createtimeLabel.x-20,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height,150,50)
+			#self.info_storeBtn.background_color="blue"
+			
+			self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,self.info_storeBtn.y,150,50)
+			#self.info_updateBtn.background_color="blue"
+			
+			self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,self.info_storeBtn.y,150,50)
+			#self.info_deleteBtn.background_color="red"
+		else:
+			self.info_storeBtn.frame=(self.info_createtimeLabel.x+self.info_createtimeLabel.width+20,120,150,50)
+			#self.info_storeBtn.background_color="blue"
+			
+			self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,120,150,50)
+			#self.info_updateBtn.background_color="blue"
+			
+			self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,120,150,50)
+			#self.info_deleteBtn.background_color="red"
+		
+		'''
+		价格信息布局
+		---------------------------------
+		'''		
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,65)
+		#self.priceView.background_color="blue"
+		
+		margin=(content_width-600)/4
+		y=(self.priceView.height-45)/2
+		
+		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
+			self.price_normalLabel.frame=(margin,y,200,45)
+		else:
+			self.price_normalLabel.frame=(margin,(self.priceView.height-55)/2,150,55)
+						
+		self.price_offLabel.x,self.price_offLabel.y=self.price_normalLabel.x,self.price_normalLabel.y
+		
+		self.price_firstLabel.frame=(self.price_normalLabel.x+margin+200,y,200,45)
+		
+		self.price_lowestLabel.frame=(self.price_firstLabel.x+margin+200,y,200,45)
+		
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
+		
+		'''
+		价格图表布局
+		---------------------------------
+		'''	
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,content_height-self.priceView.height-self.priceView.y)
+		#self.graphView.background_color="red"
+
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
+	
+		self.graph_epochBtn.height=25
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
+		
+	def layOut_P_IPAD(self):
+		content_width,content_height=self.scrollView.content_size
+		'''
+		基本信息布局
+		---------------------------------
+		'''
+		self.infoView.frame=(0,0,content_width,250)
+		
+		self.info_inconView.frame=(20,20,160,160)
+		
+		self.info_nameLabel.frame=(self.info_inconView.width+40,20,460,40)
+		#self.info_nameLabel.background_color="blue"
+		
+		self.info_authorLabel.frame=(self.info_nameLabel.x,50,460,40)
+		#self.info_authorLabel.background_color="blue"
+		
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
+		#self.info_categoryLabel.background_color="blue"
+		
+		self.info_autoupdateLabel.frame=(content_width-155,self.info_categoryLabel.y,100,30)
+		
+		self.info_autoupdateBtn.frame=(content_width-80,self.info_categoryLabel.y,100,30)
+		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
+		#self.info_createtimeLabel.background_color="green"
+		
+		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
+		#self.info_updatetimeLabel.background_color="green"
+		
+		self.info_starBtn.frame=(content_width-80,20,60,60)
+		#self.info_starBtn.background_color="orange"
+		
+		self.info_storeBtn.frame=(self.info_updatetimeLabel.x,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+20,150,50)
+		#self.info_storeBtn.background_color="blue"
+		
+		self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+40,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+20,150,50)
+		#self.info_updateBtn.background_color="blue"
+		
+		self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+40,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+20,150,50)
+		#self.info_deleteBtn.background_color="red"
+		
+		'''
+		价格信息布局
+		---------------------------------
+		'''		
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,65)
+		#self.priceView.background_color="blue"
+		
+		margin=(content_width-600)/4
+		y=(self.priceView.height-45)/2
+		
+		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
+			self.price_normalLabel.frame=(margin,y,200,45)
+		else:
+			self.price_normalLabel.frame=(margin,(self.priceView.height-55)/2,150,55)
+		
+		self.price_offLabel.x,self.price_offLabel.y=self.price_normalLabel.x,self.price_normalLabel.y
+		
+		self.price_firstLabel.frame=(self.price_normalLabel.x+margin+200,y,200,45)
+		
+		self.price_lowestLabel.frame=(self.price_firstLabel.x+margin+200,y,200,45)
+		
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
+	
+		'''
+		价格图表布局
+		---------------------------------
+		'''	
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,500)
+		#self.graphView.background_color="red"
+
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
+	
+		self.graph_epochBtn.height=25
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
+		
+	def layOut_P_IPHONE(self):
+		content_width,content_height=self.scrollView.content_size
+		'''
+		基本信息布局
+		---------------------------------
+		'''
+		self.infoView.frame=(0,0,content_width,300)
+		
+		self.info_inconView.frame=(20,20,120,120)
+		
+		self.info_nameLabel.frame=(self.info_inconView.width+40,20,content_width-self.info_inconView.width-40,40)
+		#self.info_nameLabel.background_color="blue"
+		
+		self.info_authorLabel.frame=(self.info_nameLabel.x,50,460,40)
+		#self.info_authorLabel.background_color="blue"
+		
+		tv=ui.Label(text=self.obj.getApplicationCategory())
+		tv.size_to_fit()
+		self.info_categoryLabel.frame=(self.info_authorLabel.x,80,tv.width,30)
+		#self.info_categoryLabel.background_color="blue"
+		
+		self.info_createtimeLabel.frame=(self.info_categoryLabel.x,self.info_categoryLabel.y+self.info_categoryLabel.height,260,30)
+		#self.info_createtimeLabel.background_color="green"
+		
+		self.info_updatetimeLabel.frame=(self.info_createtimeLabel.x,self.info_createtimeLabel.y+30,260,30)
+		#self.info_updatetimeLabel.background_color="green"
+	
+		margin_x=(self.info_inconView.width-60)/2
+		self.info_starBtn.frame=(self.info_inconView.x+margin_x,self.info_inconView.y+self.info_inconView.height+20,60,60)
+		#self.info_starBtn.background_color="orange"
+		
+		self.info_autoupdateLabel.frame=(content_width-155,self.info_updatetimeLabel.y+self.info_updatetimeLabel.height+10,100,30)
+		
+		self.info_autoupdateBtn.frame=(content_width-80,self.info_autoupdateLabel.y,100,30)
+		
+		margin_x=(content_width-300)/4
+		
+		self.info_storeBtn.frame=(margin_x,self.info_starBtn.y+self.info_starBtn.height+10,100,50)
+		#self.info_storeBtn.background_color="blue"
+		self.info_updateBtn.frame=(self.info_storeBtn.x+self.info_storeBtn.width+margin_x,self.info_storeBtn.y,100,50)
+		#self.info_updateBtn.background_color="blue"
+		
+		self.info_deleteBtn.frame=(self.info_updateBtn.x+self.info_updateBtn.width+margin_x,self.info_storeBtn.y,100,50)
+		#self.info_deleteBtn.background_color="red"
+		
+		'''
+		价格信息布局
+		---------------------------------
+		'''		
+		self.priceView.frame=(0,self.infoView.height+self.infoView.y,content_width,190)
+		#self.priceView.background_color="blue"
+		
+		margin_x=(content_width-200)/2
+		margin_y=(self.priceView.height-45*3)/4
+
+		if(self.presentPrice.getPrice()==self.lastPrice.getPrice()):
+			self.price_normalLabel.frame=(margin_x,margin_y,200,45)
+		else:
+			self.price_normalLabel.frame=(margin_x,margin_y,150,55)
+		
+		self.price_offLabel.x,self.price_offLabel.y=self.price_normalLabel.x,self.price_normalLabel.y
+		
+		self.price_firstLabel.frame=(self.price_normalLabel.x,self.price_normalLabel.y+45+margin_y,200,45)
+		
+		self.price_lowestLabel.frame=(self.price_firstLabel.x,self.price_firstLabel.y+45+margin_y,200,45)
+		
+		self.price_TLine_Label.frame=(5,0,self.priceView.width-10,4)
+		self.price_BLine_Label.frame=(5,self.priceView.height-4,self.priceView.width-10,4)
+	
+		'''
+		价格图表布局
+		---------------------------------
+		'''	
+		self.graphView.frame=(0,self.priceView.height+self.priceView.y,content_width,content_height-self.priceView.height-self.priceView.y)
+		#self.graphView.background_color="red"
+				
+		self.graph_pricePlot.frame=(25,10,content_width-50,self.graphView.height)
+	
+		self.graph_epochBtn.height=25
+		self.graph_epochBtn.width=min(50*len(self.years),content_width-40)
+		self.graph_epochBtn.x,self.graph_epochBtn.y=max(content_width-max(20+self.graph_epochBtn.width,100),20),10
+	
+	@ui.in_background
+	def load(self):
+		self.app.activity_indicator.start()
+		try:
+			self.loadData()
+			self.loadUI()
+			
+		except Exception as e:
+			console.hud_alert('Failed to load Prices', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+	
+	@ui.in_background		
+	def star_Act(self,sender):
+		if(self.obj.getStar()==0):
+			self.starApp()
+		else:
+			self.unstarApp()	
+
+	def starApp(self):
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.starApp(self.obj)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App加入愿望单!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to star App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+			pass
+
+	def unstarApp(self):
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.unstarApp(self.obj)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App已移出愿望单。', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to unstar App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+			pass
+			
+	def appstore_Act(self,sender):
+		webbrowser.open("safari-"+self.obj.getURL())
+		
+	@ui.in_background
+	def update_Act(self,sender):
+		self.app.activity_indicator.start()
+		try:
+			console.hud_alert('开始更新，请等待...', 'success', 1.0)
+			res=self.app.appService.updateApp(self.obj)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('更新成功!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to update', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		pass
+	
+	@ui.in_background
+	def renovate_Act(self,sender):
+		self.app.activity_indicator.start()
+		try:
+			self.updateData()
+			console.hud_alert('刷新成功!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to load renovate', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		pass
+	
+	def updateData(self):
+		self.loadData()
+		self.loadUI()
+		self.father.updateData()
+	
+	def delete_Act(self,sender):
+		res=console.alert("删除应用",'你确定要删除"'+self.obj.getName()+'"吗？',"确定","取消",hide_cancel_button=True)
+		
+		if(res==1):
+			self.deleteApp()
+	
+	@ui.in_background	
+	def deleteApp(self):
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.deleteApp(self.obj)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.father.updateData()
+			console.hud_alert('删除成功!', 'success', 1.0)
+			self.app.nav_view.pop_view()
+		except Exception as e:
+			console.hud_alert('Failed to delete App', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		pass
+		
+	def epoch_Act(self,sender):
+		self.epoch=self.graph_epochBtn.selected_index
+		self.loadUI()
+		
+	def changeCategory_Act(self,sender):
+		res=console.input_alert("修改分类","请输入分类名称(20字以内):",self.obj.getApplicationCategory(),"确认",True)
+		category=res.replace(" ","")
+		if(category==""):
+			console.hud_alert('分类不能为空!', 'error', 1.0)
+			return
+		
+		if(len(category)>20):
+			console.hud_alert('分类名称长度不能超过20字!', 'error', 1.0)
+			return 
+		
+		if(category==self.obj.getApplicationCategory()):
+			return 
+		
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.changeAppCategory(self.obj,category)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			self.layout()
+			console.hud_alert('分类修改成功!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to change App category', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		
+		
+	def changeAutoUpdate_Act(self,sender):
+		value=self.info_autoupdateBtn.value
+		
+		self.app.activity_indicator.start()
+		try:
+			res=self.app.appService.changeAppAutoUpdate(self.obj,value)
+			if(not res.isPositive()):
+				raise Exception()  
+			self.updateData()
+			console.hud_alert('App自动更新状态已更改!', 'success', 1.0)
+		except Exception as e:
+			console.hud_alert('Failed to change App autoupdate', 'error', 1.0)
+		finally:
+			self.app.activity_indicator.stop()
+		
+if __name__ == "__main__":
+	pass

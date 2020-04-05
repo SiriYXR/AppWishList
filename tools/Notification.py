@@ -3,19 +3,20 @@
 @author: SiriYang
 @file: Notification.py
 @createTime: 2020.2.1 20:11
-@updateTime: 2020-03-29 17:24:30
+@updateTime: 2020-04-05 21:34:34
+@codeLines: 13
 """
 
 import notification
-import os
+import sys
 
 class Notification (object):
 	
 	def __init__(self,title):
 		self.title=title
-		rootpath=os.path.abspath('..')
+		rootpath=sys.argv[0]
 		localpath=rootpath.split('Documents/')[1]
-		self.url='pythonista3://'+localpath+'/LunchMainWin.py?action=run'
+		self.url='pythonista3://'+localpath+'?action=run'
 		
 	def addNotice(self,info):
 		notification.schedule(message=info,delay=0,sound_name='default',action_url=self.url,title=self.title)

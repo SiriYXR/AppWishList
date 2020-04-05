@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: ImgProcess.py
 @createTime: 2020.1.31 15:11
-@updateTime: 2020-04-04 17:18:22
-@codeLines: 36
+@updateTime: 2020-04-04 21:21:58
+@codeLines: 38
 """
 
 import ui
@@ -41,6 +41,8 @@ def fig2pil(fig):
 	return Image.frombytes("RGBA",(w,h),buf.tostring())
 
 def uiImgResize(imgIn,size):
+	if imgIn==None:
+		return None
 	w,h=size
 	imgOut=None
 	with ui.ImageContext(w,h) as ctx:
