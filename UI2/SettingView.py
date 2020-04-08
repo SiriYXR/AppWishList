@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: SettingView.py
 @createTime: 2020.2.1 21:17
-@updateTime: 2020-04-05 00:20:54
-@codeLines: 421
+@updateTime: 2020-04-08 21:56:04
+@codeLines: 425
 """
 
 import os
@@ -127,21 +127,23 @@ class ClaerDataSource(object):
 		title=self.data[row]["title"]
 		try:
 			if(title=="清除图标"):
-				AlertView("清除图标",'你确定要删除所有应用图标吗',self.img_clear_Act)
+				self.img_clear_Act()
 				
 			elif(title=="清除日志"):
-				AlertView("清除日志",'你确定要删除日志文件吗',self.log_clear_Act)
+				self.log_clear_Act()
 			
 			elif (title=="初始化系统"):
-				AlertView("初始化系统",'你确定要删除所有数据并重置系统吗',self.reset_system_Act)
+				self.reset_system_Act()
 				
-		except Exception as e:
-			console.hud_alert('Failed to load clear', 'error', 1.0)
+		#except Exception as e:
+			#console.hud_alert('Failed to load clear', 'error', 1.0)
 		finally:
 			pass
 	
 	@ui.in_background	
 	def img_clear_Act(self):
+		if(console.alert("清除图标",'你确定要删除所有应用图标吗?','确定','取消',hide_cancel_button=True)!=1):
+			return 
 		self.app.activity_indicator.start()
 		try:
 			imgs=os.listdir(self.app.rootpath+"img/")
@@ -155,6 +157,8 @@ class ClaerDataSource(object):
 	
 	@ui.in_background	
 	def log_clear_Act(self):
+		if(console.alert("清除日志",'你确定要删除日志文件吗?','确定','取消',hide_cancel_button=True)!=1):
+			return
 		self.app.activity_indicator.start()
 		try:
 			if(os.path.exists(self.app.rootpath+"log.txt")):
@@ -168,6 +172,8 @@ class ClaerDataSource(object):
 		
 	@ui.in_background
 	def reset_system_Act(self):
+		if(console.alert("初始化系统",'你确定要删除所有数据并重置系统吗?','确定','取消',hide_cancel_button=True)!=1):
+			return
 		self.app.activity_indicator.start()
 		try:
 			imgs=os.listdir(self.app.rootpath+"img/")
@@ -514,7 +520,7 @@ class SettingView (ui.View):
 		
 		self.copyrightLabel.frame=(0,self.info_tableView.y+self.info_tableView.height+30,self.width,20)
 		self.copyrightLabel.alignment=ui.ALIGN_CENTER
-		self.copyrightLabel.text="Copyright © 2020 by SiriYang. v1.2.0"
+		self.copyrightLabel.text="Copyright © 2020 by SiriYang v1.2.1"
 		self.copyrightLabel.font=("<System>",15)
 		self.copyrightLabel.text_color=self.fontcolor_pastal
 		

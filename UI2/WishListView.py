@@ -3,7 +3,7 @@
 @author: SiriYang
 @file: WishListView.py
 @createTime: 2020-01-28 21:18
-@updateTime: 2020-04-04 21:27:42
+@updateTime: 2020-04-08 21:33:27
 @codeLines: 157
 """
 
@@ -95,7 +95,6 @@ class WishListView(ui.View):
 			# iPhone竖屏
 			img=uiImgResize(img,(60,60))
 		cell.image_view.image=img
-		#cell.image_view.image=ui.Image.named(self.app.rootpath+"img/"+app.getAppId()+".png")
 		cell.accessory_type='disclosure_indicator'
 	
 		self.loadCellPrice(cell,row)
@@ -126,8 +125,8 @@ class WishListView(ui.View):
 			pricelabel.x,pricelabel.y=self.tableView.width-220,10
 		else:
 			# iPhone竖屏
-			self.tableView.row_height=pricelabel.height*2
-			pricelabel.x,pricelabel.y=self.tableView.width-210,pricelabel.height
+			self.tableView.row_height=60
+			pricelabel.x,pricelabel.y,pricelabel.width=self.tableView.width-180,30,100
 		
 		cell.content_view.add_subview(pricelabel)
 	

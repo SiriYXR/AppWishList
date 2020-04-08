@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: MainWindow.py
 @createTime: 2020-04-04 18:01:06
-@updateTime: 2020-04-05 00:20:48
-@codeLines: 170
+@updateTime: 2020-04-08 21:51:17
+@codeLines: 172
 """
 
 import ui
@@ -64,6 +64,7 @@ class MainWindow(ui.View):
 			self.divice=self.IPHONE
 		
 		self.activity_indicator = ui.ActivityIndicator(flex='LTRB')
+		self.activity_indicator.center=self.center
 		self.activity_indicator.style = ui.ACTIVITY_INDICATOR_STYLE_GRAY
 		
 		self.starView=WishListView(self)

@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: AppsTableView.py
 @createTime: 2020-01-29 00:29
-@updateTime: 2020-04-04 21:27:52
-@codeLines: 232
+@updateTime: 2020-04-08 21:49:02
+@codeLines: 235
 """
 
 import ui
@@ -135,7 +135,6 @@ class AppsTableView(ui.View):
 		
 		autoUpdateBtn=ui.Switch()
 		autoUpdateBtn.name=app.getAppId() # 利用name属性来记录其对应的app
-		autoUpdateBtn.width,autoUpdateBtn.height=100,30
 		autoUpdateBtn.value=app.getAutoUpdate()
 		autoUpdateBtn.tint_color="#0987b4"
 		autoUpdateBtn.action=self.changeAutoUpdate_Act
@@ -144,13 +143,16 @@ class AppsTableView(ui.View):
 		pricelabel.x,pricelabel.y=0,10
 		starBtn.x,starBtn.y=pricelabel.x+150,pricelabel.y # 以pricelabel为参考系
 		autoUpdateBtn.x,autoUpdateBtn.y= starBtn.x+50,starBtn.y+6 # 以starBtn为参考系
-		
 		itemView.x=self.tableView.width-300
 		if self.app.width<500:
 			# iPhone竖屏
-			itemView.x=self.tableView.width-300
-			self.tableView.row_height=80
-			itemView.y=30
+			self.tableView.row_height=70
+			pricelabel.width=100
+			pricelabel.x,pricelabel.y=0,10
+			starBtn.width=starBtn.height=30
+			starBtn.x,starBtn.y=pricelabel.x+105,pricelabel.y
+			autoUpdateBtn.x,autoUpdateBtn.y= starBtn.x+35,starBtn.y-2
+			itemView.x,itemView.y=self.tableView.width-230,30
 			
 		
 		itemView.add_subview(pricelabel)

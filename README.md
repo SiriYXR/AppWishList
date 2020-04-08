@@ -208,7 +208,13 @@ import requests as r;exec(r.get('https://raw.githubusercontent.com/SiriYXR/AppWi
 
 ## 更新日志
 
-### 2020.04.05 v.1.2.0
+### 2020.04.08 v1.2.1
+
+* 将自定义alertView改为console.alert
+* 调整价标等UI以适配iPhone小屏幕
+* 修复活动指示器无法居中的问题
+
+### 2020.04.05 v1.2.0
 
 * 去除主页改为底部栏切换样式，将愿主页信息以及更新功能移至“更多设置”页面
 * 添加自动化安装脚本
