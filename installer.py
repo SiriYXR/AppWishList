@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: installer.py
 @createTime: 2020-04-05 20:03:25
-@updateTime: 2020-04-05 21:39:01
-@codeLines: 57
+@updateTime: 2020-09-02 00:12:10
+@codeLines: 59
 """
 
 import requests
@@ -13,7 +13,7 @@ import os
 import zipfile
 import time
 
-FILE='AppWishList_v1-2-1.zip'
+FILE='AppWishList_v1-2-2.zip'
 #URL_BASE='https://raw.githubusercontent.com/SiriYXR/AppWishList/master/archive/'
 URL_BASE='http://img.siriyang.cn/AppWishList_for_iOS/archive/'
 BASE_DIR=os.path.expanduser('~')

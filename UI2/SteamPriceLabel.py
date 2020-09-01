@@ -3,8 +3,8 @@
 @author: SiriYang
 @file: SteamPriceLabel.py
 @CreateTime: 2020.1.30 20:05
-@updateTime: 2020-04-08 21:20:52
-@codeLines: 83
+@updateTime: 2020-09-01 00:54:47
+@codeLines: 81
 """
 
 import ui
@@ -58,7 +58,7 @@ class SteamPriceLabel(ui.View):
 			else:
 				ui.set_color("#638e32")
 				ui.fill_rect(0,0,90,40)
-				ui.draw_string("+{0:.0f}%".format(rate),(0,7,90,26),('Arial',26),"#b6e364",ui.ALIGN_CENTER)
+				ui.draw_string("-{0:.0f}%".format(rate),(0,7,90,26),('Arial',26),"#b6e364",ui.ALIGN_CENTER)
 			
 			"""-----------draw price--------------"""
 			priceStr=lambda x : "NULL" if x==-1 else  "¥ "+str(x) if x>0 else "Free"
