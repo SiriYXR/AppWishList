@@ -8,7 +8,17 @@ copyright © siriyang
 
 ---
 
-## 快速使用
+# 快速安装
+
+&emsp;&emsp;直接在控制台输入以下命令运行或者创建一个新.py文件然后粘贴该命令运行。使用命令运行将会默认安装在根目录，即“`This iPad/iPhone`”目录下，安装好之后你可以再挪动文件夹位置。
+
+```python
+import requests as r;exec(r.get('https://raw.githubusercontent.com/SiriYXR/AppWishList/master/installer.py').content)
+```
+
+---
+
+## 快速开始
 
 将当前文件夹下的`ExtAddApp.py`添加到`Share Extention Shortcuts`中，然后在浏览App Store的时候看见喜欢的应用时，点击分享按钮，然后选择`Run Pythonista Script`，在列表中选择运行之前添加的脚本就行了。
 
